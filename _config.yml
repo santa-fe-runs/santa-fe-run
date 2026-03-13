@@ -1,0 +1,46 @@
+title: "Santa Fe Runs"
+tagline: "Curated trail runs in Northern New Mexico"
+description: >-
+  A curated guide to the best trail runs in Northern New Mexico's Sangre de
+  Cristo Mountains and high desert — from mellow foothills cruisers to
+  serious alpine adventures.
+
+# GitHub Pages URL — update if using a custom domain
+# If repo is named santa-fe-runs.github.io, set baseurl to ""
+baseurl: "/santa-fe-run"
+url: "https://santa-fe-runs.github.io"
+
+# Collections
+collections:
+  runs:
+    output: true
+    permalink: /runs/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "runs"
+    values:
+      layout: "run"
+
+# Build
+markdown: kramdown
+kramdown:
+  input: GFM
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .github/
+  - "*.gemspec"
+  - node_modules/
+  - README.md

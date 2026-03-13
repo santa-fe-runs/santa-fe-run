@@ -1,0 +1,57 @@
+{% assign run = include.run %}
+{% assign month_abbrevs = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | split: "," %}
+
+<article class="run-card"
+  data-distance="{{ run.distance | default: 0 }}"
+  data-elevation="{{ run.elevation_gain | default: 0 }}"
+  data-altitude-min="{{ run.altitude_range.min | default: 0 }}"
+  data-altitude-max="{{ run.altitude_range.max | default: 0 }}"
+  data-difficulty="{{ run.difficulty | default: 'green' }}"
+  data-best-dates="{{ run.best_dates | jsonify | uri_escape }}"
+  data-search-text="{{ run.name | downcase | escape }} {{ run.content | strip_html | downcase | truncatewords: 60 | strip_newlines | escape }}">
+
+  <a href="{{ run.url | relative_url }}" class="card-link" tabindex="-1" aria-hidden="true"></a>
+
+  <div class="card-top">
+    {% include difficulty-badge.html difficulty=run.difficulty %}
+    <h2 class="card-title">
+      <a href="{{ run.url | relative_url }}">{{ run.name }}</a>
+    </h2>
+  </div>
+
+  <div class="card-stats">
+    <div class="stat-item">
+      <span class="stat-value">{{ run.distance }}</span>
+      <span class="stat-label">mi</span>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat-item">
+      <span class="stat-value">{{ run.elevation_gain }}</span>
+      <span class="stat-label">ft gain</span>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat-item">
+      <span class="stat-value">{{ run.altitude_range.min }}–{{ run.altitude_range.max }}</span>
+      <span class="stat-label">ft</span>
+    </div>
+  </div>
+
+  <p class="card-excerpt">{{ run.content | strip_html | truncatewords: 30 }}</p>
+
+  {% if run.best_dates and run.best_dates.size > 0 %}
+  <div class="card-season">
+    <span class="season-label">Best:</span>
+    {% for range in run.best_dates %}
+      {% assign s = range.start | split: "-" %}
+      {% assign e = range.end | split: "-" %}
+      {% assign sm = s[0] | plus: 0 | minus: 1 %}
+      {% assign em = e[0] | plus: 0 | minus: 1 %}
+      <span class="season-range">{{ month_abbrevs[sm] }} {{ s[1] | plus: 0 }}–{{ month_abbrevs[em] }} {{ e[1] | plus: 0 }}</span>{% unless forloop.last %}<span class="season-sep">,</span>{% endunless %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <a href="{{ run.url | relative_url }}" class="card-cta" aria-label="View details for {{ run.name }}">
+    View Run →
+  </a>
+</article>

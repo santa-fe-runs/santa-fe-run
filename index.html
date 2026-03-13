@@ -1,0 +1,187 @@
+---
+layout: default
+title: "Santa Fe Runs"
+---
+
+<!-- Hero -->
+<section class="home-hero" aria-label="Site introduction">
+  <div class="container">
+    <p class="hero-eyebrow">Northern New Mexico</p>
+    <h1 class="hero-title">Santa Fe<br><em>Runs</em></h1>
+    <p class="hero-subtitle">
+      Curated trail runs in the Sangre de Cristo Mountains and high desert —
+      hand-picked routes for every ability level.
+    </p>
+    <div class="hero-search" role="search">
+      <svg class="hero-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+        <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <input
+        id="hero-search"
+        class="hero-search-input"
+        type="search"
+        placeholder="Search trails by name or keyword…"
+        aria-label="Search trails">
+    </div>
+  </div>
+</section>
+
+<!-- Content: Filters + Grid -->
+<div class="home-content">
+  <div class="container">
+
+    <!-- Filter Sidebar -->
+    <aside class="home-filters" aria-label="Filter runs">
+
+      <!-- Mobile toggle -->
+      <button class="filters-toggle" id="filters-toggle" aria-expanded="false" aria-controls="filters-panel">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 6h18M7 12h10M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Filter Runs
+        <span id="filter-active-count" class="filter-badge" hidden></span>
+      </button>
+
+      <div class="filters-panel" id="filters-panel" role="group" aria-label="Filter options">
+
+        <div class="filters-header">
+          <span class="filters-title">Filters</span>
+          <button class="filters-clear" id="filters-clear" aria-label="Clear all filters">Clear all</button>
+        </div>
+
+        <!-- Keyword (synced with hero search) -->
+        <div class="filter-group">
+          <label class="filter-label" for="filter-keyword">Keyword</label>
+          <input
+            id="filter-keyword"
+            class="filter-input"
+            type="search"
+            placeholder="Name, description, parking…"
+            aria-label="Filter by keyword">
+        </div>
+
+        <!-- Difficulty -->
+        <div class="filter-group">
+          <span class="filter-label" id="difficulty-label">Difficulty</span>
+          <div class="difficulty-chips" role="group" aria-labelledby="difficulty-label">
+            <button class="diff-chip active" data-diff="green" aria-pressed="true">
+              <div class="difficulty-badge difficulty-green" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+              </div>
+              Green
+            </button>
+            <button class="diff-chip active" data-diff="blue" aria-pressed="true">
+              <div class="difficulty-badge difficulty-blue" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="2"/></svg>
+              </div>
+              Blue
+            </button>
+            <button class="diff-chip active" data-diff="black" aria-pressed="true">
+              <div class="difficulty-badge difficulty-black" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 L22.5 12 L12 22.5 L1.5 12 Z"/></svg>
+              </div>
+              Black
+            </button>
+            <button class="diff-chip active" data-diff="double-black" aria-pressed="true">
+              <div class="difficulty-badge difficulty-double-black" aria-hidden="true">
+                <svg viewBox="0 0 32 24" fill="currentColor">
+                  <path d="M8 1.5 L15.5 12 L8 22.5 L0.5 12 Z"/>
+                  <path d="M24 1.5 L31.5 12 L24 22.5 L16.5 12 Z"/>
+                </svg>
+              </div>
+              Double Black
+            </button>
+          </div>
+        </div>
+
+        <!-- Distance slider -->
+        <div class="filter-group">
+          <span class="filter-label" id="distance-label">Distance</span>
+          <div class="range-slider" id="slider-distance" data-filter="distance" data-min="0" data-max="30" data-step="0.5" data-unit="mi" aria-labelledby="distance-label">
+            <div class="range-track">
+              <div class="range-fill" id="fill-distance"></div>
+            </div>
+            <input type="range" class="range-thumb" id="distance-min" min="0" max="30" step="0.5" value="0" aria-label="Minimum distance">
+            <input type="range" class="range-thumb" id="distance-max" min="0" max="30" step="0.5" value="30" aria-label="Maximum distance">
+            <div class="range-values">
+              <span class="range-val" id="distance-val-min">0 mi</span>
+              <span class="range-val" id="distance-val-max">30 mi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elevation Gain slider -->
+        <div class="filter-group">
+          <span class="filter-label" id="elevation-label">Elevation Gain</span>
+          <div class="range-slider" id="slider-elevation" data-filter="elevation" data-min="0" data-max="6000" data-step="100" data-unit="ft" aria-labelledby="elevation-label">
+            <div class="range-track">
+              <div class="range-fill" id="fill-elevation"></div>
+            </div>
+            <input type="range" class="range-thumb" id="elevation-min" min="0" max="6000" step="100" value="0" aria-label="Minimum elevation gain">
+            <input type="range" class="range-thumb" id="elevation-max" min="0" max="6000" step="100" value="6000" aria-label="Maximum elevation gain">
+            <div class="range-values">
+              <span class="range-val" id="elevation-val-min">0 ft</span>
+              <span class="range-val" id="elevation-val-max">6,000 ft</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Altitude Range slider -->
+        <div class="filter-group">
+          <span class="filter-label" id="altitude-label">Altitude Range</span>
+          <div class="range-slider" id="slider-altitude" data-filter="altitude" data-min="5000" data-max="14000" data-step="200" data-unit="ft" aria-labelledby="altitude-label">
+            <div class="range-track">
+              <div class="range-fill" id="fill-altitude"></div>
+            </div>
+            <input type="range" class="range-thumb" id="altitude-min" min="5000" max="14000" step="200" value="5000" aria-label="Minimum altitude">
+            <input type="range" class="range-thumb" id="altitude-max" min="5000" max="14000" step="200" value="14000" aria-label="Maximum altitude">
+            <div class="range-values">
+              <span class="range-val" id="altitude-val-min">5,000 ft</span>
+              <span class="range-val" id="altitude-val-max">14,000 ft</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date filter -->
+        <div class="filter-group">
+          <label class="filter-label" for="filter-date">Running On</label>
+          <input
+            id="filter-date"
+            class="filter-date"
+            type="date"
+            aria-label="Select a date to see which trails are in season">
+          <button class="filter-date-clear" id="date-clear" aria-label="Clear date filter">
+            Clear date
+          </button>
+        </div>
+
+      </div><!-- /filters-panel -->
+    </aside>
+
+    <!-- Results -->
+    <section class="home-results" aria-label="Trail run results" aria-live="polite" aria-atomic="false">
+      <div class="results-bar">
+        <p class="results-count">
+          Showing <strong id="results-count">{{ site.runs.size }}</strong> run{% if site.runs.size != 1 %}s{% endif %}
+        </p>
+      </div>
+
+      <div class="run-grid" id="run-grid">
+        {% assign sorted_runs = site.runs | sort: "difficulty" %}
+        {% for run in sorted_runs %}
+          {% include run-card.html run=run %}
+        {% endfor %}
+
+        <div class="no-results" id="no-results" aria-live="polite" role="status">
+          <div class="no-results-icon" aria-hidden="true">🏔</div>
+          <h3>No trails found</h3>
+          <p>Try adjusting your filters or broadening your search.</p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+</div><!-- /home-content -->
+
+<script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>

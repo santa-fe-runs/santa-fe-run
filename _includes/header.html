@@ -1,0 +1,14 @@
+<header class="site-header">
+  <div class="container">
+    <a href="{{ '/' | relative_url }}" class="site-brand">
+      <svg class="brand-mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <path d="M3 28 L12 10 L18 20 L23 14 L33 28 Z" fill="currentColor" opacity="0.9"/>
+        <path d="M1 28 L35 28" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+      </svg>
+      <span class="brand-name">{{ site.title }}</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">All Runs</a>
+    </nav>
+  </div>
+</header>

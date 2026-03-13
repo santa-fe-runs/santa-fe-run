@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+  <body class="layout-{{ page.layout | default: 'default' }}">
+    {% include header.html %}
+    <main id="main-content">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+    <script>
+      // Pass Jekyll config to JS
+      window.SITE_BASEURL = "{{ site.baseurl }}";
+    </script>
+  </body>
+</html>

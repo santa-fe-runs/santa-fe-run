@@ -1,0 +1,156 @@
+@use "variables" as *;
+
+// ============================================================
+// Reset & Base
+// ============================================================
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--earth);
+  background-color: var(--sand-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Headings use display font
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--earth);
+}
+
+a {
+  color: var(--forest-mid);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--forest);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--tan);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+input, button, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ============================================================
+// Container
+// ============================================================
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+// ============================================================
+// Prose (rich text content)
+// ============================================================
+.prose {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--earth);
+
+  p { margin-bottom: 1.25em; }
+  p:last-child { margin-bottom: 0; }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    color: var(--forest);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin-top: 1.5em;
+    margin-bottom: 0.4em;
+  }
+
+  ul, ol {
+    list-style: revert;
+    padding-left: 1.5em;
+    margin-bottom: 1.25em;
+  }
+
+  li { margin-bottom: 0.4em; }
+
+  strong { font-weight: 600; }
+
+  a {
+    color: var(--forest-mid);
+    text-decoration: underline;
+    text-decoration-color: var(--tan);
+    text-underline-offset: 3px;
+    &:hover { color: var(--forest); }
+  }
+}
+
+// ============================================================
+// Animations
+// ============================================================
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

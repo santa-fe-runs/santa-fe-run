@@ -1,0 +1,4 @@
+---
+layout: null
+---
+[{% for run in site.runs %}{"name":{{ run.name | jsonify }},"url":{{ run.url | prepend: site.baseurl | jsonify }},"distance":{{ run.distance | default: 0 }},"elevation_gain":{{ run.elevation_gain | default: 0 }},"altitude_min":{{ run.altitude_range.min | default: 0 }},"altitude_max":{{ run.altitude_range.max | default: 0 }},"difficulty":{{ run.difficulty | jsonify }},"best_dates":{{ run.best_dates | jsonify }},"description":{{ run.content | strip_html | strip_newlines | jsonify }},"parking":{{ run.parking | default: "" | jsonify }},"caltopo_url":{{ run.caltopo_url | default: "" | jsonify }},"alltrails_url":{{ run.alltrails_url | default: "" | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]

@@ -1,0 +1,161 @@
+---
+layout: default
+---
+{% assign month_abbrevs = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | split: "," %}
+
+<div class="run-page">
+
+  <!-- Hero / Header -->
+  <div class="run-hero">
+    <div class="container">
+      <a href="{{ '/' | relative_url }}" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        All Runs
+      </a>
+
+      <div class="run-hero-content">
+        <div class="run-title-row">
+          {% include difficulty-badge.html difficulty=page.difficulty %}
+          <h1 class="run-name">{{ page.name }}</h1>
+        </div>
+
+        <div class="run-quick-stats">
+          <div class="quick-stat">
+            <span class="quick-stat-value">{{ page.distance }}</span>
+            <span class="quick-stat-label">miles</span>
+          </div>
+          <div class="quick-stat-sep" aria-hidden="true">·</div>
+          <div class="quick-stat">
+            <span class="quick-stat-value">{{ page.elevation_gain }}</span>
+            <span class="quick-stat-label">ft gain</span>
+          </div>
+          <div class="quick-stat-sep" aria-hidden="true">·</div>
+          <div class="quick-stat">
+            <span class="quick-stat-value">{{ page.altitude_range.min }}–{{ page.altitude_range.max }}</span>
+            <span class="quick-stat-label">ft elevation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body: description + sidebar -->
+  <div class="run-body">
+    <div class="container">
+      <div class="run-content-grid">
+
+        <!-- Description -->
+        <div class="run-description prose">
+          {{ content }}
+        </div>
+
+        <!-- Metadata sidebar -->
+        <aside class="run-sidebar">
+          <div class="metadata-card">
+
+            <div class="metadata-group">
+              <h3 class="metadata-heading">Route</h3>
+              <dl class="metadata-list">
+                <div class="metadata-row">
+                  <dt>Difficulty</dt>
+                  <dd class="difficulty-label difficulty-{{ page.difficulty }}">
+                    {% include difficulty-badge.html difficulty=page.difficulty %}
+                    {% case page.difficulty %}
+                      {% when 'green' %}Green Circle
+                      {% when 'blue' %}Blue Square
+                      {% when 'black' %}Black Diamond
+                      {% when 'double-black' %}Double Black Diamond
+                    {% endcase %}
+                  </dd>
+                </div>
+                <div class="metadata-row">
+                  <dt>Distance</dt>
+                  <dd>{{ page.distance }} miles</dd>
+                </div>
+                <div class="metadata-row">
+                  <dt>Elevation Gain</dt>
+                  <dd>{{ page.elevation_gain }} ft</dd>
+                </div>
+                <div class="metadata-row">
+                  <dt>Altitude Range</dt>
+                  <dd>{{ page.altitude_range.min }}–{{ page.altitude_range.max }} ft</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="metadata-group">
+              <h3 class="metadata-heading">Best Dates</h3>
+              <div class="best-dates-list">
+                {% for range in page.best_dates %}
+                  {% assign s = range.start | split: "-" %}
+                  {% assign e = range.end | split: "-" %}
+                  {% assign sm = s[0] | plus: 0 | minus: 1 %}
+                  {% assign em = e[0] | plus: 0 | minus: 1 %}
+                  <span class="date-range-badge">{{ month_abbrevs[sm] }} {{ s[1] | plus: 0 }} – {{ month_abbrevs[em] }} {{ e[1] | plus: 0 }}</span>
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="metadata-group">
+              <h3 class="metadata-heading">Getting There</h3>
+              <dl class="metadata-list">
+                <div class="metadata-row">
+                  <dt>Trailhead</dt>
+                  <dd>
+                    {{ page.trailhead.address }}
+                    <a href="https://maps.google.com/?q={{ page.trailhead.lat }},{{ page.trailhead.lng }}" target="_blank" rel="noopener noreferrer" class="inline-link">Open in Maps ↗</a>
+                  </dd>
+                </div>
+                <div class="metadata-row">
+                  <dt>Parking</dt>
+                  <dd>{{ page.parking }}</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="metadata-actions">
+              <a href="{{ page.caltopo_url }}" target="_blank" rel="noopener noreferrer" class="action-btn action-btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Open in CalTopo
+              </a>
+              {% if page.alltrails_url and page.alltrails_url != "" %}
+              <a href="{{ page.alltrails_url }}" target="_blank" rel="noopener noreferrer" class="action-btn action-btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                View on AllTrails
+              </a>
+              {% endif %}
+            </div>
+
+          </div>
+        </aside>
+      </div>
+
+      <!-- Map embed -->
+      <div class="run-map-section">
+        <h2 class="map-heading">Map</h2>
+        <div class="map-embed-wrapper">
+          <iframe
+            src="{{ page.caltopo_url }}"
+            title="Trail map for {{ page.name }}"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <p class="map-note">
+          Map via <a href="{{ page.caltopo_url }}" target="_blank" rel="noopener noreferrer">CalTopo</a>.
+          If the embed doesn't load, open the link directly.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
