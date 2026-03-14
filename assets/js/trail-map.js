@@ -79,8 +79,13 @@
       maxzoom: style.maxzoom,
       attribution: style.attribution
     });
-    var before = map.getLayer('track-line') ? 'track-line' : undefined;
-    map.addLayer({ id: 'topo', type: 'raster', source: 'topo' }, before);
+    // Always insert topo below all overlay layers (track, hover-dot, etc.)
+    var layers = map.getStyle().layers;
+    var firstOverlay = null;
+    for (var i = 0; i < layers.length; i++) {
+      if (layers[i].id !== 'topo') { firstOverlay = layers[i].id; break; }
+    }
+    map.addLayer({ id: 'topo', type: 'raster', source: 'topo' }, firstOverlay || undefined);
   }
 
   function createStylePickerControl(map) {
@@ -107,7 +112,7 @@
             if (map.isStyleLoaded()) {
               swapBasemap(map, style);
             } else {
-              map.once('load', function () { swapBasemap(map, style); });
+              map.once('idle', function () { swapBasemap(map, style); });
             }
           });
           container.appendChild(btn);
