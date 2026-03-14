@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Trail Guide"
+title: "Before You Run"
 description: "Everything you probably already know but should read anyway before heading out on the trails around Santa Fe."
 ---
 
