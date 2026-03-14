@@ -176,7 +176,19 @@ title: "Run Santa Fe"
 
         <!-- Popularity slider -->
         <div class="filter-group">
-          <span class="filter-label" id="popularity-label">Popularity</span>
+          <div class="filter-label-row">
+            <span class="filter-label" id="popularity-label">Popularity</span>
+            <button class="tooltip-trigger" type="button" aria-label="Popularity legend">
+              ?
+              <div class="tooltip-content" role="tooltip">
+                <div class="tooltip-row">1 — Solitude</div>
+                <div class="tooltip-row">2 — Quiet</div>
+                <div class="tooltip-row">3 — Moderate</div>
+                <div class="tooltip-row">4 — Busy</div>
+                <div class="tooltip-row">5 — People everywhere</div>
+              </div>
+            </button>
+          </div>
           <div class="range-slider" id="slider-popularity" data-filter="popularity" data-min="1" data-max="5" data-step="1" data-unit="" aria-labelledby="popularity-label">
             <div class="range-track">
               <div class="range-fill" id="fill-popularity"></div>
