@@ -124,7 +124,7 @@
         '<span class="weather-desc">' + esc(day.shortForecast) + '</span>' +
         '<span class="weather-temps"><span class="weather-high">' + esc(String(day.temperature)) + '°</span><span class="weather-low">' + esc(lowStr) + '</span></span>' +
         '<span class="weather-precip" title="Precipitation chance">💧' + esc(precipStr(day)) + '</span>' +
-        '<span class="weather-wind" title="' + esc(day.windSpeed) + '">' + esc(day.windDirection) + '</span>' +
+        '<span class="weather-wind" title="' + esc(day.windDirection) + '">' + esc(day.windSpeed) + '</span>' +
         '</div>';
     }).join('');
 
