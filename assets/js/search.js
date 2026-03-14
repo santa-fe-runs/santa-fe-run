@@ -16,7 +16,7 @@
     elevationMax: 6000,
     altitudeMin: 5000,
     altitudeMax: 14000,
-    difficulties: new Set(["green", "blue", "black", "double-black"]),
+    difficulties: new Set(["green", "blue", "black", "double-black", "extreme"]),
     selectedDate: "",
   };
 
@@ -268,7 +268,7 @@
     state.altitudeMin   = 5000;
     state.altitudeMax   = 14000;
     state.selectedDate  = "";
-    state.difficulties  = new Set(["green", "blue", "black", "double-black"]);
+    state.difficulties  = new Set(["green", "blue", "black", "double-black", "extreme"]);
 
     // Reset inputs
     if (els.heroSearch)    els.heroSearch.value    = "";

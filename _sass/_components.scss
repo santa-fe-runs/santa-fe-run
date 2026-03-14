@@ -125,7 +125,8 @@
   &.difficulty-green  { color: $diff-green; }
   &.difficulty-blue   { color: $diff-blue;  }
   &.difficulty-black,
-  &.difficulty-double-black { color: $diff-black; }
+  &.difficulty-double-black,
+  &.difficulty-extreme { color: $diff-black; }
 }
 
 // ============================================================
@@ -392,6 +393,8 @@
   user-select: none;
 
   .difficulty-badge { width: 16px; height: 16px; svg { width: 16px; height: 16px; } }
+  .difficulty-badge.difficulty-double-black svg,
+  .difficulty-badge.difficulty-extreme svg { width: 22px; height: 16px; }
 
   &.active {
     color: var(--earth);
@@ -402,6 +405,7 @@
     &[data-diff="blue"]         { border-color: $diff-blue;  }
     &[data-diff="black"]        { border-color: $diff-black; }
     &[data-diff="double-black"] { border-color: $diff-black; }
+    &[data-diff="extreme"]      { border-color: $diff-black; }
   }
 
   &:focus-visible {
@@ -581,7 +585,8 @@
     width: 40px;
     height: 40px;
     svg { width: 40px; height: 40px; }
-    &.difficulty-double-black svg { width: 54px; height: 40px; }
+    &.difficulty-double-black svg,
+    &.difficulty-extreme svg { width: 54px; height: 40px; }
     flex-shrink: 0;
   }
 }
@@ -697,7 +702,8 @@
   &.difficulty-green  { color: $diff-green; }
   &.difficulty-blue   { color: $diff-blue;  }
   &.difficulty-black,
-  &.difficulty-double-black { color: $diff-black; }
+  &.difficulty-double-black,
+  &.difficulty-extreme { color: $diff-black; }
 }
 
 .inline-link {
