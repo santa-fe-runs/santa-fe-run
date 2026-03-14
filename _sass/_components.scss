@@ -866,6 +866,37 @@
   a { color: var(--forest-mid); text-decoration: underline; }
 }
 
+// Elevation profile widget
+.elevation-profile {
+  position: relative;
+  margin-top: var(--sp-4);
+  padding: var(--sp-4) var(--sp-4) var(--sp-2);
+  background: $sand-100;
+  border: 1px solid $tan-200;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  user-select: none;
+
+  svg { display: block; width: 100%; height: auto; }
+}
+
+.elevation-tooltip {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  display: none;
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid $tan-200;
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--earth);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+}
+
 // ============================================================
 // Weather Forecast Card (sidebar)
 // ============================================================
