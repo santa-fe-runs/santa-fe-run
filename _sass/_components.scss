@@ -944,7 +944,7 @@
 
 .weather-row {
   display: grid;
-  grid-template-columns: 2.75rem 2rem 1fr auto auto auto;
+  grid-template-columns: 2.75rem 2rem auto auto auto;
   align-items: center;
   gap: var(--sp-2);
   padding: var(--sp-2) 0;

@@ -135,6 +135,29 @@ Use ski run terminology:
 | `black` | ◆ | Advanced — sustained climbing, technical sections |
 | `double-black` | ◆◆ | Expert — serious elevation, remote, demanding conditions |
 
+### Adding a GPX file
+
+If you have a GPX file for the route, the run page will display an interactive MapLibre map with the track drawn on it and a download button in the sidebar.
+
+1. Drop the GPX file into `assets/gpx/`
+2. Set `gpx: "/assets/gpx/your-file.gpx"` in the run's front matter
+
+#### Generating a stub run file from a GPX
+
+The `scripts/gpx_to_run.py` script reads a GPX file and auto-calculates distance, elevation gain, altitude range, and trailhead coordinates, then writes a stub `_runs/<slug>.md` for you to fill in.
+
+**Prerequisites:** [uv](https://docs.astral.sh/uv/getting-started/installation/)
+
+**Usage (run from repo root):**
+
+```bash
+uv run scripts/gpx_to_run.py assets/gpx/my-trail.gpx
+```
+
+This creates `_runs/my-trail.md` with the calculated stats pre-filled. Fields that can't be derived from the GPX (`difficulty`, `best_dates`, `parking`, `caltopo_url`, description) are stubbed with `TODO` placeholders for you to complete.
+
+The script errors out if `_runs/<slug>.md` already exists, so it won't overwrite existing run files.
+
 ### CalTopo maps
 
 1. Create or open your map at [caltopo.com](https://caltopo.com)
