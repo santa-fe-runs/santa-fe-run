@@ -122,14 +122,6 @@
 .home-filters {
   position: sticky;
   top: calc(60px + var(--sp-6)); // header height + gap
-  max-height: calc(100vh - 60px - var(--sp-6));
-  overflow-y: auto;
-  // Thin warm scrollbar
-  scrollbar-width: thin;
-  scrollbar-color: $tan-300 transparent;
-  &::-webkit-scrollbar { width: 4px; }
-  &::-webkit-scrollbar-track { background: transparent; }
-  &::-webkit-scrollbar-thumb { background: $tan-300; border-radius: 99px; }
 }
 
 // Results area
