@@ -225,13 +225,19 @@
     var yMin = Math.floor((minEle - elePad) / 100) * 100;
     var yMax = Math.ceil((maxEle + elePad) / 100) * 100;
 
-    // SVG coordinate system — PL scales so y-axis labels always have ~60px physical room
+    // SVG coordinate system — sizes computed in SVG user units to give consistent
+    // physical pixel sizes regardless of container width / viewBox scale.
     var VW = 1000, VH = 220;
     var containerWidth = container.offsetWidth || 600;
     var PL = containerWidth < 600 ? Math.round(60000 / containerWidth) : 80;
     var PR = 24, PT = 20, PB = 52;
     var CW = VW - PL - PR;
     var CH = VH - PT - PB;
+    // Font sizes: target ~14px and ~11px physical on any screen width
+    var FONT    = String(Math.round(14000 / containerWidth));
+    var FONT_SM = String(Math.round(11000 / containerWidth));
+    // Fewer y-axis ticks on narrow screens to avoid overlap in the shorter chart
+    var yTickTarget = containerWidth < 500 ? 3 : 4;
 
     function xOf(dist) { return PL + (dist / totalDist) * CW; }
     function yOf(ele)  { return PT + CH - ((ele - yMin) / (yMax - yMin)) * CH; }
@@ -276,7 +282,7 @@
     svg.appendChild(defs);
 
     // ── Grid + Y-axis labels ──
-    var tickStep = niceTick(yMax - yMin, 4);
+    var tickStep = niceTick(yMax - yMin, yTickTarget);
     var firstTick = Math.ceil(yMin / tickStep) * tickStep;
     for (var t = firstTick; t <= yMax + 1; t += tickStep) {
       var ty = yOf(t);
@@ -287,14 +293,14 @@
       }));
       svg.appendChild(el('text', {
         x: PL - 10, y: (ty + 7).toFixed(1),
-        'text-anchor': 'end', 'font-size': '22', 'font-family': 'system-ui,sans-serif', fill: '#a89070'
+        'text-anchor': 'end', 'font-size': FONT, 'font-family': 'system-ui,sans-serif', fill: '#a89070'
       }, Math.round(t).toLocaleString()));
     }
 
     // Y-axis unit label
     svg.appendChild(el('text', {
       x: '16', y: (PT + CH / 2).toFixed(1),
-      'text-anchor': 'middle', 'font-size': '20', 'font-family': 'system-ui,sans-serif', fill: '#a89070',
+      'text-anchor': 'middle', 'font-size': FONT_SM, 'font-family': 'system-ui,sans-serif', fill: '#a89070',
       transform: 'rotate(-90,16,' + (PT + CH / 2).toFixed(1) + ')'
     }, 'ft'));
 
@@ -305,7 +311,7 @@
       var dx = xOf(dv).toFixed(1);
       svg.appendChild(el('text', {
         x: dx, y: VH - 10,
-        'text-anchor': 'middle', 'font-size': '22', 'font-family': 'system-ui,sans-serif', fill: '#a89070'
+        'text-anchor': 'middle', 'font-size': FONT, 'font-family': 'system-ui,sans-serif', fill: '#a89070'
       }, dv.toFixed(1) + ' mi'));
     }
 
