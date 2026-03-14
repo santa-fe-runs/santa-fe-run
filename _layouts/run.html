@@ -46,9 +46,31 @@ layout: default
     <div class="container">
       <div class="run-content-grid">
 
-        <!-- Description -->
-        <div class="run-description prose">
-          {{ content }}
+        <!-- Left column: description + map -->
+        <div class="run-left-col">
+
+          <div class="run-description prose">
+            {{ content }}
+          </div>
+
+          <!-- Map embed -->
+          <div class="run-map-section">
+            <h2 class="map-heading">Map</h2>
+            <div class="map-embed-wrapper">
+              <iframe
+                src="{{ page.caltopo_url }}"
+                title="Trail map for {{ page.name }}"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <p class="map-note">
+              Map via <a href="{{ page.caltopo_url }}" target="_blank" rel="noopener noreferrer">CalTopo</a>.
+              If the embed doesn't load, open the link directly.
+            </p>
+          </div>
+
         </div>
 
         <!-- Metadata sidebar -->
@@ -152,24 +174,6 @@ layout: default
           </div>
 
         </aside>
-      </div>
-
-      <!-- Map embed -->
-      <div class="run-map-section">
-        <h2 class="map-heading">Map</h2>
-        <div class="map-embed-wrapper">
-          <iframe
-            src="{{ page.caltopo_url }}"
-            title="Trail map for {{ page.name }}"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-        <p class="map-note">
-          Map via <a href="{{ page.caltopo_url }}" target="_blank" rel="noopener noreferrer">CalTopo</a>.
-          If the embed doesn't load, open the link directly.
-        </p>
       </div>
 
     </div>
