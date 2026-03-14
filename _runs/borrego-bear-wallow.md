@@ -14,7 +14,7 @@ trailhead:
   lng: -105.8341
   address: "Hyde Park Rd (SR-475), Santa Fe, NM 87501 (8.3 miles from the Plaza)"
 parking: "Small paved lot on the left side of Hyde Park Road, fits approximately 9 vehicles. One of the most popular trailheads on the Forest — arrive before 8am on summer weekends to guarantee a spot. No fee required."
-gpx: ""
+gpx: "/assets/gpx/Borrego_-_Bear_s_Wallow.gpx"
 caltopo_url: "https://caltopo.com/m/GU09FHP"
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/borrego-150-windsor-254-and-bear-wallow-182-trail-loop"
 image: ""

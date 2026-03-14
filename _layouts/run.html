@@ -100,10 +100,10 @@ layout: default
                   <dd class="difficulty-label difficulty-{{ page.difficulty }}">
                     {% include difficulty-badge.html difficulty=page.difficulty %}
                     {% case page.difficulty %}
-                      {% when 'green' %}Green Circle
-                      {% when 'blue' %}Blue Square
-                      {% when 'black' %}Black Diamond
-                      {% when 'double-black' %}Double Black Diamond
+                      {% when 'green' %}Easy
+                      {% when 'blue' %}Intermediate
+                      {% when 'black' %}Difficult
+                      {% when 'double-black' %}Extreme
                     {% endcase %}
                   </dd>
                 </div>

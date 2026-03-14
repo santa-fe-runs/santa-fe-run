@@ -130,10 +130,10 @@ Use ski run terminology:
 
 | Value | Symbol | Meaning |
 |-------|--------|---------|
-| `green` | ● Green Circle | Easiest — gentle grades, good footing |
-| `blue` | ■ Blue Square | Intermediate — moderate climbs, some technical terrain |
-| `black` | ◆ Black Diamond | Advanced — sustained climbing, technical sections |
-| `double-black` | ◆◆ Double Black Diamond | Expert — serious elevation, remote, demanding conditions |
+| `green` | ● | Easiest — gentle grades, good footing |
+| `blue` | ■ | Intermediate — moderate climbs, some technical terrain |
+| `black` | ◆ | Advanced — sustained climbing, technical sections |
+| `double-black` | ◆◆ | Expert — serious elevation, remote, demanding conditions |
 
 ### CalTopo maps
 
