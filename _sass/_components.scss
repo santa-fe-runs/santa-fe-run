@@ -697,6 +697,7 @@
 
 .difficulty-label {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: var(--sp-2);
   font-weight: 600;
