@@ -247,6 +247,17 @@
   flex: 1;
 }
 
+.card-meta-row {
+  display: flex;
+  gap: var(--sp-5);
+}
+
+.card-meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
 .card-season {
   display: flex;
   align-items: center;
@@ -296,7 +307,6 @@
   align-items: center;
   gap: 4px;
   flex-shrink: 0;
-  align-self: center;
 
   &--lg {
     gap: 5px;

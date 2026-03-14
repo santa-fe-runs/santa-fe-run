@@ -18,11 +18,6 @@
     <h2 class="card-title">
       <a href="{{ run.url | relative_url }}">{{ run.name }}</a>
     </h2>
-    {% if run.popularity and run.popularity > 0 %}
-    <span class="popularity-dots" aria-label="Popularity: {{ run.popularity }} out of 5">
-      {% for i in (1..5) %}<span class="pop-dot{% if i <= run.popularity %} pop-dot--filled{% endif %}"></span>{% endfor %}
-    </span>
-    {% endif %}
   </div>
 
   <div class="card-stats">
@@ -39,16 +34,30 @@
 
   <p class="card-excerpt">{{ run.content | strip_html | truncatewords: 30 }}</p>
 
-  {% if run.best_dates and run.best_dates.size > 0 %}
-  <div class="card-season">
-    <span class="season-label">Best:</span>
-    {% for range in run.best_dates %}
-      {% assign s = range.start | split: "-" %}
-      {% assign e = range.end | split: "-" %}
-      {% assign sm = s[0] | plus: 0 | minus: 1 %}
-      {% assign em = e[0] | plus: 0 | minus: 1 %}
-      <span class="season-range">{{ month_abbrevs[sm] }} {{ s[1] | plus: 0 }}–{{ month_abbrevs[em] }} {{ e[1] | plus: 0 }}</span>{% unless forloop.last %}<span class="season-sep">,</span>{% endunless %}
-    {% endfor %}
+  {% if run.best_dates and run.best_dates.size > 0 or run.popularity and run.popularity > 0 %}
+  <div class="card-meta-row">
+    {% if run.best_dates and run.best_dates.size > 0 %}
+    <div class="card-meta-col">
+      <span class="season-label">Season</span>
+      <div class="card-season">
+        {% for range in run.best_dates %}
+          {% assign s = range.start | split: "-" %}
+          {% assign e = range.end | split: "-" %}
+          {% assign sm = s[0] | plus: 0 | minus: 1 %}
+          {% assign em = e[0] | plus: 0 | minus: 1 %}
+          <span class="season-range">{{ month_abbrevs[sm] }} {{ s[1] | plus: 0 }}–{{ month_abbrevs[em] }} {{ e[1] | plus: 0 }}</span>{% unless forloop.last %}<span class="season-sep">,</span>{% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% if run.popularity and run.popularity > 0 %}
+    <div class="card-meta-col">
+      <span class="season-label">Popularity</span>
+      <span class="popularity-dots" aria-label="Popularity: {{ run.popularity }} out of 5">
+        {% for i in (1..5) %}<span class="pop-dot{% if i <= run.popularity %} pop-dot--filled{% endif %}"></span>{% endfor %}
+      </span>
+    </div>
+    {% endif %}
   </div>
   {% endif %}
 
