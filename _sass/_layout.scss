@@ -310,6 +310,7 @@
 
   .metadata-row {
     flex-direction: column;
+    align-items: flex-start;
     gap: var(--sp-1);
     dt { min-width: unset; }
   }
