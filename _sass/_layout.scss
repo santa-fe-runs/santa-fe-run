@@ -315,3 +315,59 @@
     dt { min-width: unset; }
   }
 }
+
+// ============================================================
+// Guide Page Layout
+// ============================================================
+
+.guide-hero {
+  background-color: $forest-800;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba($tan-400, 0.04) 39px,
+      rgba($tan-400, 0.04) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 79px,
+      rgba($tan-400, 0.025) 79px,
+      rgba($tan-400, 0.025) 80px
+    );
+  padding-block: var(--sp-12) var(--sp-14);
+}
+
+.guide-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: $tan-100;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 36rem;
+}
+
+.guide-subtitle {
+  font-size: 1rem;
+  color: rgba($tan-400, 0.75);
+  margin-top: var(--sp-3);
+  font-style: italic;
+}
+
+.guide-body {
+  padding-block: var(--sp-12) var(--sp-20);
+}
+
+.guide-content {
+  max-width: 42rem;
+}
+
+.guide-intro {
+  font-size: 1.125rem;
+  color: var(--earth-mid);
+  line-height: 1.7;
+  margin-bottom: var(--sp-8);
+}
