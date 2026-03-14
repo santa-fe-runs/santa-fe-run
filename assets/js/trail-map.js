@@ -26,26 +26,26 @@
       maxzoom: 16,
       attribution: '<a href="https://www.usgs.gov/">USGS</a> National Map'
     },
-    {
-      key: 'esri-topo',
-      label: 'Esri',
-      tiles: [
-        'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
-      ],
-      tileSize: 256,
-      maxzoom: 19,
-      attribution: 'Esri, HERE, Garmin, FAO, NOAA, USGS'
-    },
-    {
-      key: 'thunderforest-outdoors',
-      label: 'Outdoors',
-      tiles: [
-        'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=d1c0c4338095437ba3979753df777653'
-      ],
-      tileSize: 256,
-      maxzoom: 22,
-      attribution: '© <a href="https://www.thunderforest.com/">Thunderforest</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    },
+    // {
+    //   key: 'esri-topo',
+    //   label: 'Esri',
+    //   tiles: [
+    //     'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+    //   ],
+    //   tileSize: 256,
+    //   maxzoom: 19,
+    //   attribution: 'Esri, HERE, Garmin, FAO, NOAA, USGS'
+    // },
+    // {
+    //   key: 'thunderforest-outdoors',
+    //   label: 'Outdoors',
+    //   tiles: [
+    //     'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=d1c0c4338095437ba3979753df777653'
+    //   ],
+    //   tileSize: 256,
+    //   maxzoom: 22,
+    //   attribution: '© <a href="https://www.thunderforest.com/">Thunderforest</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    // },
     {
       key: 'maptiler-topo',
       label: 'MapTiler',
