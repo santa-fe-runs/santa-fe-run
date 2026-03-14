@@ -225,9 +225,11 @@
     var yMin = Math.floor((minEle - elePad) / 100) * 100;
     var yMax = Math.ceil((maxEle + elePad) / 100) * 100;
 
-    // SVG coordinate system
+    // SVG coordinate system — PL scales so y-axis labels always have ~60px physical room
     var VW = 1000, VH = 220;
-    var PL = 80, PR = 24, PT = 20, PB = 52;
+    var containerWidth = container.offsetWidth || 600;
+    var PL = containerWidth < 600 ? Math.round(60000 / containerWidth) : 80;
+    var PR = 24, PT = 20, PB = 52;
     var CW = VW - PL - PR;
     var CH = VH - PT - PB;
 
