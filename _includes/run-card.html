@@ -29,11 +29,6 @@
       <span class="stat-value">{{ run.elevation_gain }}</span>
       <span class="stat-label">ft gain</span>
     </div>
-    <div class="stat-divider" aria-hidden="true"></div>
-    <div class="stat-item">
-      <span class="stat-value">{{ run.altitude_range.min }}–{{ run.altitude_range.max }}</span>
-      <span class="stat-label">ft</span>
-    </div>
   </div>
 
   <p class="card-excerpt">{{ run.content | strip_html | truncatewords: 30 }}</p>
