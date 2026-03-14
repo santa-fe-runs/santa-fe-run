@@ -5,15 +5,37 @@ Usage (from repo root):
     uv run scripts/gpx_to_run.py assets/gpx/<slug>.gpx
 """
 
+import json
 import re
 import sys
 import textwrap
+import urllib.request
 from pathlib import Path
 
 import gpxpy
 
 M_TO_FT = 3.28084
 M_PER_MILE = 1609.344
+
+
+def reverse_geocode(lat: float, lng: float) -> str:
+    """Return a short address string for the given coordinates via Nominatim.
+
+    Returns an empty string on any error so the script never fails over geocoding.
+    """
+    url = f"https://nominatim.openstreetmap.org/reverse?lat={lat}&lon={lng}&format=json"
+    req = urllib.request.Request(url, headers={"User-Agent": "santa-fe-run/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            data = json.loads(resp.read())
+        addr = data.get("address", {})
+        road = addr.get("road", "")
+        locality = addr.get("city") or addr.get("town") or addr.get("village") or addr.get("hamlet") or ""
+        state = addr.get("state", "")
+        parts = [p for p in (road, locality, state) if p]
+        return ", ".join(parts)
+    except Exception:
+        return ""
 
 
 def slug_to_name(slug: str) -> str:
@@ -89,7 +111,7 @@ def build_markdown(name: str, gpx_site_path: str, stats: dict) -> str:
         trailhead:
           lat: {stats["lat"]}
           lng: {stats["lng"]}
-          address: "TODO"
+          address: "{stats["address"]}"
         parking: "TODO"
         gpx: "{gpx_site_path}"
         caltopo_url: ""
@@ -134,6 +156,10 @@ def main() -> None:
     except Exception as e:
         sys.exit(f"Error parsing GPX: {e}")
 
+    print("Geocoding trailhead…", end=" ", flush=True)
+    stats["address"] = reverse_geocode(stats["lat"], stats["lng"])
+    print(stats["address"] or "(no result)")
+
     output_path.write_text(build_markdown(name, gpx_site_path, stats), encoding="utf-8")
 
     print(f"Created _runs/{slug}.md")
@@ -142,6 +168,7 @@ def main() -> None:
     print(f"  Gain:      {stats['elevation_gain']} ft")
     print(f"  Altitude:  {stats['alt_min']}–{stats['alt_max']} ft")
     print(f"  Trailhead: {stats['lat']}, {stats['lng']}")
+    print(f"  Address:   {stats['address'] or '(none)'}")
 
 
 if __name__ == "__main__":
