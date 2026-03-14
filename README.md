@@ -2,7 +2,7 @@
 
 A curated guide to trail running in Northern New Mexico — built with Jekyll and hosted on GitHub Pages.
 
-**Live site:** https://santa-fe-runs.github.io/santa-fe-run/
+**Live site:** https://santafe.run
 
 ---
 
