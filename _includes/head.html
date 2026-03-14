@@ -1,15 +1,55 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% if page.title == site.title %}{{ site.title }}{% elsif page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.tagline }}{% endif %}</title>
-<meta name="description" content="{{ page.description | default: site.description | strip_html | strip_newlines }}">
+
+{% comment %}——— Title ———{% endcomment %}
+{% if page.title == site.title %}
+  {% assign _seo_title = site.title %}
+{% elsif page.title %}
+  {% assign _seo_title = page.title | append: " | " | append: site.title %}
+{% elsif page.name %}
+  {% assign _seo_title = page.name | append: " | " | append: site.title %}
+{% else %}
+  {% assign _seo_title = site.title | append: " — " | append: site.tagline %}
+{% endif %}
+<title>{{ _seo_title }}</title>
+
+{% comment %}——— Description ———{% endcomment %}
+{% if page.description %}
+  {% assign _seo_desc = page.description | strip_html | strip_newlines %}
+{% elsif page.distance %}
+  {% capture _seo_desc %}{{ page.name }}: a {{ page.distance }}-mile trail run in Santa Fe, NM with {{ page.elevation_gain }}ft of elevation gain. {{ page.content | strip_html | truncatewords: 25 | strip_newlines }}{% endcapture %}
+{% else %}
+  {% assign _seo_desc = site.description %}
+{% endif %}
+<meta name="description" content="{{ _seo_desc | escape }}">
+
+{% comment %}——— Canonical ———{% endcomment %}
+<link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
+
+{% comment %}——— Open Graph ———{% endcomment %}
+{% if page.name and page.title == nil %}
+  {% assign _og_title = page.name %}
+{% elsif page.title %}
+  {% assign _og_title = page.title %}
+{% else %}
+  {% assign _og_title = site.title %}
+{% endif %}
+<meta property="og:type" content="{% if page.layout == 'run' %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:title" content="{{ _og_title | escape }}">
+<meta property="og:description" content="{{ _seo_desc | escape }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+
+{% comment %}——— Twitter Card ———{% endcomment %}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ _og_title | escape }}">
+<meta name="twitter:description" content="{{ _seo_desc | escape }}">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-
-{% seo %}
 
 {% if page.gpx and page.gpx != "" %}
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">

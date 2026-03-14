@@ -210,3 +210,35 @@ layout: default
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
 <script src="{{ '/assets/js/trail-map.js' | relative_url }}" defer></script>
 {% endif %}
+
+{% capture _ld_desc %}{{ page.name }}: a {{ page.distance }}-mile trail run in Santa Fe, NM with {{ page.elevation_gain }}ft of elevation gain. {{ page.content | strip_html | truncatewords: 25 | strip_newlines }}{% endcapture %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.name | append: " Trail Run — Santa Fe, NM" | jsonify }},
+  "description": {{ _ld_desc | strip_newlines | jsonify }},
+  "url": {{ site.url | append: page.url | jsonify }},
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.title | jsonify }},
+    "url": {{ site.url | jsonify }}
+  },
+  "about": {
+    "@type": "Place",
+    "name": {{ page.name | jsonify }},
+    "description": {{ page.distance | append: " miles, " | append: page.elevation_gain | append: "ft elevation gain" | jsonify }},
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": {{ page.trailhead.lat }},
+      "longitude": {{ page.trailhead.lng }}
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santa Fe",
+      "addressRegion": "NM",
+      "addressCountry": "US"
+    }
+  }
+}
+</script>

@@ -252,3 +252,18 @@ title: "Run Santa Fe"
 </div><!-- /home-content -->
 
 <script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ site.title | jsonify }},
+  "url": {{ site.url | jsonify }},
+  "description": {{ site.description | jsonify }},
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {{ site.url | append: "/?search={search_term_string}" | jsonify }},
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
