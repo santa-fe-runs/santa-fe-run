@@ -26,10 +26,10 @@ Here's the thing about the best-dates windows on each run: they're our best gues
 
 Some trails may be buried by snow well into June one year and clear of snow by March another year.
 
-**What this means for you:** The season windows are a starting point, not a promise. Before you drive 30 minutes to a trailhead check:
+**What this means for you:** The season windows are a starting point, not a promise. Before you drive 30 minutes to a trailhead, check:
 
 - **AllTrails recent reviews** — other hikers and runners post updates.
-- **The weather** — Our run pages have update to date weather information from the NWS for the route trailhead.
+- **The weather** — Our run pages have up to date weather information from the NWS for the route trailhead.
 - **Just look up at the mountains** - If there is snow on Santa Fe Baldy or the other high peaks, there's likely snow on the higher trails.
 - **Go outside** - If it feels too hot to run in Santa Fe, don't go to a lower elevation run.
 
@@ -58,7 +58,7 @@ Okay, let's be real about safety for a second.
 
 ### Altitude
 
-Santa Fe sits at 7,000 feet. Many of these runs start at 10,000 feet and can climb over 12,000. If you just flew in from sea level, your body hasn't had time to figure out what's happening. Altitude sickness is real: headache, nausea, fatigue, dizziness. The cure is to descend, drink water, and give yourself a day or two before hammering the high routes, try some of the lower routes until you feel better acclimated.
+Santa Fe sits at 7,000 feet. Many of these runs start at 10,000 feet and can climb over 12,000. If you just flew in from sea level, your body hasn't had time to figure out what's happening. Altitude sickness is real: headache, nausea, fatigue, dizziness. The cure is to descend, drink water, and give yourself a day or two before hammering the high routes. Try some of the lower-elevation runs until you feel more acclimated.
 
 ### Afternoon Thunderstorms
 
@@ -70,13 +70,13 @@ Rocks are slippery. Roots are sneaky. Stones and sand are loose. This is probabl
 
 ### Wildlife
 
-Yes, there are rattlesnakes (at low elevation). They like to warm up on trails and don't enjoy surprises any more than you do. Watch where you put your hands and feet, especially in at elevations lower than 7,000 feet on warm days.
+Yes, there are rattlesnakes (at low elevation). They like to warm up on trails and don't enjoy surprises any more than you do. Watch where you put your hands and feet, especially at elevations lower than 7,000 feet on warm days.
 
-There are also black bears, coyotes, and mountain lions in around. Your odds of a bad encounter are extremely low, but not zero. Be aware, look around, enjoy the scenery, keep an eye out.
+There are also black bears, coyotes, and mountain lions around. Your odds of a bad encounter are extremely low, but not zero. Be aware, look around, enjoy the scenery, keep an eye out.
 
 ### Getting Lost
 
-Cell service is non-existent on most routes. Know where you're going in advance. Download your route and maps for offline use before you go — CalTopo, Gaia GPS, AllTrails, Goat Maps, etc, whatever you prefer. That's why we give you a gpx.
+Cell service is non-existent on most routes. Know where you're going in advance. Download your route and maps for offline use before you go — CalTopo, Gaia GPS, AllTrails, Goat Maps, etc. — whatever you prefer. That's why we give you a gpx.
 
 Tell someone where you're going and when you expect to be back. Bring a PLB or satellite messaging device if you can.
 
@@ -84,7 +84,7 @@ Tell someone where you're going and when you expect to be back. Bring a PLB or s
 
 ## The Short Version
 
-Go early. Bring water. Check conditions before you go. Know your limits and be honest about. Come back down if something feels wrong. The trails aren't going anywhere.
+Go early. Bring water. Check conditions before you go. Know your limits and be honest with yourself. Come back down if something feels wrong. The trails aren't going anywhere.
 
 Now go have fun.
 
