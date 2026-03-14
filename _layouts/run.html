@@ -135,6 +135,22 @@ layout: default
             </div>
 
           </div>
+          <div id="weather-forecast" class="weather-card" aria-busy="true" aria-label="Weather Forecast" data-lat="{{ page.trailhead.lat }}" data-lng="{{ page.trailhead.lng }}">
+            <h3 class="metadata-heading">Weather Forecast</h3>
+            <div class="weather-skeleton">
+              {% for i in (1..7) %}
+              <div class="weather-skeleton-row">
+                <div class="skeleton-block skeleton-day"></div>
+                <div class="skeleton-block skeleton-icon"></div>
+                <div class="skeleton-block skeleton-desc"></div>
+                <div class="skeleton-block skeleton-temp"></div>
+                <div class="skeleton-block skeleton-precip"></div>
+                <div class="skeleton-block skeleton-wind"></div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
         </aside>
       </div>
 
@@ -159,3 +175,5 @@ layout: default
     </div>
   </div>
 </div>
+
+<script src="{{ '/assets/js/weather.js' | relative_url }}" defer></script>
