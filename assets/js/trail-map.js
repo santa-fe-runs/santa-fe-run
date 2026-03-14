@@ -192,6 +192,27 @@
       };
     });
 
+    // Precompute cumulative gain, loss, and local grade per point
+    var cumGain  = new Array(pts.length);
+    var cumLoss  = new Array(pts.length);
+    var localGrade = new Array(pts.length);
+    cumGain[0] = 0; cumLoss[0] = 0;
+    for (var i = 1; i < pts.length; i++) {
+      var dEle = (pts[i].ele !== null && pts[i - 1].ele !== null) ? pts[i].ele - pts[i - 1].ele : 0;
+      cumGain[i] = cumGain[i - 1] + Math.max(0, dEle);
+      cumLoss[i] = cumLoss[i - 1] + Math.max(0, -dEle);
+    }
+    // Local grade over a ±0.05 mi smoothing window
+    var WIN = 0.05;
+    for (var i = 0; i < pts.length; i++) {
+      var lo = i, hi = i;
+      while (lo > 0 && pts[i].dist - pts[lo - 1].dist < WIN) lo--;
+      while (hi < pts.length - 1 && pts[hi + 1].dist - pts[i].dist < WIN) hi++;
+      var wDist = (pts[hi].dist - pts[lo].dist) * 5280; // convert miles → feet for run
+      var wEle  = (pts[hi].ele !== null && pts[lo].ele !== null) ? pts[hi].ele - pts[lo].ele : null;
+      localGrade[i] = (wDist > 0 && wEle !== null) ? (wEle / wDist) * 100 : 0;
+    }
+
     var totalDist = pts[pts.length - 1].dist;
     var elevPts = pts.filter(function (p) { return p.ele !== null; });
     var eles = elevPts.map(function (p) { return p.ele; });
@@ -387,11 +408,13 @@
     function showTip(idx, clientX, containerLeft) {
       var pt = pts[idx];
       if (!pt || pt.ele === null) { tip.style.display = 'none'; return; }
-      var gain = pt.ele - pts[0].ele;
-      var gainStr = gain >= 0
-        ? ' · +' + Math.round(gain) + ' ft'
-        : ' · −' + Math.round(-gain) + ' ft';
-      tip.textContent = Math.round(pt.ele).toLocaleString() + ' ft  ·  ' + pt.dist.toFixed(2) + ' mi' + gainStr;
+      var grade = localGrade[idx];
+      var gradeSign = grade >= 0 ? '+' : '−';
+      tip.textContent =
+        Math.round(pt.ele).toLocaleString() + ' ft' +
+        '  ·  ' + pt.dist.toFixed(2) + ' mi' +
+        '  ·  ↑' + Math.round(cumGain[idx]) + ' ft  ↓' + Math.round(cumLoss[idx]) + ' ft' +
+        '  ·  ' + gradeSign + Math.abs(grade).toFixed(1) + '% grade';
       var left = Math.min(clientX - containerLeft + 12, container.offsetWidth - tip.offsetWidth - 8);
       tip.style.left = Math.max(0, left) + 'px';
       tip.style.display = 'block';
