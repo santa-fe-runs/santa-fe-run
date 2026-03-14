@@ -39,7 +39,7 @@ If you show up and the trail is a slushy mess or a sheet of ice, that's New Mexi
 
 ## Difficulty Is Our Opinion
 
-We rate runs on a ski run scale (green / blue / black / double-black / extreme). Like skiing, with running what counts as "easy" depends enormously on who you are.
+We rate runs on a ski run scale (green / blue / black / double-black / extreme). With running, like skiing, what counts as "easy" depends enormously on who you are.
 
 A fit local who grew up at 7,000 feet will breeze up something we called "Hard" while a first-time visitor still adjusting to altitude might find our "Easy" rating to be a legitimate sufferfest. Both experiences are valid.
 
