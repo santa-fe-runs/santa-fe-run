@@ -20,6 +20,7 @@
     popularityMax: 5,
     difficulties: new Set(["green", "blue", "black", "double-black", "extreme"]),
     selectedDate: "",
+    sort: "name-asc",
   };
 
   // ─── DOM refs ─────────────────────────────────────────────────────────────────
@@ -38,6 +39,7 @@
     noResults:       $("no-results"),
     activeCount:     $("filter-active-count"),
     diffChips:       document.querySelectorAll(".diff-chip"),
+    sortSelect:      $("sort-select"),
   };
 
   // ─── Range slider helpers ─────────────────────────────────────────────────────
@@ -228,6 +230,40 @@
     }
 
     updateClearButton();
+    applySort();
+  }
+
+  // ─── Sorting ──────────────────────────────────────────────────────────────────
+
+  const DIFF_ORDER = { green: 1, blue: 2, black: 3, "double-black": 4, extreme: 5 };
+
+  function applySort() {
+    if (!els.runGrid) return;
+    const cards = Array.from(els.runGrid.querySelectorAll(".run-card"));
+    const [field, dir] = state.sort.split("-");
+    const asc = dir === "asc";
+
+    cards.sort(function (a, b) {
+      if (field === "name") {
+        const av = a.dataset.name || "";
+        const bv = b.dataset.name || "";
+        return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+      }
+      if (field === "difficulty") {
+        const av = DIFF_ORDER[a.dataset.difficulty] || 0;
+        const bv = DIFF_ORDER[b.dataset.difficulty] || 0;
+        return asc ? av - bv : bv - av;
+      }
+      if (field === "distance") {
+        const av = parseFloat(a.dataset.distance || 0);
+        const bv = parseFloat(b.dataset.distance || 0);
+        return asc ? av - bv : bv - av;
+      }
+      return 0;
+    });
+
+    cards.forEach(function (card) { els.runGrid.appendChild(card); });
+    if (els.noResults) els.runGrid.appendChild(els.noResults);
   }
 
   // ─── "Filters active" state ───────────────────────────────────────────────────
@@ -374,6 +410,14 @@
     // Clear all
     if (els.filtersClear) {
       els.filtersClear.addEventListener("click", resetAll);
+    }
+
+    // Sort
+    if (els.sortSelect) {
+      els.sortSelect.addEventListener("change", function () {
+        state.sort = this.value;
+        applySort();
+      });
     }
 
     // Mobile filter toggle

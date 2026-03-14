@@ -145,6 +145,36 @@
   }
 }
 
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.sort-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--earth-mid);
+  white-space: nowrap;
+}
+
+.sort-select {
+  padding: var(--sp-1) var(--sp-3);
+  background: $color-white;
+  border: 1.5px solid $tan-300;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--earth);
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: var(--forest-mid);
+  }
+}
+
 // Run grid
 .run-grid {
   display: grid;

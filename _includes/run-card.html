@@ -2,6 +2,7 @@
 {% assign month_abbrevs = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | split: "," %}
 
 <article class="run-card"
+  data-name="{{ run.name | escape }}"
   data-distance="{{ run.distance | default: 0 }}"
   data-elevation="{{ run.elevation_gain | default: 0 }}"
   data-altitude-min="{{ run.altitude_range.min | default: 0 }}"

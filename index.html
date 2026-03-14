@@ -191,6 +191,17 @@ title: "Run Santa Fe"
         <p class="results-count">
           Showing <strong id="results-count">{{ site.runs.size }}</strong> run{% if site.runs.size != 1 %}s{% endif %}
         </p>
+        <div class="sort-control">
+          <label class="sort-label" for="sort-select">Sort</label>
+          <select id="sort-select" class="sort-select" aria-label="Sort runs">
+            <option value="name-asc">Name (A–Z)</option>
+            <option value="name-desc">Name (Z–A)</option>
+            <option value="difficulty-asc">Difficulty (Easy → Hard)</option>
+            <option value="difficulty-desc">Difficulty (Hard → Easy)</option>
+            <option value="distance-asc">Distance (Short → Long)</option>
+            <option value="distance-desc">Distance (Long → Short)</option>
+          </select>
+        </div>
       </div>
 
       <div class="run-grid" id="run-grid">
