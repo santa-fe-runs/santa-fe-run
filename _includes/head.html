@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% if page.name %}{{ page.name }} | {{ site.title }}{% elsif page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.tagline }}{% endif %}</title>
+<title>{% if page.title == site.title %}{{ site.title }}{% elsif page.name %}{{ page.name }} | {{ site.title }}{% elsif page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.tagline }}{% endif %}</title>
 <meta name="description" content="{{ page.description | default: site.description | strip_html | strip_newlines }}">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
