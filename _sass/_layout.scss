@@ -338,6 +338,7 @@
       rgba($tan-400, 0.025) 80px
     );
   padding-block: var(--sp-12) var(--sp-14);
+  text-align: center;
 }
 
 .guide-title {
@@ -348,6 +349,7 @@
   line-height: 1.15;
   letter-spacing: -0.02em;
   max-width: 36rem;
+  margin: 0 auto;
 }
 
 .guide-subtitle {
@@ -363,6 +365,7 @@
 
 .guide-content {
   max-width: 42rem;
+  margin: 0 auto;
 }
 
 .guide-intro {
