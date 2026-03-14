@@ -206,8 +206,10 @@
 .stat-item {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: 3px;
   white-space: nowrap;
+  flex: 1;
 }
 
 .stat-value {
@@ -392,14 +394,14 @@
   .difficulty-badge { width: 16px; height: 16px; svg { width: 16px; height: 16px; } }
 
   &.active {
-    border-color: transparent;
-    color: $color-white;
+    color: var(--earth);
     font-weight: 600;
+    background: $tan-100;
 
-    &[data-diff="green"]        { background: $diff-green; }
-    &[data-diff="blue"]         { background: $diff-blue;  }
-    &[data-diff="black"]        { background: $diff-black; }
-    &[data-diff="double-black"] { background: $diff-black; }
+    &[data-diff="green"]        { border-color: $diff-green; }
+    &[data-diff="blue"]         { border-color: $diff-blue;  }
+    &[data-diff="black"]        { border-color: $diff-black; }
+    &[data-diff="double-black"] { border-color: $diff-black; }
   }
 
   &:focus-visible {
