@@ -47,21 +47,19 @@
       attribution: '© <a href="https://www.thunderforest.com/">Thunderforest</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     },
     {
-      key: 'carto-voyager',
-      label: 'Voyager',
+      key: 'maptiler-topo',
+      label: 'MapTiler',
       tiles: [
-        'https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-        'https://b.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-        'https://c.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png'
+        'https://api.maptiler.com/maps/topo-v4/{z}/{x}/{y}.png?key=pOs2tpJTbZMN95OeELuo'
       ],
       tileSize: 256,
-      maxzoom: 19,
-      attribution: '© <a href="https://carto.com/">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      maxzoom: 22,
+      attribution: '© <a href="https://www.maptiler.com/">MapTiler</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }
   ];
 
   function savedStyle() {
-    try { return localStorage.getItem(LS_KEY) || 'opentopomap'; } catch (e) { return 'opentopomap'; }
+    try { return localStorage.getItem(LS_KEY) || 'maptiler-topo'; } catch (e) { return 'maptiler-topo'; }
   }
 
   function styleById(key) {
