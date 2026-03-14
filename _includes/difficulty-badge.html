@@ -1,5 +1,5 @@
 {% assign diff = include.difficulty | default: "green" %}
-<div class="difficulty-badge difficulty-{{ diff }}" title="{% case diff %}{% when 'green' %}Green Circle — Easiest{% when 'blue' %}Blue Square — Intermediate{% when 'black' %}Black Diamond — Advanced{% when 'double-black' %}Double Black Diamond — Expert{% endcase %}" aria-label="{% case diff %}{% when 'green' %}Green Circle{% when 'blue' %}Blue Square{% when 'black' %}Black Diamond{% when 'double-black' %}Double Black Diamond{% endcase %}">
+<div class="difficulty-badge difficulty-{{ diff }}" title="{% case diff %}{% when 'green' %}Easy{% when 'blue' %}Intermediate{% when 'black' %}Difficult{% when 'double-black' %}Extreme{% endcase %}" aria-label="{% case diff %}{% when 'green' %}Easy{% when 'blue' %}Intermediate{% when 'black' %}Difficult{% when 'double-black' %}Extreme{% endcase %}">
   {% if diff == 'green' %}
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
   {% elsif diff == 'blue' %}
