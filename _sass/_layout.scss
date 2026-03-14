@@ -463,7 +463,12 @@
     font-size: 0.9375rem;
     color: var(--earth-light);
     font-style: italic;
-    margin-bottom: var(--sp-5);
+    margin-bottom: var(--sp-4);
+  }
+
+  &-url {
+    align-self: flex-start;
+    margin-bottom: var(--sp-6);
   }
 
   &-body {
@@ -478,9 +483,19 @@
   }
 
   &-address {
+    display: block;
     font-size: 0.875rem;
     color: var(--earth-light);
-    margin-bottom: 0;
+    margin-bottom: var(--sp-4);
+    text-decoration: underline;
+    text-decoration-color: rgba($tan-400, 0.4);
+    text-underline-offset: 2px;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--forest-mid);
+      text-decoration-color: var(--forest-mid);
+    }
   }
 
   &-section-label {
@@ -504,9 +519,4 @@
     }
   }
 
-  &-actions {
-    margin-top: var(--sp-6);
-    padding-top: var(--sp-5);
-    border-top: 1px solid $tan-200;
-  }
 }
