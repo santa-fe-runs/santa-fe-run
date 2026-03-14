@@ -408,35 +408,32 @@
 // Difficulty chips
 .difficulty-chips {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: var(--sp-2);
 }
 
 .diff-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 12px 5px 8px;
-  border-radius: var(--radius-full);
+  justify-content: center;
+  padding: 6px;
+  border-radius: var(--radius-md);
   border: 1.5px solid $tan-300;
   background: $color-white;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--earth-mid);
+  opacity: 0.4;
   transition:
     background var(--transition-fast),
     border-color var(--transition-fast),
-    color var(--transition-fast);
+    opacity var(--transition-fast);
   cursor: pointer;
   user-select: none;
 
-  .difficulty-badge { width: 16px; height: 16px; svg { width: 16px; height: 16px; } }
+  .difficulty-badge { width: 18px; height: 18px; svg { width: 18px; height: 18px; } }
   .difficulty-badge.difficulty-double-black,
-  .difficulty-badge.difficulty-extreme { height: 20px; svg { width: 27px; height: 20px; } }
+  .difficulty-badge.difficulty-extreme { height: 14px; svg { width: 24px; height: 14px; } }
 
   &.active {
-    color: var(--earth);
-    font-weight: 600;
+    opacity: 1;
     background: $tan-100;
 
     &[data-diff="green"]        { border-color: $diff-green; }
@@ -450,6 +447,90 @@
     outline: 2px solid var(--tan);
     outline-offset: 2px;
   }
+}
+
+// Filter label row (label + tooltip trigger)
+.filter-label-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+// Tooltip trigger "?" button
+.tooltip-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid $tan-400;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--earth-mid);
+  cursor: pointer;
+  line-height: 1;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--earth-mid);
+    color: var(--earth);
+
+    .tooltip-content {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+
+  &:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+}
+
+// Tooltip panel
+.tooltip-content {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  z-index: 200;
+  width: 168px;
+  background: $earth-800;
+  border-radius: var(--radius-md);
+  padding: var(--sp-3) var(--sp-4);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), visibility var(--transition-fast);
+  box-shadow: var(--shadow-lg);
+
+  // Arrow pointing up
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 10px;
+    border: 5px solid transparent;
+    border-bottom-color: $earth-800;
+  }
+}
+
+.tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: $tan-200;
+
+  .difficulty-badge { width: 14px; height: 14px; svg { width: 14px; height: 14px; } }
+  .difficulty-badge.difficulty-double-black,
+  .difficulty-badge.difficulty-extreme { height: 11px; svg { width: 18px; height: 11px; } }
+
+  &:not(:last-child) { margin-bottom: var(--sp-2); }
 }
 
 // Date picker
