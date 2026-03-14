@@ -295,6 +295,8 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  flex-shrink: 0;
+  align-self: center;
 
   &--lg {
     gap: 5px;
