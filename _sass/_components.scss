@@ -498,14 +498,15 @@
   top: calc(100% + 8px);
   z-index: 200;
   width: 168px;
-  background: $earth-800;
+  background: $tan-100;
+  border: 1.5px solid $tan-300;
   border-radius: var(--radius-md);
   padding: var(--sp-3) var(--sp-4);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity var(--transition-fast), visibility var(--transition-fast);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 
   // Arrow pointing up
   &::before {
@@ -514,7 +515,15 @@
     bottom: 100%;
     left: 10px;
     border: 5px solid transparent;
-    border-bottom-color: $earth-800;
+    border-bottom-color: $tan-300;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 11px;
+    border: 4px solid transparent;
+    border-bottom-color: $tan-100;
   }
 }
 
@@ -524,7 +533,7 @@
   gap: var(--sp-2);
   font-family: var(--font-body);
   font-size: 0.8125rem;
-  color: $tan-200;
+  color: var(--earth);
 
   .difficulty-badge { width: 14px; height: 14px; svg { width: 14px; height: 14px; } }
   .difficulty-badge.difficulty-double-black,
