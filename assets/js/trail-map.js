@@ -3,7 +3,13 @@
 
   var LS_KEY = 'trail-map-style';
 
+  // styleUrl → vector style JSON (uses map.setStyle); tiles → raster XYZ (uses source swap)
   var STYLES = [
+    {
+      key: 'maptiler-topo',
+      label: 'MapTiler',
+      styleUrl: 'https://api.maptiler.com/maps/topo-v4/style.json?key=pOs2tpJTbZMN95OeELuo'
+    },
     {
       key: 'opentopomap',
       label: 'Topo',
@@ -45,23 +51,11 @@
       tileSize: 256,
       maxzoom: 22,
       attribution: '© <a href="https://www.thunderforest.com/">Thunderforest</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    },
-    {
-      key: 'carto-voyager',
-      label: 'Voyager',
-      tiles: [
-        'https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-        'https://b.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-        'https://c.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png'
-      ],
-      tileSize: 256,
-      maxzoom: 19,
-      attribution: '© <a href="https://carto.com/">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }
   ];
 
   function savedStyle() {
-    try { return localStorage.getItem(LS_KEY) || 'opentopomap'; } catch (e) { return 'opentopomap'; }
+    try { return localStorage.getItem(LS_KEY) || 'maptiler-topo'; } catch (e) { return 'maptiler-topo'; }
   }
 
   function styleById(key) {
@@ -71,18 +65,103 @@
     return STYLES[0];
   }
 
-  function swapBasemap(map, style) {
-    if (map.getLayer('topo')) map.removeLayer('topo');
-    if (map.getSource('topo')) map.removeSource('topo');
-    map.addSource('topo', {
-      type: 'raster',
-      tiles: style.tiles,
-      tileSize: style.tileSize,
-      maxzoom: style.maxzoom,
-      attribution: style.attribution
+  // Build a minimal MapLibre style object for a raster tile source
+  function rasterStyleObject(style) {
+    return {
+      version: 8,
+      glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
+      sources: {
+        topo: {
+          type: 'raster',
+          tiles: style.tiles,
+          tileSize: style.tileSize,
+          maxzoom: style.maxzoom,
+          attribution: style.attribution
+        }
+      },
+      layers: [{ id: 'topo', type: 'raster', source: 'topo' }]
+    };
+  }
+
+  // ── Track overlay (persists across style changes) ─────────────────────────
+  // Stored after GPX loads so it can be re-applied after setStyle() wipes layers.
+  var trackData = null; // { coords: [[lng, lat], …], profile: […] }
+
+  function addTrackLayers(map) {
+    if (!trackData) return;
+    var coords = trackData.coords;
+
+    // Remove stale layers/sources left over from a previous style
+    ['hover-dot', 'track-line'].forEach(function (id) {
+      if (map.getLayer(id)) map.removeLayer(id);
     });
-    var before = map.getLayer('track-line') ? 'track-line' : undefined;
-    map.addLayer({ id: 'topo', type: 'raster', source: 'topo' }, before);
+    ['hover-point', 'track'].forEach(function (id) {
+      if (map.getSource(id)) map.removeSource(id);
+    });
+
+    map.addSource('track', {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        geometry: { type: 'LineString', coordinates: coords },
+        properties: {}
+      }
+    });
+    map.addLayer({
+      id: 'track-line',
+      type: 'line',
+      source: 'track',
+      layout: { 'line-join': 'round', 'line-cap': 'round' },
+      paint: { 'line-color': '#2D5A20', 'line-width': 3.5, 'line-opacity': 0.95 }
+    });
+
+    map.addSource('hover-point', {
+      type: 'geojson',
+      data: { type: 'Feature', geometry: { type: 'Point', coordinates: coords[0] }, properties: {} }
+    });
+    map.addLayer({
+      id: 'hover-dot',
+      type: 'circle',
+      source: 'hover-point',
+      paint: {
+        'circle-radius': 7,
+        'circle-color': '#ffffff',
+        'circle-stroke-color': '#2D5A20',
+        'circle-stroke-width': 2.5,
+        'circle-opacity': 0,
+        'circle-stroke-opacity': 0
+      }
+    });
+  }
+
+  // ── Basemap switching ─────────────────────────────────────────────────────
+  // Three cases:
+  //   1. → vector (MapTiler):  setStyle(url)          + re-add track overlay
+  //   2. vector → raster:      setStyle(styleObject)  + re-add track overlay
+  //   3. raster → raster:      swap source in-place   (track layers survive)
+  function swapBasemap(map, style) {
+    if (style.styleUrl) {
+      // Case 1: switching to a vector style
+      map.setStyle(style.styleUrl);
+      map.once('style.load', function () { addTrackLayers(map); });
+    } else if (!map.getSource('topo')) {
+      // Case 2: switching from vector to raster (no 'topo' source = currently in vector mode)
+      map.setStyle(rasterStyleObject(style));
+      map.once('style.load', function () { addTrackLayers(map); });
+    } else {
+      // Case 3: raster ↔ raster — smooth in-place swap, track layers survive
+      if (map.getLayer('topo')) map.removeLayer('topo');
+      if (map.getSource('topo')) map.removeSource('topo');
+      map.addSource('topo', {
+        type: 'raster',
+        tiles: style.tiles,
+        tileSize: style.tileSize,
+        maxzoom: style.maxzoom,
+        attribution: style.attribution
+      });
+      var before = map.getLayer('track-line') ? 'track-line' : undefined;
+      map.addLayer({ id: 'topo', type: 'raster', source: 'topo' }, before);
+    }
   }
 
   function createStylePickerControl(map) {
@@ -124,7 +203,6 @@
 
   // ── Elevation profile helpers ─────────────────────────────────────────────
 
-  // Haversine distance in miles between two {lat, lng} points
   function haversine(a, b) {
     var R = 3958.8;
     var dLat = (b.lat - a.lat) * Math.PI / 180;
@@ -136,7 +214,6 @@
     return R * 2 * Math.atan2(Math.sqrt(s), Math.sqrt(1 - s));
   }
 
-  // Nice round tick interval for a given data range and target tick count
   function niceTick(range, targetCount) {
     if (range <= 0) return 1;
     var rough = range / targetCount;
@@ -146,9 +223,8 @@
     return nice * pow;
   }
 
-  // ── GPX parser → profile array ────────────────────────────────────────────
+  // ── GPX parser ────────────────────────────────────────────────────────────
 
-  // Returns [{lng, lat, ele (metres, may be null), dist (miles cumulative)}]
   function parseGpx(text) {
     var doc = new DOMParser().parseFromString(text, 'application/xml');
     var pts = doc.querySelectorAll('trkpt');
@@ -165,7 +241,6 @@
       result.push({ lng: lng, lat: lat, ele: ele });
     });
 
-    // Cumulative distance in miles
     for (var i = 0; i < result.length; i++) {
       result[i].dist = i === 0 ? 0 : result[i - 1].dist + haversine(result[i - 1], result[i]);
     }
@@ -182,7 +257,6 @@
     var hasEle = profile.some(function (p) { return p.ele !== null; });
     if (!hasEle) { container.style.display = 'none'; return; }
 
-    // Convert to feet
     var pts = profile.map(function (p) {
       return {
         lng: p.lng,
@@ -202,13 +276,12 @@
       cumGain[i] = cumGain[i - 1] + Math.max(0, dEle);
       cumLoss[i] = cumLoss[i - 1] + Math.max(0, -dEle);
     }
-    // Local grade over a ±0.05 mi smoothing window
     var WIN = 0.05;
     for (var i = 0; i < pts.length; i++) {
       var lo = i, hi = i;
       while (lo > 0 && pts[i].dist - pts[lo - 1].dist < WIN) lo--;
       while (hi < pts.length - 1 && pts[hi + 1].dist - pts[i].dist < WIN) hi++;
-      var wDist = (pts[hi].dist - pts[lo].dist) * 5280; // convert miles → feet for run
+      var wDist = (pts[hi].dist - pts[lo].dist) * 5280;
       var wEle  = (pts[hi].ele !== null && pts[lo].ele !== null) ? pts[hi].ele - pts[lo].ele : null;
       localGrade[i] = (wDist > 0 && wEle !== null) ? (wEle / wDist) * 100 : 0;
     }
@@ -222,7 +295,6 @@
     var yMin = Math.floor((minEle - elePad) / 100) * 100;
     var yMax = Math.ceil((maxEle + elePad) / 100) * 100;
 
-    // SVG coordinate system
     var VW = 1000, VH = 220;
     var PL = 80, PR = 24, PT = 20, PB = 52;
     var CW = VW - PL - PR;
@@ -231,7 +303,6 @@
     function xOf(dist) { return PL + (dist / totalDist) * CW; }
     function yOf(ele)  { return PT + CH - ((ele - yMin) / (yMax - yMin)) * CH; }
 
-    // Build SVG paths
     var lineCoords = elevPts.map(function (p) {
       return xOf(p.dist).toFixed(2) + ',' + yOf(p.ele).toFixed(2);
     });
@@ -240,7 +311,6 @@
                    'L' + lineCoords.join('L') +
                    'L' + xOf(elevPts[elevPts.length - 1].dist).toFixed(2) + ',' + (PT + CH) + 'Z';
 
-    // SVG element factory
     var NS = 'http://www.w3.org/2000/svg';
     function el(tag, attrs, textContent) {
       var e = document.createElementNS(NS, tag);
@@ -256,21 +326,16 @@
       style: 'display:block;width:100%;height:auto'
     });
 
-    // ── Defs ──
     var defs = el('defs', {});
-
     var grad = el('linearGradient', { id: 'ele-area-fill', x1: '0', y1: '0', x2: '0', y2: '1' });
     grad.appendChild(el('stop', { offset: '0%',   'stop-color': '#2D5A20', 'stop-opacity': '0.35' }));
     grad.appendChild(el('stop', { offset: '100%', 'stop-color': '#2D5A20', 'stop-opacity': '0.03' }));
     defs.appendChild(grad);
-
     var clip = el('clipPath', { id: 'ele-chart-clip' });
     clip.appendChild(el('rect', { x: PL, y: PT, width: CW, height: CH }));
     defs.appendChild(clip);
-
     svg.appendChild(defs);
 
-    // ── Grid + Y-axis labels ──
     var tickStep = niceTick(yMax - yMin, 4);
     var firstTick = Math.ceil(yMin / tickStep) * tickStep;
     for (var t = firstTick; t <= yMax + 1; t += tickStep) {
@@ -286,25 +351,21 @@
       }, Math.round(t).toLocaleString()));
     }
 
-    // Y-axis unit label
     svg.appendChild(el('text', {
       x: '16', y: (PT + CH / 2).toFixed(1),
       'text-anchor': 'middle', 'font-size': '20', 'font-family': 'system-ui,sans-serif', fill: '#a89070',
       transform: 'rotate(-90,16,' + (PT + CH / 2).toFixed(1) + ')'
     }, 'ft'));
 
-    // ── X-axis labels ──
     var distStep = niceTick(totalDist, 5);
     for (var d = 0; d <= totalDist + distStep * 0.01; d += distStep) {
       var dv = Math.min(d, totalDist);
-      var dx = xOf(dv).toFixed(1);
       svg.appendChild(el('text', {
-        x: dx, y: VH - 10,
+        x: xOf(dv).toFixed(1), y: VH - 10,
         'text-anchor': 'middle', 'font-size': '22', 'font-family': 'system-ui,sans-serif', fill: '#a89070'
       }, dv.toFixed(1) + ' mi'));
     }
 
-    // ── Chart area fill + line ──
     svg.appendChild(el('path', { d: areaPath, fill: 'url(#ele-area-fill)', 'clip-path': 'url(#ele-chart-clip)' }));
     svg.appendChild(el('path', {
       d: linePath, fill: 'none',
@@ -313,7 +374,6 @@
       'clip-path': 'url(#ele-chart-clip)'
     }));
 
-    // ── Crosshair ──
     var crossLine = el('line', {
       x1: 0, y1: PT, x2: 0, y2: PT + CH,
       stroke: '#2D5A20', 'stroke-width': '1.5', 'stroke-dasharray': '5 3',
@@ -327,7 +387,6 @@
     svg.appendChild(crossLine);
     svg.appendChild(crossDot);
 
-    // Transparent overlay to capture mouse events across chart area
     var overlay = el('rect', {
       x: PL, y: PT, width: CW, height: CH,
       fill: 'transparent', style: 'cursor:crosshair'
@@ -337,15 +396,12 @@
     container.innerHTML = '';
     container.appendChild(svg);
 
-    // Tooltip
     var tip = document.createElement('div');
     tip.className = 'elevation-tooltip';
     container.appendChild(tip);
 
-    // ── Shared state ──
-    var fromMap = false; // prevent feedback loop between map→profile and profile→map
+    var fromMap = false;
 
-    // ── Find nearest profile point by cumulative distance ──
     function nearestByDist(targetDist) {
       var best = 0, bestDiff = Infinity;
       for (var i = 0; i < pts.length; i++) {
@@ -355,7 +411,6 @@
       return best;
     }
 
-    // ── Find nearest profile point by lat/lng (squared distance) ──
     function nearestByLatLng(lat, lng) {
       var best = 0, bestD = Infinity;
       for (var i = 0; i < pts.length; i++) {
@@ -367,7 +422,6 @@
       return best;
     }
 
-    // ── Profile crosshair ──
     function showCrosshair(idx) {
       var pt = pts[idx];
       if (!pt || pt.ele === null) return;
@@ -384,7 +438,6 @@
       crossDot.setAttribute('opacity', '0');
     }
 
-    // ── Map hover dot ──
     function showMapDot(idx) {
       var pt = pts[idx];
       if (!pt) return;
@@ -404,7 +457,6 @@
       map.setPaintProperty('hover-dot', 'circle-stroke-opacity', 0);
     }
 
-    // ── Show tooltip ──
     function showTip(idx, clientX, containerLeft) {
       var pt = pts[idx];
       if (!pt || pt.ele === null) { tip.style.display = 'none'; return; }
@@ -420,7 +472,6 @@
       tip.style.display = 'block';
     }
 
-    // ── Profile mouse events (profile → map) ──
     var svgRect = null;
 
     overlay.addEventListener('mouseenter', function () {
@@ -446,7 +497,6 @@
       tip.style.display = 'none';
     });
 
-    // ── Map mouse events (map → profile) ──
     map.on('mousemove', function (e) {
       if (fromMap) return;
       var idx = nearestByLatLng(e.lngLat.lat, e.lngLat.lng);
@@ -456,7 +506,7 @@
       );
       if (pixDist < 32) {
         showCrosshair(idx);
-        tip.style.display = 'none'; // tooltip stays on profile side only
+        tip.style.display = 'none';
       } else {
         hideCrosshair();
       }
@@ -479,22 +529,12 @@
 
     var initialStyle = styleById(savedStyle());
 
+    // Initial map style: vector URL or raster style object
+    var mapStyle = initialStyle.styleUrl || rasterStyleObject(initialStyle);
+
     var map = new maplibregl.Map({
       container: 'trail-map',
-      style: {
-        version: 8,
-        glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
-        sources: {
-          topo: {
-            type: 'raster',
-            tiles: initialStyle.tiles,
-            tileSize: initialStyle.tileSize,
-            maxzoom: initialStyle.maxzoom,
-            attribution: initialStyle.attribution
-          }
-        },
-        layers: [{ id: 'topo', type: 'raster', source: 'topo' }]
-      },
+      style: mapStyle,
       center: [lng, lat],
       zoom: 13,
       attributionControl: { compact: true }
@@ -520,49 +560,17 @@
           var coords  = profile.map(function (p) { return [p.lng, p.lat]; });
           if (coords.length < 2) return;
 
-          // ── Track line ──
-          map.addSource('track', {
-            type: 'geojson',
-            data: {
-              type: 'Feature',
-              geometry: { type: 'LineString', coordinates: coords },
-              properties: {}
-            }
-          });
-          map.addLayer({
-            id: 'track-line',
-            type: 'line',
-            source: 'track',
-            layout: { 'line-join': 'round', 'line-cap': 'round' },
-            paint: { 'line-color': '#2D5A20', 'line-width': 3.5, 'line-opacity': 0.95 }
-          });
+          // Store at module scope so addTrackLayers() can re-apply after style changes
+          trackData = { coords: coords, profile: profile };
 
-          // ── Hover dot (for profile → map sync) ──
-          map.addSource('hover-point', {
-            type: 'geojson',
-            data: { type: 'Feature', geometry: { type: 'Point', coordinates: coords[0] }, properties: {} }
-          });
-          map.addLayer({
-            id: 'hover-dot',
-            type: 'circle',
-            source: 'hover-point',
-            paint: {
-              'circle-radius': 7,
-              'circle-color': '#ffffff',
-              'circle-stroke-color': '#2D5A20',
-              'circle-stroke-width': 2.5,
-              'circle-opacity': 0,
-              'circle-stroke-opacity': 0
-            }
-          });
+          addTrackLayers(map);
 
-          // ── Fit bounds ──
+          // Fit map to track bounds
           var bounds = coords.reduce(function (b, c) {
             return b.extend(c);
           }, new maplibregl.LngLatBounds(coords[0], coords[0]));
           map.fitBounds(bounds, { padding: 48, maxZoom: 15, duration: 0 });
 
-          // ── Build elevation profile ──
           buildElevationProfile(profile, map);
         })
         .catch(function () {
@@ -571,7 +579,6 @@
     });
   }
 
-  // MapLibre is loaded with defer; poll until it's available
   if (typeof maplibregl !== 'undefined') {
     init();
   } else {
