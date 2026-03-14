@@ -6,6 +6,7 @@ altitude_range:
   min: 10500
   max: 12622
 difficulty: black
+popularity: 3
 best_dates:
   - start: "07-01"
     end: "09-20"

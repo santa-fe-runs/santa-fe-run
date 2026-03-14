@@ -6,6 +6,7 @@ altitude_range:
   min: 8200
   max: 9100
 difficulty: green
+popularity: 5
 best_dates:
   - start: "05-01"
     end: "11-15"

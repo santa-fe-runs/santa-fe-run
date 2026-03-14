@@ -153,6 +153,22 @@ title: "Run Santa Fe"
           </div>
         </div>
 
+        <!-- Popularity slider -->
+        <div class="filter-group">
+          <span class="filter-label" id="popularity-label">Popularity</span>
+          <div class="range-slider" id="slider-popularity" data-filter="popularity" data-min="1" data-max="5" data-step="1" data-unit="" aria-labelledby="popularity-label">
+            <div class="range-track">
+              <div class="range-fill" id="fill-popularity"></div>
+            </div>
+            <input type="range" class="range-thumb" id="popularity-min" min="1" max="5" step="1" value="1" aria-label="Minimum popularity">
+            <input type="range" class="range-thumb" id="popularity-max" min="1" max="5" step="1" value="5" aria-label="Maximum popularity">
+            <div class="range-values">
+              <span class="range-val" id="popularity-val-min">1</span>
+              <span class="range-val" id="popularity-val-max">5</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Date filter -->
         <div class="filter-group">
           <label class="filter-label" for="filter-date">Running On</label>

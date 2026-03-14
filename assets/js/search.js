@@ -16,6 +16,8 @@
     elevationMax: 6000,
     altitudeMin: 5000,
     altitudeMax: 14000,
+    popularityMin: 1,
+    popularityMax: 5,
     difficulties: new Set(["green", "blue", "black", "double-black", "extreme"]),
     selectedDate: "",
   };
@@ -118,6 +120,12 @@
       state.altitudeMin = parseFloat(mn.value);
       state.altitudeMax = parseFloat(mx.value);
     }
+    const ps = $("slider-popularity");
+    if (ps) {
+      const [mn, mx] = ps.querySelectorAll("input");
+      state.popularityMin = parseFloat(mn.value);
+      state.popularityMax = parseFloat(mx.value);
+    }
   }
 
   // ─── Date helpers ─────────────────────────────────────────────────────────────
@@ -173,6 +181,10 @@
     const altMin = parseFloat(d.altitudeMin || 0);
     const altMax = parseFloat(d.altitudeMax || 0);
     if (altMax < state.altitudeMin || altMin > state.altitudeMax) return false;
+
+    // Popularity — unrated runs (popularity 0 or absent) always pass
+    const pop = parseFloat(d.popularity || 0);
+    if (pop > 0 && (pop < state.popularityMin || pop > state.popularityMax)) return false;
 
     // Difficulty
     if (!state.difficulties.has(d.difficulty)) return false;
@@ -240,6 +252,7 @@
     if (state.distanceMin !== 0 || state.distanceMax !== 30)      n++;
     if (state.elevationMin !== 0 || state.elevationMax !== 6000)  n++;
     if (state.altitudeMin !== 5000 || state.altitudeMax !== 14000) n++;
+    if (state.popularityMin !== 1 || state.popularityMax !== 5) n++;
     if (state.difficulties.size !== 4) n++;
     if (state.selectedDate !== "")  n++;
     return n;
@@ -267,6 +280,8 @@
     state.elevationMax  = 6000;
     state.altitudeMin   = 5000;
     state.altitudeMax   = 14000;
+    state.popularityMin = 1;
+    state.popularityMax = 5;
     state.selectedDate  = "";
     state.difficulties  = new Set(["green", "blue", "black", "double-black", "extreme"]);
 
@@ -288,6 +303,7 @@
     resetSlider("slider-distance",  0,    30);
     resetSlider("slider-elevation", 0,    6000);
     resetSlider("slider-altitude",  5000, 14000);
+    resetSlider("slider-popularity", 1,   5);
 
     // Reset difficulty chips
     els.diffChips.forEach(function (chip) {

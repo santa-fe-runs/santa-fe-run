@@ -7,6 +7,7 @@
   data-altitude-min="{{ run.altitude_range.min | default: 0 }}"
   data-altitude-max="{{ run.altitude_range.max | default: 0 }}"
   data-difficulty="{{ run.difficulty | default: 'green' }}"
+  data-popularity="{{ run.popularity | default: 0 }}"
   data-best-dates="{{ run.best_dates | jsonify | uri_escape }}"
   data-search-text="{{ run.name | downcase | escape }} {{ run.content | strip_html | downcase | truncatewords: 60 | strip_newlines | escape }}">
 
@@ -29,6 +30,14 @@
       <span class="stat-value">{{ run.elevation_gain }}</span>
       <span class="stat-label">ft gain</span>
     </div>
+    {% if run.popularity and run.popularity > 0 %}
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat-item">
+      <span class="popularity-dots" aria-label="Popularity: {{ run.popularity }} out of 5">
+        {% for i in (1..5) %}<span class="pop-dot{% if i <= run.popularity %} pop-dot--filled{% endif %}"></span>{% endfor %}
+      </span>
+    </div>
+    {% endif %}
   </div>
 
   <p class="card-excerpt">{{ run.content | strip_html | truncatewords: 30 }}</p>

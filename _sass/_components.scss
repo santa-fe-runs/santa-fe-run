@@ -290,6 +290,28 @@
   }
 }
 
+// Popularity dots
+.popularity-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &--lg {
+    gap: 5px;
+    .pop-dot { width: 10px; height: 10px; border-width: 2px; }
+  }
+}
+
+.pop-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid $forest-600;
+  flex-shrink: 0;
+
+  &.pop-dot--filled { background: $forest-600; }
+}
+
 // Card hidden state (filtered out)
 .run-card[hidden] {
   display: none;
