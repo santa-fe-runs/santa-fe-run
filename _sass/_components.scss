@@ -127,6 +127,10 @@
   &.difficulty-black,
   &.difficulty-double-black,
   &.difficulty-extreme { color: $diff-black; }
+
+  // Double-width badges are taller so the letters are legible at default size
+  &.difficulty-double-black,
+  &.difficulty-extreme { height: 30px; svg { width: 40px; height: 30px; } }
 }
 
 // ============================================================
@@ -393,8 +397,8 @@
   user-select: none;
 
   .difficulty-badge { width: 16px; height: 16px; svg { width: 16px; height: 16px; } }
-  .difficulty-badge.difficulty-double-black svg,
-  .difficulty-badge.difficulty-extreme svg { width: 22px; height: 16px; }
+  .difficulty-badge.difficulty-double-black,
+  .difficulty-badge.difficulty-extreme { height: 20px; svg { width: 27px; height: 20px; } }
 
   &.active {
     color: var(--earth);
@@ -585,8 +589,8 @@
     width: 40px;
     height: 40px;
     svg { width: 40px; height: 40px; }
-    &.difficulty-double-black svg,
-    &.difficulty-extreme svg { width: 54px; height: 40px; }
+    &.difficulty-double-black,
+    &.difficulty-extreme { height: 46px; svg { width: 62px; height: 46px; } }
     flex-shrink: 0;
   }
 }
@@ -698,6 +702,8 @@
   font-weight: 600;
 
   .difficulty-badge { width: 18px; height: 18px; svg { width: 18px; height: 18px; } }
+  .difficulty-badge.difficulty-double-black,
+  .difficulty-badge.difficulty-extreme { height: 22px; svg { width: 29px; height: 22px; } }
 
   &.difficulty-green  { color: $diff-green; }
   &.difficulty-blue   { color: $diff-blue;  }
