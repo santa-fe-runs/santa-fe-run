@@ -10,3 +10,7 @@
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
 {% seo %}
+
+{% if page.gpx and page.gpx != "" %}
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+{% endif %}

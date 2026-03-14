@@ -14,6 +14,7 @@ trailhead:
   lng: -105.8234
   address: "Hyde Park Rd, Santa Fe, NM 87501 (mile marker 12)"
 parking: "Free gravel lot at the trailhead, fits approximately 30 vehicles. Arrives early on fall weekends — the lot fills by 9am during peak aspen season (late September to mid-October). Overflow parking is available along the road shoulder."
+gpx: ""
 caltopo_url: "https://caltopo.com/m/EHL1"
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/aspen-vista-trail"
 image: ""

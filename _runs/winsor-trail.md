@@ -14,6 +14,7 @@ trailhead:
   lng: -105.8156
   address: "Ski Santa Fe Area (lower lot), Hyde Park Rd, Santa Fe, NM 87501"
 parking: "Free day-use parking in the Ski Santa Fe lower lot. Pit toilets available at the trailhead. The lot can fill on summer weekends — arrive before 8am for a guaranteed spot."
+gpx: ""
 caltopo_url: "https://caltopo.com/m/WINSR"
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/winsor-trail-to-lake-katherine"
 image: ""

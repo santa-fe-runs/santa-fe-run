@@ -790,6 +790,21 @@
   }
 }
 
+// MapLibre trail map
+.trail-map-container {
+  width: 100%;
+  height: 440px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid $tan-200;
+  box-shadow: var(--shadow-md);
+
+  // MapLibre attribution compact styling
+  .maplibregl-ctrl-attrib {
+    font-size: 10px;
+  }
+}
+
 // Map lazy-load placeholder
 .map-placeholder {
   cursor: pointer;

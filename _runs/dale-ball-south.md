@@ -16,6 +16,7 @@ trailhead:
   lng: -105.9012
   address: "Upper Canyon Rd trailhead, Santa Fe, NM 87501"
 parking: "Small dirt pullout off Upper Canyon Rd, 10–15 vehicles. Street parking available along the road. The Sierra del Norte trailhead on Cerro Gordo Rd offers an alternative start with slightly more parking."
+gpx: ""
 caltopo_url: "https://caltopo.com/m/G3L2"
 alltrails_url: ""
 image: ""

@@ -53,27 +53,36 @@ layout: default
             {{ content }}
           </div>
 
-          <!-- Map embed (lazy-loaded on click to avoid cross-origin console errors) -->
+          <!-- Map -->
           <div class="run-map-section">
             <h2 class="map-heading">Map</h2>
-            <div class="map-embed-wrapper map-placeholder"
-                 id="map-placeholder"
-                 data-src="{{ page.caltopo_url }}"
-                 data-title="Trail map for {{ page.name }}"
-                 role="button"
-                 tabindex="0"
-                 aria-label="Load interactive trail map">
-              <div class="map-load-prompt">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6-10l6-3m0 16l5.447-2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m0 13V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="map-load-label">Load interactive map</span>
-                <button class="map-load-btn" tabindex="-1" aria-hidden="true">Open CalTopo embed</button>
+            {% if page.gpx and page.gpx != "" %}
+              <div id="trail-map"
+                   class="trail-map-container"
+                   data-gpx="{{ page.gpx | relative_url }}"
+                   data-lat="{{ page.trailhead.lat }}"
+                   data-lng="{{ page.trailhead.lng }}"
+                   aria-label="Interactive trail map for {{ page.name }}">
               </div>
-            </div>
+            {% else %}
+              <div class="map-embed-wrapper map-placeholder"
+                   id="map-placeholder"
+                   data-src="{{ page.caltopo_url }}"
+                   data-title="Trail map for {{ page.name }}"
+                   role="button"
+                   tabindex="0"
+                   aria-label="Load interactive trail map">
+                <div class="map-load-prompt">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6-10l6-3m0 16l5.447-2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m0 13V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span class="map-load-label">Load interactive map</span>
+                  <button class="map-load-btn" tabindex="-1" aria-hidden="true">Open CalTopo embed</button>
+                </div>
+              </div>
+            {% endif %}
             <p class="map-note">
-              Map via <a href="{{ page.caltopo_url }}" target="_blank" rel="noopener noreferrer">CalTopo</a>.
-              If the embed doesn't load, open the link directly.
+              Full route on <a href="{{ page.caltopo_url }}" target="_blank" rel="noopener noreferrer">CalTopo ↗</a>
             </p>
           </div>
 
@@ -187,6 +196,10 @@ layout: default
 </div>
 
 <script src="{{ '/assets/js/weather.js' | relative_url }}" defer></script>
+{% if page.gpx and page.gpx != "" %}
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
+<script src="{{ '/assets/js/trail-map.js' | relative_url }}" defer></script>
+{% endif %}
 <script>
 (function () {
   var placeholder = document.getElementById('map-placeholder');
