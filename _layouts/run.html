@@ -56,6 +56,7 @@ layout: default
           <!-- Map -->
           <div class="run-map-section">
             <h2 class="map-heading">Map</h2>
+            {% comment %}
             {% if page.caltopo_url and page.caltopo_url != "" %}
               <div class="map-embed-wrapper">
                 <iframe src="{{ page.caltopo_url }}"
@@ -64,6 +65,7 @@ layout: default
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
             {% endif %}
+            {% endcomment %}
             {% if page.gpx and page.gpx != "" %}
               <div id="trail-map"
                    class="trail-map-container"
