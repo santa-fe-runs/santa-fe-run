@@ -1,4 +1,4 @@
-# Santa Fe Runs
+# Run Santa Fe
 
 A curated guide to trail running in Northern New Mexico — built with Jekyll and hosted on GitHub Pages.
 

@@ -1,5 +1,5 @@
 /**
- * Santa Fe Runs — client-side search & filter
+ * Run Santa Fe — client-side search & filter
  *
  * Works entirely on pre-rendered run cards via data attributes.
  * No fetch required — all data is embedded by Jekyll at build time.
