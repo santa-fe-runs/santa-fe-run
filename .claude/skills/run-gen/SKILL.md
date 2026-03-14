@@ -42,9 +42,9 @@ Read the GPX file and extract the `<desc>` element text from the root `<metadata
 
 The `<desc>` tag follows this format:
 ```
-popularity: <1-5>
-difficulty: <1-5>
-dates: <MM-DD> to <MM-DD>
+Popularity: <1-5>/5
+Difficulty: <1-5>/5
+Dates: <MM-DD> to <MM-DD>
 
 <trail description text, may span multiple paragraphs>
 ```
@@ -57,7 +57,7 @@ Parse out:
   - 3 → `black`
   - 4 → `double-black`
   - 5 → `extreme`
-- **date range**: the start/end dates as `MM-DD` strings
+- **date range**: the start/end dates as `MM-DD` strings, may not be 0 padded.
 - **description**: everything after the blank line that follows the three header lines — this is the trail description body text
 
 If the `<desc>` tag is missing or malformed, tell the user what was found and ask them to fix it before continuing.
@@ -106,6 +106,10 @@ Print a short summary:
 - Whether AllTrails URL was found (and the URL if yes)
 - Whether parking info was found or still needs manual entry
 - Any fields that still need attention (e.g., `caltopo_url`, `image`)
+
+## Step 6: Create a commit and push
+
+Create a git commit with the message `Add run: <run name>` and push it to the repository.
 
 ---
 

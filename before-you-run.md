@@ -7,7 +7,7 @@ description: "Everything you probably already know but should read anyway before
 <div class="guide-page">
   <div class="guide-hero">
     <div class="container">
-      <h1 class="guide-title">The Unofficial Guide to Not Getting Hurt in the Mountains</h1>
+      <h1 class="guide-title">How to Not Get Hurt in the Mountains</h1>
       <p class="guide-subtitle">Or: Be Safe and come home for an Xmas enchilada plate</p>
     </div>
   </div>
@@ -88,7 +88,5 @@ Go early. Bring water. Check conditions before you go. Know your limits and be h
 
 Now go have fun.
 
-      </div>
-    </div>
   </div>
 </div>
