@@ -1,14 +1,13 @@
 title: "Run Santa Fe"
 tagline: "Curated trail runs in Northern New Mexico"
 description: >-
-  A curated guide to the best trail runs in Northern New Mexico's Sangre de
-  Cristo Mountains and high desert — from mellow foothills cruisers to
+  A curated guide to the best trail runs in Northern New Mexico from mellow foothills cruisers to
   serious alpine adventures.
 
 # GitHub Pages URL — update if using a custom domain
 # If repo is named santa-fe-runs.github.io, set baseurl to ""
-baseurl: "/santa-fe-run"
-url: "https://santa-fe-runs.github.io"
+baseurl: ""
+url: "https://santafe.run"
 
 # Collections
 collections:
