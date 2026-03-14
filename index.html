@@ -194,7 +194,7 @@ title: "Run Santa Fe"
       </div>
 
       <div class="run-grid" id="run-grid">
-        {% assign sorted_runs = site.runs | sort: "difficulty" %}
+        {% assign sorted_runs = site.runs | sort: "name" %}
         {% for run in sorted_runs %}
           {% include run-card.html run=run %}
         {% endfor %}
