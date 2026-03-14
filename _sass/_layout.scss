@@ -152,26 +152,35 @@
 }
 
 .sort-label {
+  font-family: var(--font-body);
   font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--earth-mid);
   white-space: nowrap;
 }
 
 .sort-select {
-  padding: var(--sp-1) var(--sp-3);
-  background: $color-white;
+  appearance: none;
+  padding: var(--sp-2) var(--sp-8) var(--sp-2) var(--sp-3);
+  // Inline chevron SVG using $earth-600 (#5C4B2E)
+  background:
+    $color-white
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%235C4B2E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E")
+    no-repeat right var(--sp-3) center;
   border: 1.5px solid $tan-300;
   border-radius: var(--radius-md);
+  font-family: var(--font-body);
   font-size: 0.875rem;
   color: var(--earth);
   cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 
   &:focus {
     outline: none;
-    border-color: var(--forest-mid);
+    border-color: $forest-600;
+    box-shadow: 0 0 0 3px rgba($forest-600, 0.12);
   }
 }
 
