@@ -692,6 +692,8 @@
     display: flex;
     flex-direction: column;
     gap: var(--sp-1);
+
+    &.difficulty-label { flex-direction: row; align-items: center; }
   }
 }
 
