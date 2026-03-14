@@ -1,0 +1,5 @@
+[project]
+name = "santa-fe-run-scripts"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["gpxpy>=1.6.0"]

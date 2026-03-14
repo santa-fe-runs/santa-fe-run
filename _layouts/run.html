@@ -169,6 +169,15 @@ layout: default
                 View on AllTrails
               </a>
               {% endif %}
+              {% if page.gpx and page.gpx != "" %}
+              <a href="{{ page.gpx | relative_url }}" download class="action-btn action-btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Download GPX
+              </a>
+              {% endif %}
             </div>
 
           </div>
