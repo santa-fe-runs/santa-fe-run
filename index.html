@@ -262,7 +262,7 @@ title: "Run Santa Fe"
   "description": {{ site.description | jsonify }},
   "potentialAction": {
     "@type": "SearchAction",
-    "target": {{ site.url | append: "/?search={search_term_string}" | jsonify }},
+    "target": "{{ site.url }}/?search={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
