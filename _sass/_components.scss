@@ -578,12 +578,13 @@
 // ============================================================
 .range-slider {
   position: relative;
-  padding-top: 20px; // room for thumbs
 }
 
 .range-track {
   position: relative;
   height: 4px;
+  margin-top: 8px;   // (20px thumb height - 4px track) / 2 — centers track in thumb area
+  margin-bottom: 8px;
   background: $tan-300;
   border-radius: var(--radius-full);
   pointer-events: none;
@@ -604,7 +605,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-  height: 4px;
+  height: 20px;
   background: transparent;
   border: none;
   outline: none;
