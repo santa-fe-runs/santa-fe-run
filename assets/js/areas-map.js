@@ -177,7 +177,7 @@
     ]);
   }
 
-  function selectArea(map, areaId, areas, carousel) {
+  function selectArea(map, areaId, areaBounds, carousel) {
     if (activeAreaId === areaId) return;
     activeAreaId = areaId;
 
@@ -193,18 +193,10 @@
     // Update map highlight
     setMapHighlight(map, areaId);
 
-    // Fly to area center
-    var area = null;
-    for (var i = 0; i < areas.length; i++) {
-      if (areas[i].id === areaId) { area = areas[i]; break; }
-    }
-    if (area && area.center) {
-      map.flyTo({
-        center: [area.center.lng, area.center.lat],
-        zoom: 10,
-        duration: 600,
-        essential: true
-      });
+    // Fit map to the selected polygon
+    var bounds = areaBounds[areaId];
+    if (bounds) {
+      map.fitBounds(bounds, { padding: 48, duration: 600, essential: true });
     }
   }
 
@@ -249,6 +241,9 @@
 
     // Wire up carousel chevron buttons
     if (carousel) initCarouselButtons(carousel);
+
+    // Shared lookup populated once GeoJSON loads; used by both click handlers
+    var areaBounds = {};
 
     // ── Load all GeoJSON files ──
     map.on('load', function () {
@@ -334,17 +329,21 @@
             console.error('areas-map: label layer failed', e);
           }
 
-          // Fit to all areas
-          var bounds = new maplibregl.LngLatBounds();
+          // Build per-area bounds and fit to all areas
+          var allBounds = new maplibregl.LngLatBounds();
           combined.features.forEach(function (feature) {
-            feature.geometry.coordinates[0].forEach(function (c) { bounds.extend(c); });
+            var id = feature.properties.id;
+            var ring = feature.geometry.coordinates[0];
+            var ab = new maplibregl.LngLatBounds();
+            ring.forEach(function (c) { ab.extend(c); allBounds.extend(c); });
+            areaBounds[id] = ab;
           });
-          map.fitBounds(bounds, { padding: 48, maxZoom: 10, duration: 0 });
+          map.fitBounds(allBounds, { padding: 48, maxZoom: 10, duration: 0 });
 
           // Map click → select area
           map.on('click', 'areas-fill', function (e) {
             var id = e.features && e.features[0] && e.features[0].properties.id;
-            if (id) selectArea(map, id, areas, carousel);
+            if (id) selectArea(map, id, areaBounds, carousel);
           });
 
           map.on('mouseenter', 'areas-fill', function () { map.getCanvas().style.cursor = 'pointer'; });
@@ -359,7 +358,7 @@
     document.querySelectorAll('.area-card').forEach(function (card) {
       card.addEventListener('click', function () {
         var id = card.dataset.areaId;
-        if (id) selectArea(map, id, areas, carousel);
+        if (id) selectArea(map, id, areaBounds, carousel);
       });
     });
   }
