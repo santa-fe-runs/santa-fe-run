@@ -227,7 +227,7 @@
       container: 'areas-map',
       style: {
         version: 8,
-        glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
+        glyphs: 'https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=pOs2tpJTbZMN95OeELuo',
         sources: {
           topo: {
             type: 'raster',
