@@ -271,6 +271,10 @@
               });
             }
             return geojson;
+          })
+          .catch(function (err) {
+            console.error('areas-map: failed to load ' + area.id, err);
+            return null;
           });
       });
 
@@ -307,24 +311,28 @@
           });
 
           // Labels — area name at polygon centroid
-          map.addLayer({
-            id: 'areas-label',
-            type: 'symbol',
-            source: 'areas',
-            layout: {
-              'text-field': ['get', 'name'],
-              'text-font': ['Open Sans Regular'],
-              'text-size': 12,
-              'text-anchor': 'center',
-              'text-max-width': 8,
-              'symbol-placement': 'point'
-            },
-            paint: {
-              'text-color': '#1B3A14',
-              'text-halo-color': 'rgba(255,255,255,0.85)',
-              'text-halo-width': 2
-            }
-          });
+          try {
+            map.addLayer({
+              id: 'areas-label',
+              type: 'symbol',
+              source: 'areas',
+              layout: {
+                'text-field': ['get', 'name'],
+                'text-font': ['Open Sans Regular'],
+                'text-size': 12,
+                'text-anchor': 'center',
+                'text-max-width': 8,
+                'symbol-placement': 'point'
+              },
+              paint: {
+                'text-color': '#1B3A14',
+                'text-halo-color': 'rgba(255,255,255,0.85)',
+                'text-halo-width': 2
+              }
+            });
+          } catch (e) {
+            console.error('areas-map: label layer failed', e);
+          }
 
           // Fit to all areas
           var bounds = new maplibregl.LngLatBounds();
@@ -343,7 +351,7 @@
           map.on('mouseleave', 'areas-fill', function () { map.getCanvas().style.cursor = ''; });
         })
         .catch(function (err) {
-          console.warn('areas-map: GeoJSON load failed', err);
+          console.error('areas-map: GeoJSON load failed', err);
         });
     });
 
