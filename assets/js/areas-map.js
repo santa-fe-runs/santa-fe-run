@@ -214,9 +214,8 @@
     var mapEl = document.getElementById('areas-map');
     if (!mapEl || typeof maplibregl === 'undefined') return;
 
-    var areasRaw = mapEl.dataset.areas;
     var areas = [];
-    try { areas = JSON.parse(decodeURIComponent(areasRaw)); } catch (e) { return; }
+    try { areas = JSON.parse(mapEl.dataset.areas); } catch (e) { return; }
 
     var carousel = document.querySelector('.areas-carousel');
     var areaIds = areas.map(function (a) { return a.id; });

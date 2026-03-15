@@ -53,7 +53,7 @@ uses_map: true
       <!-- Map -->
       <div id="areas-map"
            class="areas-map-container"
-           data-areas="{{ site.data.areas | jsonify | uri_escape }}"
+           data-areas="{{ site.data.areas | jsonify | xml_escape }}"
            aria-label="Interactive map of Santa Fe running areas"></div>
 
     </div>
