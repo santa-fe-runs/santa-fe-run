@@ -551,6 +551,7 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  padding-top: 6px;
   padding-bottom: var(--sp-3);
 
   // Hide scrollbar but keep scrollable
