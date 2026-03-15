@@ -10,7 +10,7 @@
   data-difficulty="{{ run.difficulty | default: 'green' }}"
   data-popularity="{{ run.popularity | default: 0 }}"
   data-best-dates="{{ run.best_dates | jsonify | uri_escape }}"
-  data-search-text="{{ run.name | downcase | escape }}">
+  data-search-text="{{ run.name | downcase | escape }} {{ run.content | strip_html | downcase | truncatewords: 60 | strip_newlines | escape }}">
 
   <a href="{{ run.url | relative_url }}" class="card-link" tabindex="-1" aria-hidden="true"></a>
 
