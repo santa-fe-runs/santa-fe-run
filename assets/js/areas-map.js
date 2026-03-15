@@ -3,6 +3,17 @@
 
   var LS_KEY = 'trail-map-style';
 
+  // One distinct earthy color per area, in areas.yml order
+  var AREA_COLORS = {
+    'winsor-corridor':  '#2D5A20',
+    'dale-ball':        '#1E6E6E',
+    'la-tierra':        '#C46B2A',
+    'pecos-wilderness': '#1A5280',
+    'nambe-badlands':   '#8B6914',
+    'galisteo-basin':   '#7A3580',
+    'caja-del-rio':     '#8A3030'
+  };
+
   var STYLES = [
     {
       key: 'opentopomap',
@@ -37,6 +48,16 @@
       attribution: '© <a href="https://www.maptiler.com/">MapTiler</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }
   ];
+
+  // Build a MapLibre match expression keyed on feature.properties.id
+  function colorMatchExpr(ids) {
+    var expr = ['match', ['get', 'id']];
+    ids.forEach(function (id) {
+      expr.push(id, AREA_COLORS[id] || '#2D5A20');
+    });
+    expr.push('#2D5A20'); // fallback
+    return expr;
+  }
 
   function savedStyle() {
     try { return localStorage.getItem(LS_KEY) || 'maptiler-topo'; } catch (e) { return 'maptiler-topo'; }
@@ -104,6 +125,38 @@
     };
   }
 
+  // ── Carousel helpers ──────────────────────────────────────────────────────
+
+  function scrollCarouselToCard(carousel, cardEl) {
+    var scrollLeft = cardEl.offsetLeft - (carousel.clientWidth - cardEl.offsetWidth) / 2;
+    carousel.scrollTo({ left: Math.max(0, scrollLeft), behavior: 'smooth' });
+  }
+
+  function initCarouselButtons(carousel) {
+    var cards = Array.prototype.slice.call(carousel.querySelectorAll('.area-card'));
+    var prevBtn = document.querySelector('.carousel-btn--prev');
+    var nextBtn = document.querySelector('.carousel-btn--next');
+    if (!prevBtn || !nextBtn || cards.length === 0) return;
+
+    function centeredCardIndex() {
+      var centerX = carousel.scrollLeft + carousel.clientWidth / 2;
+      var closest = 0, minDist = Infinity;
+      cards.forEach(function (card, i) {
+        var dist = Math.abs(card.offsetLeft + card.offsetWidth / 2 - centerX);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      return closest;
+    }
+
+    function scrollByCard(dir) {
+      var idx = Math.max(0, Math.min(cards.length - 1, centeredCardIndex() + dir));
+      scrollCarouselToCard(carousel, cards[idx]);
+    }
+
+    prevBtn.addEventListener('click', function () { scrollByCard(-1); });
+    nextBtn.addEventListener('click', function () { scrollByCard(1); });
+  }
+
   // ── Active area state ─────────────────────────────────────────────────────
 
   var activeAreaId = null;
@@ -112,13 +165,8 @@
     if (!map.getLayer('areas-fill')) return;
     map.setPaintProperty('areas-fill', 'fill-opacity', [
       'case',
-      ['==', ['get', 'id'], areaId || ''], 0.35,
+      ['==', ['get', 'id'], areaId || ''], 0.4,
       0.12
-    ]);
-    map.setPaintProperty('areas-line', 'line-color', [
-      'case',
-      ['==', ['get', 'id'], areaId || ''], '#1B3A14',
-      '#4a7c3a'
     ]);
     map.setPaintProperty('areas-line', 'line-width', [
       'case',
@@ -127,22 +175,18 @@
     ]);
   }
 
-  function selectArea(map, areaId, areas, fromCard) {
+  function selectArea(map, areaId, areas, carousel) {
     if (activeAreaId === areaId) return;
     activeAreaId = areaId;
 
-    // Highlight card
+    // Highlight card and center in carousel
+    var targetCard = null;
     document.querySelectorAll('.area-card').forEach(function (card) {
-      card.classList.toggle('is-active', card.dataset.areaId === areaId);
+      var isActive = card.dataset.areaId === areaId;
+      card.classList.toggle('is-active', isActive);
+      if (isActive) targetCard = card;
     });
-
-    // Scroll card into view (center it in the carousel)
-    if (!fromCard) {
-      var targetCard = document.querySelector('.area-card[data-area-id="' + areaId + '"]');
-      if (targetCard) {
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }
+    if (targetCard && carousel) scrollCarouselToCard(carousel, targetCard);
 
     // Update map highlight
     setMapHighlight(map, areaId);
@@ -168,10 +212,13 @@
     var mapEl = document.getElementById('areas-map');
     if (!mapEl || typeof maplibregl === 'undefined') return;
 
-    // Areas data is JSON-encoded in the data attribute
     var areasRaw = mapEl.dataset.areas;
     var areas = [];
     try { areas = JSON.parse(decodeURIComponent(areasRaw)); } catch (e) { return; }
+
+    var carousel = document.querySelector('.areas-carousel');
+    var areaIds = areas.map(function (a) { return a.id; });
+    var colorExpr = colorMatchExpr(areaIds);
 
     var initialStyle = styleById(savedStyle());
 
@@ -199,6 +246,9 @@
     map.addControl(createStylePickerControl(map), 'top-left');
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
 
+    // Wire up carousel chevron buttons
+    if (carousel) initCarouselButtons(carousel);
+
     // ── Load all GeoJSON files ──
     map.on('load', function () {
       var fetches = areas.map(function (area) {
@@ -208,7 +258,6 @@
             return res.json();
           })
           .then(function (geojson) {
-            // Tag each feature with the area id
             if (geojson.features) {
               geojson.features.forEach(function (f) {
                 f.properties = f.properties || {};
@@ -222,83 +271,86 @@
 
       Promise.all(fetches)
         .then(function (geojsons) {
-          // Combine into a single FeatureCollection
-          var combined = {
-            type: 'FeatureCollection',
-            features: []
-          };
+          var combined = { type: 'FeatureCollection', features: [] };
           geojsons.forEach(function (fc) {
-            if (fc && fc.features) {
-              combined.features = combined.features.concat(fc.features);
-            }
+            if (fc && fc.features) combined.features = combined.features.concat(fc.features);
           });
 
-          map.addSource('areas', {
-            type: 'geojson',
-            data: combined
-          });
+          map.addSource('areas', { type: 'geojson', data: combined });
 
-          // Fill layer
+          // Fill — per-area color, uniform low opacity
           map.addLayer({
             id: 'areas-fill',
             type: 'fill',
             source: 'areas',
             paint: {
-              'fill-color': '#2D5A20',
+              'fill-color': colorExpr,
               'fill-opacity': 0.12
             }
           });
 
-          // Outline layer
+          // Outline — per-area color
           map.addLayer({
             id: 'areas-line',
             type: 'line',
             source: 'areas',
             layout: { 'line-join': 'round', 'line-cap': 'round' },
             paint: {
-              'line-color': '#4a7c3a',
+              'line-color': colorExpr,
               'line-width': 1.5
             }
           });
 
-          // Fit bounds to show all areas
+          // Labels — area name at polygon centroid
+          map.addLayer({
+            id: 'areas-label',
+            type: 'symbol',
+            source: 'areas',
+            layout: {
+              'text-field': ['get', 'name'],
+              'text-font': ['Open Sans Regular'],
+              'text-size': 12,
+              'text-anchor': 'center',
+              'text-max-width': 8,
+              'symbol-placement': 'point'
+            },
+            paint: {
+              'text-color': '#1B3A14',
+              'text-halo-color': 'rgba(255,255,255,0.85)',
+              'text-halo-width': 2
+            }
+          });
+
+          // Fit to all areas
           var bounds = new maplibregl.LngLatBounds();
           combined.features.forEach(function (feature) {
-            var coords = feature.geometry.coordinates[0];
-            coords.forEach(function (c) { bounds.extend(c); });
+            feature.geometry.coordinates[0].forEach(function (c) { bounds.extend(c); });
           });
           map.fitBounds(bounds, { padding: 48, maxZoom: 10, duration: 0 });
 
-          // ── Map click → select area ──
+          // Map click → select area
           map.on('click', 'areas-fill', function (e) {
             var id = e.features && e.features[0] && e.features[0].properties.id;
-            if (id) selectArea(map, id, areas, false);
+            if (id) selectArea(map, id, areas, carousel);
           });
 
-          // Pointer cursor on hover
-          map.on('mouseenter', 'areas-fill', function () {
-            map.getCanvas().style.cursor = 'pointer';
-          });
-          map.on('mouseleave', 'areas-fill', function () {
-            map.getCanvas().style.cursor = '';
-          });
+          map.on('mouseenter', 'areas-fill', function () { map.getCanvas().style.cursor = 'pointer'; });
+          map.on('mouseleave', 'areas-fill', function () { map.getCanvas().style.cursor = ''; });
         })
         .catch(function (err) {
-          // GeoJSON unavailable — map still works without polygons
           console.warn('areas-map: GeoJSON load failed', err);
         });
     });
 
-    // ── Card click → select area ──
+    // Card click → select area
     document.querySelectorAll('.area-card').forEach(function (card) {
       card.addEventListener('click', function () {
         var id = card.dataset.areaId;
-        if (id) selectArea(map, id, areas, true);
+        if (id) selectArea(map, id, areas, carousel);
       });
     });
   }
 
-  // MapLibre is loaded with defer; wait for it to be available
   if (typeof maplibregl !== 'undefined') {
     init();
   } else {

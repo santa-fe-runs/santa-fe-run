@@ -21,6 +21,11 @@ uses_map: true
 
       <!-- Carousel -->
       <div class="areas-carousel-wrapper">
+        <button class="carousel-btn carousel-btn--prev" type="button" aria-label="Previous area">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
         <div class="areas-carousel">
           {% for area in site.data.areas %}
           <div class="area-card" data-area-id="{{ area.id }}" role="button" tabindex="0" aria-label="Select {{ area.name }}">
@@ -38,6 +43,11 @@ uses_map: true
           </div>
           {% endfor %}
         </div>
+        <button class="carousel-btn carousel-btn--next" type="button" aria-label="Next area">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
 
       <!-- Map -->

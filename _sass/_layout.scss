@@ -647,3 +647,35 @@
     height: 360px;
   }
 }
+
+// Carousel navigation buttons
+.carousel-btn {
+  display: none; // hidden on mobile — swipe is sufficient
+
+  @media (min-width: #{$bp-md}) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border: 1.5px solid $tan-300;
+    background: $sand-50;
+    color: var(--earth-mid);
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    z-index: 1;
+
+    &:hover {
+      border-color: var(--forest);
+      color: var(--forest);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &--prev { left: -2.75rem; }
+    &--next { right: -2.75rem; }
+  }
+}
