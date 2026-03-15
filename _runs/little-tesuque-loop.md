@@ -5,6 +5,7 @@ elevation_gain: 900
 altitude_range:
   min: 7230
   max: 7850
+area: winsor-corridor
 difficulty: blue
 popularity: 2
 best_dates:

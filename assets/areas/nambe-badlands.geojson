@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "nambe-badlands" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-106.10, 35.82],
+          [-105.87, 35.82],
+          [-105.85, 35.98],
+          [-106.00, 36.02],
+          [-106.13, 35.96],
+          [-106.12, 35.84],
+          [-106.10, 35.82]
+        ]]
+      }
+    }
+  ]
+}

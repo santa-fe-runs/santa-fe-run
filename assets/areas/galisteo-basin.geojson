@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "galisteo-basin" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-106.08, 35.34],
+          [-105.72, 35.37],
+          [-105.70, 35.58],
+          [-105.86, 35.63],
+          [-106.07, 35.60],
+          [-106.11, 35.47],
+          [-106.08, 35.34]
+        ]]
+      }
+    }
+  ]
+}

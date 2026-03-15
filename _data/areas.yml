@@ -1,0 +1,118 @@
+- id: winsor-corridor
+  name: Winsor Corridor
+  tagline: The heart of Santa Fe's trail network
+  description: >-
+    The Winsor Trail is the spine of Santa Fe's high-country running—a beautifully maintained
+    singletrack that climbs through aspen groves and spruce-fir forest into the Pecos Wilderness.
+    Most of the city's favorite routes thread through here, from mellow ridge traverses to
+    ambitious summit linkups. Expect company on weekends.
+  difficulty: black
+  elevation_range:
+    min: 7800
+    max: 12600
+  center:
+    lat: 35.77
+    lng: -105.84
+  geojson: /assets/areas/winsor-corridor.geojson
+
+- id: dale-ball
+  name: Dale Ball
+  tagline: Santa Fe's backyard singletrack
+  description: >-
+    Dale Ball is where Santa Fe runners go to get their legs moving without earning a permit.
+    A dense network of well-signed singletrack sits just minutes from downtown, weaving through
+    piñon-juniper terrain with just enough climbing to feel like work. The trails interconnect
+    in a dozen different ways, so no two runs need to look the same.
+  difficulty: blue
+  elevation_range:
+    min: 7000
+    max: 8200
+  center:
+    lat: 35.72
+    lng: -105.91
+  geojson: /assets/areas/dale-ball.geojson
+
+- id: la-tierra
+  name: La Tierra
+  tagline: Wide open desert running
+  description: >-
+    La Tierra stretches across the high desert west of town with sweeping views of the Jemez
+    and Sangre de Cristo ranges. The trails are wide, non-technical, and fast—ideal for
+    tempo efforts or easy long runs where you just want to move and think. Wind can be
+    fierce, and shade is essentially nonexistent, so plan accordingly.
+  difficulty: green
+  elevation_range:
+    min: 6200
+    max: 6900
+  center:
+    lat: 35.74
+    lng: -106.02
+  geojson: /assets/areas/la-tierra.geojson
+
+- id: pecos-wilderness
+  name: Pecos Wilderness
+  tagline: Alpine country above 13,000 feet
+  description: >-
+    The Pecos Wilderness is the big leagues—serious alpine terrain where routes regularly
+    push past 13,000 feet and conditions can change without notice. This is where Santa Fe
+    runners come to chase summits, suffer beautifully through thin air, and remember why
+    they moved here in the first place. Most approaches are long; bring everything.
+  difficulty: double-black
+  elevation_range:
+    min: 8500
+    max: 13100
+  center:
+    lat: 35.83
+    lng: -105.72
+  geojson: /assets/areas/pecos-wilderness.geojson
+
+- id: nambe-badlands
+  name: Nambe Badlands
+  tagline: Otherworldly high desert terrain
+  description: >-
+    The Nambe Badlands offer a stark, almost lunar landscape north of Santa Fe—eroded
+    clay formations, wide mesa runs, and surprisingly technical footing in a setting
+    that feels nothing like the forested mountains nearby. Crowd levels hover near zero.
+    Bring your own water; there is none out here.
+  difficulty: blue
+  elevation_range:
+    min: 5600
+    max: 6800
+  center:
+    lat: 35.90
+    lng: -106.00
+  geojson: /assets/areas/nambe-badlands.geojson
+
+- id: galisteo-basin
+  name: Galisteo Basin
+  tagline: Rolling grasslands and ancient routes
+  description: >-
+    South of Santa Fe, the Galisteo Basin opens into rolling high grassland cut by arroyos
+    and dotted with petroglyph sites. Runs here feel more like the Great Plains than the
+    Rockies—long, contemplative, and fast. Winter and spring are the sweet spot before
+    heat and rattlesnakes reclaim the lower elevations.
+  difficulty: green
+  elevation_range:
+    min: 5800
+    max: 6500
+  center:
+    lat: 35.48
+    lng: -105.95
+  geojson: /assets/areas/galisteo-basin.geojson
+
+- id: caja-del-rio
+  name: Caja del Rio
+  tagline: Volcanic plateau west of the city
+  description: >-
+    Caja del Rio is Santa Fe's least-known running zone—a broad volcanic plateau west of
+    the Rio Grande gorge with long, rolling doubletrack and primitive singletrack through
+    juniper and sage. Reliable cell service: none. Other runners: rare. Solitude and
+    expansive Jemez views: guaranteed.
+  difficulty: green
+  elevation_range:
+    min: 5500
+    max: 6400
+  center:
+    lat: 35.64
+    lng: -106.15
+  geojson: /assets/areas/caja-del-rio.geojson

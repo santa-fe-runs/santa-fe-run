@@ -5,6 +5,7 @@ elevation_gain: 3370
 altitude_range:
   min: 10270
   max: 12630
+area: pecos-wilderness
 difficulty: double-black
 popularity: 4
 best_dates:

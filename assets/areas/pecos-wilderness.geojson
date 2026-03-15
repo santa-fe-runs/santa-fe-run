@@ -1,0 +1,22 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "pecos-wilderness" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-105.90, 35.72],
+          [-105.57, 35.75],
+          [-105.52, 35.88],
+          [-105.58, 36.02],
+          [-105.75, 36.02],
+          [-105.88, 35.90],
+          [-105.92, 35.80],
+          [-105.90, 35.72]
+        ]]
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "dale-ball" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-105.98, 35.67],
+          [-105.86, 35.67],
+          [-105.84, 35.75],
+          [-105.90, 35.78],
+          [-105.98, 35.76],
+          [-105.98, 35.67]
+        ]]
+      }
+    }
+  ]
+}

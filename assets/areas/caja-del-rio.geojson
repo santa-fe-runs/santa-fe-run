@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "caja-del-rio" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-106.35, 35.52],
+          [-106.06, 35.52],
+          [-106.02, 35.68],
+          [-106.10, 35.78],
+          [-106.30, 35.78],
+          [-106.38, 35.64],
+          [-106.35, 35.52]
+        ]]
+      }
+    }
+  ]
+}

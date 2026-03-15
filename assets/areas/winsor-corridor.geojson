@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "winsor-corridor" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-105.97, 35.68],
+          [-105.78, 35.68],
+          [-105.75, 35.80],
+          [-105.83, 35.85],
+          [-105.95, 35.83],
+          [-105.98, 35.75],
+          [-105.97, 35.68]
+        ]]
+      }
+    }
+  ]
+}

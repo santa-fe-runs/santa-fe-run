@@ -85,6 +85,6 @@
 </script>
 {% endunless %}
 
-{% if page.gpx and page.gpx != "" %}
+{% if page.gpx and page.gpx != "" or page.uses_map %}
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" integrity="sha384-MinO0mNliZ3vwppuPOUnGa+iq619pfMhLVUXfC4LHwSCvF9H+6P/KO4Q7qBOYV5V" crossorigin="anonymous">
 {% endif %}

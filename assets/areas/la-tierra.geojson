@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "la-tierra" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-106.12, 35.67],
+          [-105.97, 35.67],
+          [-105.95, 35.78],
+          [-106.03, 35.83],
+          [-106.15, 35.79],
+          [-106.14, 35.68],
+          [-106.12, 35.67]
+        ]]
+      }
+    }
+  ]
+}
