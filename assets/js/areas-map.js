@@ -259,6 +259,10 @@
             return res.json();
           })
           .then(function (geojson) {
+            // Normalize bare Feature → FeatureCollection
+            if (geojson.type === 'Feature') {
+              geojson = { type: 'FeatureCollection', features: [geojson] };
+            }
             if (geojson.features) {
               geojson.features.forEach(function (f) {
                 f.properties = f.properties || {};
