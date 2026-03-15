@@ -51,6 +51,17 @@
 
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
+{% comment %}——— Google Analytics ———{% endcomment %}
+{% unless jekyll.environment == "development" %}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MB42NZZFBF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MB42NZZFBF');
+</script>
+{% endunless %}
+
 {% if page.gpx and page.gpx != "" %}
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 {% endif %}
