@@ -19,12 +19,12 @@
 
 - id: dale-ball
   name: Dale Ball
-  tagline: Santa Fe's backyard singletrack
+  tagline: A trail for every runner, right in town.
   description: >-
-    Dale Ball is where Santa Fe runners go to get some elevation just minutes from downtown.
-    The system is extremely well signed and consists of single track with a myriad of possible loops.
-    You can climb Atalaya and Picacho, go for a mild 3 mile cruise with 500 feet of gain, or put it all together for 20+ miles of challenging terrain.
-    The terrain is mostly pinyon-juniper with some ponderosa, with rocky trail conditions.
+    Dale Ball trail system is just minutes from downtown with great well signed single-track.
+    There are over 25 miles of trails with a myriad of possible loops.
+    You can climb Atalaya and Picacho, go for a mild 3 mile cruise with 500 feet of gain, or put it all together for 20 miles of challenging terrain.
+    The terrain is semi-shaded with pinyon and some ponderosa and trails can be quite rocky.
     Dale Ball is great for year-round running, but can be icy in winter.
   difficulty: blue
   elevation_range:
@@ -72,7 +72,7 @@
 
 - id: galisteo-basin
   name: Galisteo Basin
-  tagline: Rolling grasslands and ancient routes
+  tagline: Great views, smooth runs
   description: >-
     20 minutes South of Santa Fe is Galisteo Basin.
     This preserve is a popular recreation area for hikers, mountain bikers, and runners.
@@ -108,7 +108,7 @@
 
 - id: caja-del-rio
   name: Caja del Rio
-  tagline: Volcanic plateau west of the city
+  tagline: Little visited Volcanic plateau
   description: >-
     Caja del Rio is Santa Fe's least-known running area--a broad volcanic plateau west of the city.
     Known for Diablo Canyon at its northern edge, the plateau also has a network of dirt roads.
