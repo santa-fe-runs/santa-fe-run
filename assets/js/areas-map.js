@@ -128,7 +128,9 @@
   // ── Carousel helpers ──────────────────────────────────────────────────────
 
   function scrollCarouselToCard(carousel, cardEl) {
-    var scrollLeft = cardEl.offsetLeft - (carousel.clientWidth - cardEl.offsetWidth) / 2;
+    var carouselRect = carousel.getBoundingClientRect();
+    var cardRect = cardEl.getBoundingClientRect();
+    var scrollLeft = carousel.scrollLeft + cardRect.left - carouselRect.left - (carousel.clientWidth - cardRect.width) / 2;
     carousel.scrollTo({ left: Math.max(0, scrollLeft), behavior: 'smooth' });
   }
 
