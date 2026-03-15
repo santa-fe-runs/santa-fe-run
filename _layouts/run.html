@@ -176,10 +176,25 @@ layout: default
                     <a href="https://maps.google.com/?q={{ page.trailhead.lat }},{{ page.trailhead.lng }}" target="_blank" rel="noopener noreferrer" class="inline-link">Open in Maps ↗</a>
                   </dd>
                 </div>
+                {% if page.parking and page.parking > 0 %}
                 <div class="metadata-row">
-                  <dt>Parking</dt>
-                  <dd>{{ page.parking }}</dd>
+                  <dt>
+                    Parking Difficulty
+                    <button class="tooltip-trigger" type="button" aria-label="Parking difficulty legend">
+                      ?
+                      <div class="tooltip-content" role="tooltip">
+                        <div class="tooltip-row">1 — Always space</div>
+                        <div class="tooltip-row">5 — Good luck</div>
+                      </div>
+                    </button>
+                  </dt>
+                  <dd>
+                    <span class="popularity-dots popularity-dots--lg" aria-label="{{ page.parking }} out of 5">
+                      {% for i in (1..5) %}<span class="pop-dot{% if i <= page.parking %} pop-dot--filled{% endif %}"></span>{% endfor %}
+                    </span>
+                  </dd>
                 </div>
+                {% endif %}
               </dl>
             </div>
 

@@ -15,7 +15,7 @@ trailhead:
   lat: 35.7956
   lng: -105.8048
   address: "Winsor Trail (Trail 254), New Mexico"
-parking: "Park at the large Ski Santa Fe lot at Aspen Basin, reached by driving NM-475 (Hyde Park Road) north from Santa Fe to the ski area. Parking is free and ample, though it fills up early on summer weekends. The Winsor Trailhead is at the far end of the lot."
+parking: 2
 gpx: "/assets/gpx/Rio_Nambe_Loop.gpx"
 caltopo_url: ""
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/lower-nambe-loop"

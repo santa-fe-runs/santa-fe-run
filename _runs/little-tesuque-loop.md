@@ -15,7 +15,7 @@ trailhead:
   lat: 35.726
   lng: -105.8868
   address: "Hyde Park Road, Santa Fe, New Mexico"
-parking: "The trailhead is located along Hyde Park Road (NM 475), just past the bridge over Little Tesuque Creek. There is no dedicated parking lot — park in the wide roadside pull-outs along the road. Space is limited, so arrive early on weekends."
+parking: 5
 gpx: "/assets/gpx/Little_Tesuque_Loop.gpx"
 caltopo_url: ""
 alltrails_url: ""

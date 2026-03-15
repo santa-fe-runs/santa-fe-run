@@ -15,7 +15,7 @@ trailhead:
   lat: 35.7462
   lng: -105.8346
   address: "Borrego Connector, New Mexico"
-parking: "The Borrego Trailhead parking lot is located on Hyde Park Rd (NM-475/Ski Basin Rd), approximately 8.3 miles from downtown Santa Fe — look for the lot on the left side of the road. The route can also be started from the Chamisa Trailhead, about 5.6 miles up NM-475, with parking on both sides of the road at the canyon."
+parking: 2
 gpx: "/assets/gpx/Borrego_Chamisa_Loop.gpx"
 caltopo_url: ""
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/chamisa-and-borrego-loop"

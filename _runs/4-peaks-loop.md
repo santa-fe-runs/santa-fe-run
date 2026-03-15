@@ -15,7 +15,7 @@ trailhead:
   lat: 35.7955
   lng: -105.8046
   address: "Ski Road, New Mexico"
-parking: "Park at the Santa Fe Ski Basin (Winsor Trailhead) on Hyde Park Road / NM-475, about 15 miles northeast of downtown Santa Fe. The large paved parking loop near the ski area holds 100+ cars and has vault toilets."
+parking: 2
 gpx: "/assets/gpx/4_Peaks_Loop.gpx"
 caltopo_url: ""
 alltrails_url: ""

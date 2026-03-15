@@ -835,6 +835,9 @@
   gap: var(--sp-3);
 
   dt {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-1);
     font-size: 0.8125rem;
     font-weight: 600;
     color: var(--earth-light);

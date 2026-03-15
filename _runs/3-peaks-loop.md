@@ -15,7 +15,7 @@ trailhead:
   lat: 35.7956
   lng: -105.8047
   address: "Ski Road, New Mexico"
-parking: "Park at the Santa Fe Ski Basin (Aspen Basin) at the end of NM-475 (Hyde Park Road / Artist Road), approximately 16 miles from downtown Santa Fe. The large ski area parking lot serves as the Winsor Trailhead. No parking fee is required for trail access."
+parking: 2
 gpx: "/assets/gpx/3_Peaks_Loop.gpx"
 caltopo_url: ""
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/ravens-ridge-and-windsor-loop"

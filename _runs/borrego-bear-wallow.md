@@ -15,7 +15,7 @@ trailhead:
   lat: 35.7464
   lng: -105.8345
   address: "Borrego Trail (150), New Mexico"
-parking: "The trailhead is on Hyde Park Rd (Ski Basin Rd) about 8.3 miles up, on the left just after passing through Hyde Memorial State Park. Parking accommodates roughly 9 cars and fills quickly on weekends; a day-use fee is charged to enter the park."
+parking: 4
 gpx: "/assets/gpx/Borrego_-_Bear_Wallow.gpx"
 caltopo_url: ""
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/borrego-150-windsor-254-and-bear-wallow-182-trail-loop"

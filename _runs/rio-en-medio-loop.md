@@ -15,7 +15,7 @@ trailhead:
   lat: 35.789
   lng: -105.8086
   address: "Winsor Trail (254), New Mexico"
-parking: "Park at the Norski Trailhead on the west side of NM-475 (Hyde Park Road), just before the Santa Fe Ski Area. The small lot has restrooms and is the official start point for the Norski Trail #255. Arrive early on weekends as space is limited."
+parking: 3
 gpx: "/assets/gpx/Rio_en_Medio_Loop.gpx"
 caltopo_url: ""
 alltrails_url: ""

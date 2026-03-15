@@ -15,7 +15,7 @@ trailhead:
   lat: 35.7955
   lng: -105.8047
   address: "Ski Road, New Mexico"
-parking: "Park at the Santa Fe Ski Basin (Winsor Trailhead), about 20 miles from the Santa Fe plaza via Hyde Park Road. The paved lower lot accommodates 100+ cars and has vault toilets. No potable water at the trailhead, though water may be available at the ski resort when open."
+parking: 2
 gpx: "/assets/gpx/Santa_Fe_Baldy.gpx"
 caltopo_url: ""
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/santa-fe-baldy-via-winsor-trail"

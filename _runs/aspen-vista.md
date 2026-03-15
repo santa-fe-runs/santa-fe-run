@@ -15,7 +15,7 @@ trailhead:
   lat: 35.7772
   lng: -105.8105
   address: "NM 475, New Mexico"
-parking: "Park at the Aspen Vista Picnic Area off Hyde Park Road (NM-475), about 13 miles from downtown Santa Fe. The lot has restrooms and a picnic area, but fills up fast on weekends and during fall foliage season — arrive before 9 AM to guarantee a spot."
+parking: 4
 gpx: "/assets/gpx/Aspen_Vista.gpx"
 caltopo_url: ""
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/tesuque-peak-via-aspen-vista-trail-fr-102"

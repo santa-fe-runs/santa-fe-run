@@ -15,7 +15,7 @@ trailhead:
   lat: 35.7956
   lng: -105.8047
   address: "Ski Road, New Mexico"
-parking: "Park at the Santa Fe Ski Basin lot off Ski Basin Road (NM-475), about 16 miles northeast of downtown Santa Fe. The large paved parking loop has 100+ spaces; stay left to reach the Winsor Trailhead (Trail 254). Vault toilets are available at the trailhead."
+parking: 2
 gpx: "/assets/gpx/Baldy_And_Katherine.gpx"
 caltopo_url: ""
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/santa-fe-baldy-and-lake-katherine-loop"

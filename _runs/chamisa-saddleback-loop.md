@@ -15,7 +15,7 @@ trailhead:
   lat: 35.7288
   lng: -105.866
   address: "Chamisa Trail Alt Route, New Mexico"
-parking: "The trailhead is accessed via Hyde Park Road (Artist Road / NM-475), about 5–6 miles northeast of Santa Fe Plaza toward the Ski Basin. A gravel parking lot sits on the left side of the road; overflow parking is available on the right. The lot can fill on weekends."
+parking: 3
 gpx: "/assets/gpx/Chamisa_Saddleback_Loop.gpx"
 caltopo_url: ""
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/winsor-chamisa-saddleback-and-juan-trails-loop"

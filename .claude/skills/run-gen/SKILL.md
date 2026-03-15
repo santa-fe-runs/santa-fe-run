@@ -58,7 +58,7 @@ Parse out:
   - 4 → `double-black`
   - 5 → `extreme`
 - **date range**: the start/end dates as `MM-DD` strings, may not be 0 padded.
-- **parking**: Look for a line in the description that starts with "Parking:" and extract the text after it as parking info.
+- **parking**: Look for a line in the description that starts with "Parking:" and extract the integer (1–5) after it as the parking difficulty score.
 - **area**: Look for a line in the description that starts with "Area:" and extract the area keyword from the text after it.
 - **description**: everything after the blank line that follows the three header lines — this is the trail description body text
 
@@ -84,9 +84,9 @@ Open `_runs/<slug>.md` and update the front matter:
      - start: "<start>"
        end: "<end>"
    ```
-4. Replace the `parking` field with the actual parking info from the desc:
+4. Replace the `parking` field with the parking difficulty integer from the desc:
     ```yaml
-    parking: "1-3 sentences of parking info from the desc"
+    parking: <1-5>
     ```
 5. Replace the `area` field with the actual area info from the desc:
     ```yaml

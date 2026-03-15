@@ -15,7 +15,7 @@ trailhead:
   lat: 35.7956
   lng: -105.8047
   address: "Ski Road, New Mexico"
-parking: "The trailhead is at the Santa Fe Ski Basin parking lot, reached via NM-475 (Hyde Park Road) about 16 miles from downtown Santa Fe. The Winsor Trail (#254) trailhead is on the north side of the ski area parking loop. Arrive early during peak season as the lot fills quickly."
+parking: 2
 gpx: "/assets/gpx/Nambe_Lake.gpx"
 caltopo_url: ""
 alltrails_url: "https://www.alltrails.com/trail/us/new-mexico/nambe-lake-trail"
