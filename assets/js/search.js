@@ -435,6 +435,15 @@
     initSliders();
     bind();
     applyFilters(); // Set initial count / animations
+
+    // Apply ?search= URL param on page load (supports SearchAction)
+    const _urlSearch = new URLSearchParams(window.location.search).get('search');
+    if (_urlSearch) {
+      state.keyword = _urlSearch.trim().toLowerCase();
+      if (els.heroSearch)    els.heroSearch.value    = _urlSearch;
+      if (els.filterKeyword) els.filterKeyword.value = _urlSearch;
+      applyFilters();
+    }
   }
 
   if (document.readyState === "loading") {

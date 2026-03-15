@@ -2,6 +2,7 @@
 layout: default
 title: "Local Intel"
 description: "The running organizations worth knowing if you plan to keep running around Santa Fe."
+permalink: /local-intel/
 ---
 
 <div class="guide-page">

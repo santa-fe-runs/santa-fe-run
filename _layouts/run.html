@@ -77,6 +77,7 @@ layout: default
               <div id="elevation-profile" class="elevation-profile"></div>
             {% endif %}
             <div class="map-actions">
+              {% if page.caltopo_url and page.caltopo_url != "" %}
               <a href="{{ page.caltopo_url }}" target="_blank" rel="noopener noreferrer" class="action-btn action-btn-secondary">
                 <svg width="18" height="18" viewBox="0 0 96.19 96.19" fill="currentColor" aria-hidden="true">
                   <path d="M92.43,40,92,37.71l-8.33-1.19A37.11,37.11,0,0,0,44.3,11.06L40,3.94l-2.31.48-1.14,8.33A37.3,37.3,0,0,0,11.23,51.89L4.1,56.19l.47,2.31,8.33,1.18A37.29,37.29,0,0,0,48.26,85.29,35.37,35.37,0,0,0,52,85.1l4.27,7.15,2.31-.46,1.2-8.33A37.28,37.28,0,0,0,85.48,48.07a36.19,36.19,0,0,0-.19-3.77ZM48.26,81a33,33,0,1,1,33-33A33,33,0,0,1,48.26,81Z"/>
@@ -84,6 +85,7 @@ layout: default
                 </svg>
                 CalTopo
               </a>
+              {% endif %}
               {% if page.alltrails_url and page.alltrails_url != "" %}
               <a href="{{ page.alltrails_url }}" target="_blank" rel="noopener noreferrer" class="action-btn action-btn-secondary">
                 <svg width="18" height="14" viewBox="0 0 63 48" aria-hidden="true">
@@ -215,30 +217,42 @@ layout: default
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": {{ page.name | append: " Trail Run — Santa Fe, NM" | jsonify }},
+  "@type": "SportsActivityLocation",
+  "name": {{ page.name | append: " — Santa Fe, NM" | jsonify }},
   "description": {{ _ld_desc | strip_newlines | jsonify }},
   "url": {{ site.url | append: page.url | jsonify }},
-  "publisher": {
-    "@type": "Organization",
-    "name": {{ site.title | jsonify }},
-    "url": {{ site.url | jsonify }}
+  "sport": "Trail Running",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": {{ page.trailhead.lat }},
+    "longitude": {{ page.trailhead.lng }}
   },
-  "about": {
-    "@type": "Place",
-    "name": {{ page.name | jsonify }},
-    "description": {{ page.distance | append: " miles, " | append: page.elevation_gain | append: "ft elevation gain" | jsonify }},
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": {{ page.trailhead.lat }},
-      "longitude": {{ page.trailhead.lng }}
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santa Fe",
+    "addressRegion": "NM",
+    "addressCountry": "US"
+  },
+  "dateModified": {{ site.time | date_to_xmlschema | jsonify }}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "The Runs",
+      "item": {{ site.url | jsonify }}
     },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Santa Fe",
-      "addressRegion": "NM",
-      "addressCountry": "US"
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ page.name | jsonify }},
+      "item": {{ site.url | append: page.url | jsonify }}
     }
-  }
+  ]
 }
 </script>

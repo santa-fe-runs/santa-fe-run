@@ -2,6 +2,7 @@
 layout: default
 title: "Before You Run"
 description: "Everything you probably already know but should read anyway before heading out on the trails around Santa Fe."
+permalink: /before-you-run/
 ---
 
 <div class="guide-page">

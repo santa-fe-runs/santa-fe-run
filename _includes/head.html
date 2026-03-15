@@ -1,5 +1,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1B3A14">
+
+{% comment %}——— Robots ———{% endcomment %}
+{% if page.noindex %}
+<meta name="robots" content="noindex, follow">
+{% endif %}
 
 {% comment %}——— Title ———{% endcomment %}
 {% if page.title == site.title %}
@@ -24,7 +30,15 @@
 <meta name="description" content="{{ _seo_desc | escape }}">
 
 {% comment %}——— Canonical ———{% endcomment %}
-<link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
+{% assign _canonical_url = page.url | replace: 'index.html', '' %}
+<link rel="canonical" href="{{ site.url }}{{ _canonical_url }}">
+
+{% comment %}——— OG Image ———{% endcomment %}
+{% if page.image and page.image != "" %}
+  {% assign _og_image = page.image | absolute_url %}
+{% else %}
+  {% assign _og_image = '/assets/deception.jpeg' | absolute_url %}
+{% endif %}
 
 {% comment %}——— Open Graph ———{% endcomment %}
 {% if page.name and page.title == nil %}
@@ -38,16 +52,26 @@
 <meta property="og:site_name" content="{{ site.title | escape }}">
 <meta property="og:title" content="{{ _og_title | escape }}">
 <meta property="og:description" content="{{ _seo_desc | escape }}">
-<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:url" content="{{ site.url }}{{ _canonical_url }}">
+<meta property="og:image" content="{{ _og_image }}">
 
 {% comment %}——— Twitter Card ———{% endcomment %}
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ _og_title | escape }}">
 <meta name="twitter:description" content="{{ _seo_desc | escape }}">
+<meta name="twitter:image" content="{{ _og_image }}">
 
+{% comment %}——— Favicon ———{% endcomment %}
+<link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+
+{% comment %}——— Feed ———{% endcomment %}
+<link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
+
+{% comment %}——— Fonts (non-blocking) ———{% endcomment %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet"></noscript>
 
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 

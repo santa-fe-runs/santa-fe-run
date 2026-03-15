@@ -262,8 +262,30 @@ title: "Run Santa Fe"
   "description": {{ site.description | jsonify }},
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "{{ site.url }}/?search={search_term_string}",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ site.url }}/?search={search_term_string}"
+    },
     "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristInformationCenter",
+  "name": {{ site.title | jsonify }},
+  "url": {{ site.url | jsonify }},
+  "description": {{ site.description | jsonify }},
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santa Fe",
+    "addressRegion": "NM",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Northern New Mexico"
   }
 }
 </script>
