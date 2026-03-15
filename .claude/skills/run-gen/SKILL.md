@@ -4,7 +4,7 @@ description: >
   Generate a complete run page for the santa-fe-run Jekyll site from a GPX file.
   Use this skill whenever the user invokes /run-gen or asks to generate/create a run
   from a GPX file. Automates the full workflow: running gpx_to_run.py, parsing the
-  GPX <desc> tag for metadata and description, and web searching for parking info
+  GPX <desc> tag for metadata and description
   and the AllTrails URL.
 ---
 
@@ -58,6 +58,8 @@ Parse out:
   - 4 → `double-black`
   - 5 → `extreme`
 - **date range**: the start/end dates as `MM-DD` strings, may not be 0 padded.
+- **parking**: Look for a line in the description that starts with "Parking:" and extract the text after it as parking info.
+- **area**: Look for a line in the description that starts with "Area:" and extract the area keyword from the text after it.
 - **description**: everything after the blank line that follows the three header lines — this is the trail description body text
 
 If the `<desc>` tag is missing or malformed, tell the user what was found and ask them to fix it before continuing.
@@ -82,19 +84,25 @@ Open `_runs/<slug>.md` and update the front matter:
      - start: "<start>"
        end: "<end>"
    ```
-4. The `parking` and `alltrails_url` fields will be filled in Step 4 — leave them as `"TODO"` and `""` for now.
+4. Replace the `parking` field with the actual parking info from the desc:
+    ```yaml
+    parking: "1-3 sentences of parking info from the desc"
+    ```
+5. Replace the `area` field with the actual area info from the desc:
+    ```yaml
+    area: "The area the run is in"
+    ```
+6. The `alltrails_url` fields will be filled in Step 4 — leave them as `"TODO"` and `""` for now.
 
 Then replace the body placeholder (`TODO: Add run description.`) with the description text parsed from the `<desc>` tag.
 
 ---
 
-## Step 4: Find parking and AllTrails URL via web search
+## Step 4: Find AllTrails URL via web search
 
 Use the run's `name` field (from the front matter) plus "Santa Fe" to search for:
 
 1. **AllTrails URL**: Search for `"<run name> AllTrails Santa Fe"`. Look for a URL starting with `https://www.alltrails.com/trail/`. If found, update `alltrails_url` in the front matter. If not found with confidence, leave it blank and note it for the user.
-
-2. **Parking info**: Search for `"<run name> trailhead parking Santa Fe"`. Look for practical parking details: lot size, cost (free/fee), overflow options, tips about busy times. Write a 1-3 sentence description and update the `parking` field in the front matter. If nothing useful is found, leave `parking: "TODO"` and tell the user.
 
 ---
 
@@ -104,7 +112,6 @@ Print a short summary:
 - The run name and slug
 - The values set for difficulty, popularity, and dates
 - Whether AllTrails URL was found (and the URL if yes)
-- Whether parking info was found or still needs manual entry
 - Any fields that still need attention (e.g., `caltopo_url`, `image`)
 
 ## Step 6: Create a commit and push

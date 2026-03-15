@@ -10,14 +10,14 @@ uses_map: true
   <div class="guide-hero">
     <div class="container">
       <h1 class="guide-title">The Areas</h1>
-      <p class="guide-subtitle">Seven distinct running zones around Santa Fe</p>
+      <p class="guide-subtitle">Seven areas to run around Santa Fe</p>
     </div>
   </div>
 
   <div class="areas-body">
     <div class="container">
 
-      <p class="areas-intro">Santa Fe sits at the intersection of alpine wilderness and high desert — the terrain around town ranges from 5,500-foot sage flats to 13,000-foot summit ridges. Here's how the running breaks down by zone.</p>
+      <p class="areas-intro">Santa Fe sits at the intersection of alpine wilderness and high desert — the terrain around town ranges from 5,500-foot Juniper Savannah at the Rio Grande to treeless peaks over 12,000 feet. Here's how the running breaks down by area around Santa Fe.</p>
 
       <!-- Carousel -->
       <div class="areas-carousel-wrapper">

@@ -1,118 +1,124 @@
-- id: winsor-corridor
-  name: Winsor Corridor
-  tagline: The heart of Santa Fe's trail network
+
+- id: la-tierra
+  name: La Tierra
+  tagline: Fast runs near town
   description: >-
-    The Winsor Trail is the spine of Santa Fe's high-country running—a beautifully maintained
-    singletrack that climbs through aspen groves and spruce-fir forest into the Pecos Wilderness.
-    Most of the city's favorite routes thread through here, from mellow ridge traverses to
-    ambitious summit linkups. Expect company on weekends.
-  difficulty: black
+    The La Tierra trail system is right next to town and provides access to 25 miles of flatter (by Santa Fe standards) trails.
+    A great trail system for newer trail runners and those looking for shorter, faster runs.
+    All the trails provide views of the Jemez and Sangre de Cristos.
+    The terrain is sandy, open Pinyon-Juniper Savannah with little shade.
+    We suggest running in the Fall, Winter, and Spring to avoid the heat of summer.
+  difficulty: green
   elevation_range:
-    min: 7800
-    max: 12600
+    min: 6900
+    max: 7300
   center:
-    lat: 35.77
-    lng: -105.84
-  geojson: /assets/areas/winsor-corridor.geojson
+    lat: 35.71
+    lng: -105.97
+  geojson: /assets/areas/la-tierra.geojson
 
 - id: dale-ball
   name: Dale Ball
   tagline: Santa Fe's backyard singletrack
   description: >-
-    Dale Ball is where Santa Fe runners go to get their legs moving without earning a permit.
-    A dense network of well-signed singletrack sits just minutes from downtown, weaving through
-    piñon-juniper terrain with just enough climbing to feel like work. The trails interconnect
-    in a dozen different ways, so no two runs need to look the same.
+    Dale Ball is where Santa Fe runners go to get some elevation just minutes from downtown.
+    The system is extremely well signed and consists of single track with a myriad of possible loops.
+    You can climb Atalaya and Picacho, go for a mild 3 mile cruise with 500 feet of gain, or put it all together for 20+ miles of challenging terrain.
+    The terrain is mostly pinyon-juniper with some ponderosa, with rocky trail conditions.
+    Dale Ball is great for year-round running, but can be icy in winter.
   difficulty: blue
   elevation_range:
     min: 7000
     max: 8200
   center:
-    lat: 35.72
-    lng: -105.91
+    lat: 35.687
+    lng: -105.90
   geojson: /assets/areas/dale-ball.geojson
 
-- id: la-tierra
-  name: La Tierra
-  tagline: Wide open desert running
+- id: winsor-corridor
+  name: Winsor Corridor
+  tagline: The heart of Santa Fe's montane trail system
   description: >-
-    La Tierra stretches across the high desert west of town with sweeping views of the Jemez
-    and Sangre de Cristo ranges. The trails are wide, non-technical, and fast—ideal for
-    tempo efforts or easy long runs where you just want to move and think. Wind can be
-    fierce, and shade is essentially nonexistent, so plan accordingly.
-  difficulty: green
+    The Winsor Trail is the heart of Santa Fe's montane forest trail.
+    The Winsor is the trunk trail with a series of branching trails forming a steep trail system running from town up to Ski Santa Fe.
+    Many runners' favorite routes are in this area.
+    There are many trail heads along Hyde Park Road from which to start your runs.
+    We suggest running in the Spring, Summer, and Fall to avoid winter snow and ice.
+  difficulty: black
   elevation_range:
-    min: 6200
-    max: 6900
+    min: 7500
+    max: 11000
   center:
-    lat: 35.74
-    lng: -106.02
-  geojson: /assets/areas/la-tierra.geojson
+    lat: 35.76
+    lng: -105.85
+  geojson: /assets/areas/winsor-corridor.geojson
 
 - id: pecos-wilderness
   name: Pecos Wilderness
-  tagline: Alpine country above 13,000 feet
+  tagline: Alpine adventures in the Sangre de Cristos
   description: >-
-    The Pecos Wilderness is the big leagues—serious alpine terrain where routes regularly
-    push past 13,000 feet and conditions can change without notice. This is where Santa Fe
-    runners come to chase summits, suffer beautifully through thin air, and remember why
-    they moved here in the first place. Most approaches are long; bring everything.
+    The Pecos Wilderness is where real adventure begins.
+    In summer it offers a vast playground for Santa Feans looking to escape summer heat and test themselves at altitude.
+    Santa Feans almost exclusively access the wilderness from the Ski Basin trailhead.
+    If you venture into the Wilderness expect a lot of elevation gain, incredible views, and ever changing weather.
   difficulty: double-black
   elevation_range:
-    min: 8500
-    max: 13100
+    min: 10000
+    max: 12700
   center:
-    lat: 35.83
-    lng: -105.72
+    lat: 35.84
+    lng: -105.75
   geojson: /assets/areas/pecos-wilderness.geojson
-
-- id: nambe-badlands
-  name: Nambe Badlands
-  tagline: Otherworldly high desert terrain
-  description: >-
-    The Nambe Badlands offer a stark, almost lunar landscape north of Santa Fe—eroded
-    clay formations, wide mesa runs, and surprisingly technical footing in a setting
-    that feels nothing like the forested mountains nearby. Crowd levels hover near zero.
-    Bring your own water; there is none out here.
-  difficulty: blue
-  elevation_range:
-    min: 5600
-    max: 6800
-  center:
-    lat: 35.90
-    lng: -106.00
-  geojson: /assets/areas/nambe-badlands.geojson
 
 - id: galisteo-basin
   name: Galisteo Basin
   tagline: Rolling grasslands and ancient routes
   description: >-
-    South of Santa Fe, the Galisteo Basin opens into rolling high grassland cut by arroyos
-    and dotted with petroglyph sites. Runs here feel more like the Great Plains than the
-    Rockies—long, contemplative, and fast. Winter and spring are the sweet spot before
-    heat and rattlesnakes reclaim the lower elevations.
+    20 minutes South of Santa Fe is Galisteo Basin.
+    This preserve is a popular recreation area for hikers, mountain bikers, and runners.
+    The trails are rolling and fast without any major climbs.
+    There are great ridge sections providing 360 degree views.
+    The terrain is mostly open Juniper Savannah with little shade.
+    We suggest running in the Fall, Winter, and Spring to avoid the heat of summer.
   difficulty: green
   elevation_range:
-    min: 5800
-    max: 6500
+    min: 6300
+    max: 6700
   center:
-    lat: 35.48
-    lng: -105.95
+    lat: 35.46
+    lng: -105.94
   geojson: /assets/areas/galisteo-basin.geojson
+
+- id: nambe-badlands
+  name: Nambe Badlands
+  tagline: Geology, Solitude, & Vistas
+  description: >-
+    The Nambe Badlands, 30 minutes north of Santa Fe offer solitude, beautiful geological formations, and smooth runs.
+    Very few crowds with incredible views of the Jemez and Sangre de Cristos.
+    The terrain is sandy and open with little shade.
+    We suggest running in the Fall, Winter, and Spring to avoid the heat of summer.
+  difficulty: green
+  elevation_range:
+    min: 6000
+    max: 6300
+  center:
+    lat: 35.94
+    lng: -105.95
+  geojson: /assets/areas/nambe-badlands.geojson
 
 - id: caja-del-rio
   name: Caja del Rio
   tagline: Volcanic plateau west of the city
   description: >-
-    Caja del Rio is Santa Fe's least-known running zone—a broad volcanic plateau west of
-    the Rio Grande gorge with long, rolling doubletrack and primitive singletrack through
-    juniper and sage. Reliable cell service: none. Other runners: rare. Solitude and
-    expansive Jemez views: guaranteed.
-  difficulty: green
+    Caja del Rio is Santa Fe's least-known running area--a broad volcanic plateau west of the city.
+    Known for Diablo Canyon at its northern edge, the plateau also has a network of dirt roads.
+    Very few people run here, but it's a great option for those looking for solitude and to explore less visited trail.
+    The terrain is open Juniper Woodland. We suggest running in the Fall, Winter, and Spring to avoid the heat of summer.
+  difficulty: blue
   elevation_range:
     min: 5500
-    max: 6400
+    max: 7200
   center:
-    lat: 35.64
-    lng: -106.15
+    lat: 35.74
+    lng: -106.17
   geojson: /assets/areas/caja-del-rio.geojson
