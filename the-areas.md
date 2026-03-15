@@ -1,15 +1,15 @@
 ---
 layout: default
-title: "The Areas"
+title: "Areas"
 description: "Seven distinct running zones around Santa Fe — from high alpine wilderness to desert plateau."
-permalink: /the-areas/
+permalink: /areas/
 uses_map: true
 ---
 
 <div class="guide-page">
   <div class="guide-hero">
     <div class="container">
-      <h1 class="guide-title">The Areas</h1>
+      <h1 class="guide-title">Areas</h1>
       <p class="guide-subtitle">Seven areas to run around Santa Fe</p>
     </div>
   </div>
