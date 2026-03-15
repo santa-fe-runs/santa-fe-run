@@ -5,16 +5,14 @@
 
   var STYLES = [
     {
-      key: 'opentopomap',
+      key: 'maptiler-topo',
       label: 'Topo',
       tiles: [
-        'https://a.tile.opentopomap.org/{z}/{x}/{y}.png',
-        'https://b.tile.opentopomap.org/{z}/{x}/{y}.png',
-        'https://c.tile.opentopomap.org/{z}/{x}/{y}.png'
+        'https://api.maptiler.com/maps/topo-v4/{z}/{x}/{y}.png?key=pOs2tpJTbZMN95OeELuo'
       ],
       tileSize: 256,
-      maxzoom: 17,
-      attribution: '© <a href="https://opentopomap.org/">OpenTopoMap</a> (CC-BY-SA) © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      maxzoom: 22,
+      attribution: '© <a href="https://www.maptiler.com/">MapTiler</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     },
     {
       key: 'usgs',
@@ -25,36 +23,6 @@
       tileSize: 256,
       maxzoom: 16,
       attribution: '<a href="https://www.usgs.gov/">USGS</a> National Map'
-    },
-    // {
-    //   key: 'esri-topo',
-    //   label: 'Esri',
-    //   tiles: [
-    //     'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
-    //   ],
-    //   tileSize: 256,
-    //   maxzoom: 19,
-    //   attribution: 'Esri, HERE, Garmin, FAO, NOAA, USGS'
-    // },
-    // {
-    //   key: 'thunderforest-outdoors',
-    //   label: 'Outdoors',
-    //   tiles: [
-    //     'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=d1c0c4338095437ba3979753df777653'
-    //   ],
-    //   tileSize: 256,
-    //   maxzoom: 22,
-    //   attribution: '© <a href="https://www.thunderforest.com/">Thunderforest</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    // },
-    {
-      key: 'maptiler-topo',
-      label: 'MapTiler',
-      tiles: [
-        'https://api.maptiler.com/maps/topo-v4/{z}/{x}/{y}.png?key=pOs2tpJTbZMN95OeELuo'
-      ],
-      tileSize: 256,
-      maxzoom: 22,
-      attribution: '© <a href="https://www.maptiler.com/">MapTiler</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }
   ];
 
