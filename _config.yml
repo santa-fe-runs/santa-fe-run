@@ -8,6 +8,11 @@ description: >-
 # If repo is named santa-fe-runs.github.io, set baseurl to ""
 baseurl: ""
 url: "https://santafe.run"
+timezone: America/Denver
+
+author:
+  name: "Run Santa Fe"
+  url: "https://santafe.run"
 
 # Collections
 collections:
@@ -32,7 +37,6 @@ sass:
   style: compressed
 
 plugins:
-  - jekyll-feed
   - jekyll-sitemap
 
 exclude:

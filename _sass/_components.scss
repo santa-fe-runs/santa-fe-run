@@ -113,6 +113,22 @@
     font-size: 0.8125rem;
     font-style: italic;
   }
+
+  .footer-nav {
+    display: flex;
+    gap: var(--sp-5);
+    margin-top: var(--sp-2);
+  }
+
+  .footer-nav-link {
+    font-size: 0.8125rem;
+    color: rgba($tan-300, 0.5);
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: $tan-300;
+    }
+  }
 }
 
 // ============================================================

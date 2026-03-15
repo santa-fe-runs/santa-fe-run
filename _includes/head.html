@@ -54,18 +54,17 @@
 <meta property="og:description" content="{{ _seo_desc | escape }}">
 <meta property="og:url" content="{{ site.url }}{{ _canonical_url }}">
 <meta property="og:image" content="{{ _og_image }}">
+<meta property="og:image:alt" content="{% if page.name and page.title == nil %}{{ page.name }} trail — Santa Fe mountains{% else %}Trail running in the mountains near Santa Fe, New Mexico{% endif %}">
 
 {% comment %}——— Twitter Card ———{% endcomment %}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ _og_title | escape }}">
 <meta name="twitter:description" content="{{ _seo_desc | escape }}">
 <meta name="twitter:image" content="{{ _og_image }}">
+<meta name="twitter:image:alt" content="{% if page.name and page.title == nil %}{{ page.name }} trail — Santa Fe mountains{% else %}Trail running in the mountains near Santa Fe, New Mexico{% endif %}">
 
 {% comment %}——— Favicon ———{% endcomment %}
 <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
-
-{% comment %}——— Feed ———{% endcomment %}
-<link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
 
 {% comment %}——— Fonts (non-blocking) ———{% endcomment %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,5 +86,5 @@
 {% endunless %}
 
 {% if page.gpx and page.gpx != "" %}
-<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" integrity="sha384-MinO0mNliZ3vwppuPOUnGa+iq619pfMhLVUXfC4LHwSCvF9H+6P/KO4Q7qBOYV5V" crossorigin="anonymous">
 {% endif %}
