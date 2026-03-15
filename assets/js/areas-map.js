@@ -215,6 +215,12 @@
 
     var initialStyle = styleById(savedStyle());
 
+    // Compute initial bounds from area centers so the map starts fitted correctly
+    var initBounds = new maplibregl.LngLatBounds();
+    areas.forEach(function (a) {
+      if (a.center) initBounds.extend([a.center.lng, a.center.lat]);
+    });
+
     var map = new maplibregl.Map({
       container: 'areas-map',
       style: {
@@ -231,8 +237,8 @@
         },
         layers: [{ id: 'topo', type: 'raster', source: 'topo' }]
       },
-      center: [-105.95, 35.75],
-      zoom: 9,
+      bounds: initBounds,
+      fitBoundsOptions: { padding: 8, maxZoom: 10 },
       attributionControl: { compact: true }
     });
 
@@ -338,7 +344,7 @@
             ring.forEach(function (c) { ab.extend(c); allBounds.extend(c); });
             areaBounds[id] = ab;
           });
-          map.fitBounds(allBounds, { padding: 48, maxZoom: 10, duration: 0 });
+          map.fitBounds(allBounds, { padding: 8, maxZoom: 10, duration: 0 });
 
           // Map click → select area
           map.on('click', 'areas-fill', function (e) {
