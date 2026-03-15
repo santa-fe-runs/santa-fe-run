@@ -832,6 +832,7 @@
 
 .metadata-row {
   display: flex;
+  align-items: center;
   gap: var(--sp-3);
 
   dt {
