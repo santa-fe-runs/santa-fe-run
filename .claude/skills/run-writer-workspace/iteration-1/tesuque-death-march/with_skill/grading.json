@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "tesuque-death-march",
+  "run_type": "with_skill",
+  "assertions": [
+    {"text": "earns-the-name: The description earns/justifies the 'Death March' name rather than softening it", "passed": true, "evidence": "'it will absolutely destroy your quads', 'no bailing early', 'aching legs and a face that can't quite decide whether to grin or grimace' — leans into the brutality throughout"},
+    {"text": "suffering-to-reward-arc: Captures the arc: brutal upper section → beautiful lower canyon payoff", "passed": true, "evidence": "Explicitly structures: 'The upper section near the towers is exposed and technical' → 'But then the canyon opens up... cool shade, wildflowers in July'"},
+    {"text": "mentions-car-shuttle: Mentions the car shuttle requirement as a practical necessity", "passed": true, "evidence": "'You'll need a car shuttle, which means you have to commit, no bailing early'"},
+    {"text": "sensory-specifics: Uses sensory or physical detail (quads, creek, wildflowers, snow, etc.) rather than vague adjectives", "passed": true, "evidence": "'destroy your quads', 'picking your feet up', 'snow doesn't clear until June', 'cool shade, wildflowers in July, the creek doing its thing', 'aching legs'"},
+    {"text": "no-generic-opener: Does NOT start with a generic opener like 'Nestled in...' or 'If you're looking for...'", "passed": true, "evidence": "Opens with 'The name says it all.'"}
+  ]
+}

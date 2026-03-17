@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "mentions_views_or_reward",
+      "passed": true,
+      "evidence": "rewarding the effort with sweeping views"
+    },
+    {
+      "text": "includes_practical_warning",
+      "passed": true,
+      "evidence": "Summer heat can be brutal; spring and fall better"
+    },
+    {
+      "text": "no_generic_opener",
+      "passed": true,
+      "evidence": "Starts with 'Atalaya Mountain is the classic Santa Fe sufferfest'"
+    },
+    {
+      "text": "no_bullet_points",
+      "passed": true,
+      "evidence": "Plain prose only"
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 4,
+    "failed": 0,
+    "total": 4
+  },
+  "timing": {
+    "duration_ms": 19387,
+    "total_duration_seconds": 19.4
+  },
+  "execution_metrics": {
+    "total_tokens": 9524
+  }
+}

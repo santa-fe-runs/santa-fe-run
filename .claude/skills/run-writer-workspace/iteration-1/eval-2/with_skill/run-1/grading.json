@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "conveys_epic_scale",
+      "passed": true,
+      "evidence": "4,800 feet, 9 miles, absolutely destroy your quads"
+    },
+    {
+      "text": "mentions_reward_or_beautiful_section",
+      "passed": true,
+      "evidence": "cool shade, wildflowers in July, the creek doing its thing"
+    },
+    {
+      "text": "no_bullet_points",
+      "passed": true,
+      "evidence": "Plain prose only"
+    },
+    {
+      "text": "no_generic_opener",
+      "passed": true,
+      "evidence": "Starts with 'The name says it all.'"
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 4,
+    "failed": 0,
+    "total": 4
+  },
+  "timing": {
+    "duration_ms": 23355,
+    "total_duration_seconds": 23.4
+  },
+  "execution_metrics": {
+    "total_tokens": 11442
+  }
+}

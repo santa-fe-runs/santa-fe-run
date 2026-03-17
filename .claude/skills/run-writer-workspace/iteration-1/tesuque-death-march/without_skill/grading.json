@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "tesuque-death-march",
+  "run_type": "without_skill",
+  "assertions": [
+    {"text": "earns-the-name: The description earns/justifies the 'Death March' name rather than softening it", "passed": false, "evidence": "Describes the route as 'epic' and notes 'Your legs will hate you for days' but never references the 'Death March' name or leans into it — tone is promotional rather than punishing"},
+    {"text": "suffering-to-reward-arc: Captures the arc: brutal upper section → beautiful lower canyon payoff", "passed": true, "evidence": "'serious quad-burning commitment' → 'The lower canyon is the payoff... almost otherworldly compared to the punishment above'"},
+    {"text": "mentions-car-shuttle: Mentions the car shuttle requirement as a practical necessity", "passed": true, "evidence": "'This epic point-to-point demands a car shuttle' — opening sentence"},
+    {"text": "sensory-specifics: Uses sensory or physical detail (quads, creek, wildflowers, snow, etc.) rather than vague adjectives", "passed": true, "evidence": "Elevation figures, 'snow until June', 'wildflowers in July', 'shaded singletrack', 'quad-burning'"},
+    {"text": "no-generic-opener: Does NOT start with a generic opener like 'Nestled in...' or 'If you're looking for...'", "passed": true, "evidence": "Opens with 'This epic point-to-point demands a car shuttle...'"}
+  ]
+}

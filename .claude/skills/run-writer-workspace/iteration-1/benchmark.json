@@ -1,0 +1,303 @@
+{
+  "metadata": {
+    "skill_name": "run-writer",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-03-17T01:26:18Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 19.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "uses_second_person",
+          "passed": true,
+          "evidence": "Found 'your quads', 'don't expect solitude'"
+        },
+        {
+          "text": "mentions_physical_sensation",
+          "passed": true,
+          "evidence": "Found: quads, legs that know they worked"
+        },
+        {
+          "text": "no_generic_opener",
+          "passed": true,
+          "evidence": "Starts with 'A great early-season option'"
+        },
+        {
+          "text": "correct_length",
+          "passed": true,
+          "evidence": "4 sentences"
+        },
+        {
+          "text": "no_bullet_points",
+          "passed": true,
+          "evidence": "Plain prose only"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 29.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "mentions_views_or_reward",
+          "passed": true,
+          "evidence": "rewarded with sweeping views"
+        },
+        {
+          "text": "includes_practical_warning",
+          "passed": true,
+          "evidence": "Summer heat can be brutal; crowd warning"
+        },
+        {
+          "text": "no_generic_opener",
+          "passed": true,
+          "evidence": "Starts with 'This is the classic Santa Fe climb'"
+        },
+        {
+          "text": "no_bullet_points",
+          "passed": true,
+          "evidence": "Plain prose only"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 23.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "conveys_epic_scale",
+          "passed": true,
+          "evidence": "4,800 feet, 9 miles, absolutely destroy your quads"
+        },
+        {
+          "text": "mentions_reward_or_beautiful_section",
+          "passed": true,
+          "evidence": "cool shade, wildflowers in July, the creek doing its thing"
+        },
+        {
+          "text": "no_bullet_points",
+          "passed": true,
+          "evidence": "Plain prose only"
+        },
+        {
+          "text": "no_generic_opener",
+          "passed": true,
+          "evidence": "Starts with 'The name says it all.'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 13.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "uses_second_person",
+          "passed": true,
+          "evidence": "Found 'your quads begging'"
+        },
+        {
+          "text": "mentions_physical_sensation",
+          "passed": true,
+          "evidence": "Found: quads begging on the descent"
+        },
+        {
+          "text": "no_generic_opener",
+          "passed": true,
+          "evidence": "Starts with 'Starting from the Hyde Park trailhead'"
+        },
+        {
+          "text": "correct_length",
+          "passed": true,
+          "evidence": "4 sentences"
+        },
+        {
+          "text": "no_bullet_points",
+          "passed": true,
+          "evidence": "Plain prose only"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 19.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "mentions_views_or_reward",
+          "passed": true,
+          "evidence": "rewarding the effort with sweeping views"
+        },
+        {
+          "text": "includes_practical_warning",
+          "passed": true,
+          "evidence": "Summer heat can be brutal; spring and fall better"
+        },
+        {
+          "text": "no_generic_opener",
+          "passed": true,
+          "evidence": "Starts with 'Atalaya Mountain is the classic Santa Fe sufferfest'"
+        },
+        {
+          "text": "no_bullet_points",
+          "passed": true,
+          "evidence": "Plain prose only"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 17.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "conveys_epic_scale",
+          "passed": true,
+          "evidence": "nearly 5,000 feet, nine miles, quad-burning commitment"
+        },
+        {
+          "text": "mentions_reward_or_beautiful_section",
+          "passed": true,
+          "evidence": "The lower canyon is the payoff; wildflowers in July"
+        },
+        {
+          "text": "no_bullet_points",
+          "passed": true,
+          "evidence": "Plain prose only"
+        },
+        {
+          "text": "no_generic_opener",
+          "passed": true,
+          "evidence": "Starts with 'This epic point-to-point'"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 24.2333,
+        "stddev": 4.9034,
+        "min": 19.8,
+        "max": 29.5
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 16.7667,
+        "stddev": 3.0665,
+        "min": 13.4,
+        "max": 19.4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "+7.5",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

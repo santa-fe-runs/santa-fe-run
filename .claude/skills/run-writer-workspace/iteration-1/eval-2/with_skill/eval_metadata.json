@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "tesuque-death-march",
+  "prompt": "Write a description for Tesuque Death March. Key points: point-to-point requiring car shuttle, starts at Aspen Basin, climbs to Tesuque Peak via radio towers, 4800ft descent to Tesuque village, 9 miles, upper section exposed and technical, snow until June, lower canyon section through Tesuque Creek is beautiful with wildflowers in July, brutal on quads, name says it all",
+  "assertions": [
+    {"id": "earns-the-name", "description": "The description earns/justifies the 'Death March' name rather than softening it"},
+    {"id": "suffering-to-reward-arc", "description": "Captures the arc: brutal upper section → beautiful lower canyon payoff"},
+    {"id": "mentions-car-shuttle", "description": "Mentions the car shuttle requirement as a practical necessity"},
+    {"id": "sensory-specifics", "description": "Uses sensory or physical detail (quads, creek, wildflowers, snow, etc.) rather than vague adjectives"},
+    {"id": "no-generic-opener", "description": "Does NOT start with a generic opener like 'Nestled in...' or 'If you're looking for...'"}
+  ]
+}

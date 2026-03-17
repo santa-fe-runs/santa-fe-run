@@ -1,0 +1,12 @@
+{
+  "eval_id": 0,
+  "eval_name": "hyde-park-loop",
+  "prompt": "Write a description for the Hyde Park Loop. Key points: starts at lower Hyde Park trailhead, climbs paved Hyde Park Road to the ski resort, returns on singletrack through ponderosa forest, 6 miles, 1400ft gain, popular on weekends, great early-season option since it's lower elevation",
+  "assertions": [
+    {"id": "voice-conversational", "description": "Uses conversational, direct voice rather than brochure-style prose"},
+    {"id": "mentions-key-stats", "description": "Mentions distance (6 miles) and elevation gain (1400ft) naturally in the text"},
+    {"id": "honest-about-suffering", "description": "Acknowledges the physical challenge honestly (quad pain, the climb) rather than just cheerleading"},
+    {"id": "practical-seasonal-tip", "description": "Includes the early-season/low-elevation advantage as useful practical info"},
+    {"id": "no-generic-opener", "description": "Does NOT start with a generic opener like 'Nestled in...' or 'If you're looking for...'"}
+  ]
+}

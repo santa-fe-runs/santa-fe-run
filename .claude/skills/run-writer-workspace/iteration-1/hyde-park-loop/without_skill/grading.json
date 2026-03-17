@@ -1,0 +1,82 @@
+{
+  "eval_id": 0,
+  "eval_name": "hyde-park-loop",
+  "run_type": "without_skill",
+  "assertions": [
+    {
+      "text": "voice-conversational: Uses conversational, direct voice rather than brochure-style prose",
+      "passed": false,
+      "evidence": "The description reads as structured guidebook prose. Phrases like 'a grind that's surprisingly runnable,' 'The return leg rewards the effort,' 'solid blue-rated workout,' and 'draws a busy weekend crowd' are brochure-register. There is one honest colloquial note ('will leave your quads begging') but the surrounding sentences maintain a formal, informational tone throughout."
+    },
+    {
+      "text": "mentions-key-stats: Mentions distance (6 miles) and elevation gain (1400ft) naturally in the text",
+      "passed": true,
+      "evidence": "'At around 6 miles and 1,400 feet of gain' — both stats are present. However, they are grouped together in a summary sentence ('At around 6 miles and 1,400 feet of gain, it's a solid blue-rated workout') that reads more like a data dump than natural integration. Stats are present but not woven in organically."
+    },
+    {
+      "text": "honest-about-suffering: Acknowledges the physical challenge honestly (quad pain, the climb) rather than just cheerleading",
+      "passed": true,
+      "evidence": "'a grind that's surprisingly runnable on the way up but will leave your quads begging on the descent' honestly names the climb and the quad pain without minimizing it."
+    },
+    {
+      "text": "practical-seasonal-tip: Includes the early-season/low-elevation advantage as useful practical info",
+      "passed": true,
+      "evidence": "'Because it starts low, it's also one of the best options when higher terrain is still buried in snow' — the seasonal tip is present and specific, though it appears as the closing sentence rather than as a leading hook."
+    },
+    {
+      "text": "no-generic-opener: Does NOT start with a generic opener like 'Nestled in...' or 'If you're looking for...'",
+      "passed": true,
+      "evidence": "Starts with 'Starting from the Hyde Park trailhead at the base of the mountain, this route climbs steeply on paved Hyde Park Road' — route-specific, not a generic brochure opener."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  },
+  "claims": [
+    {
+      "claim": "The route is approximately 6 miles",
+      "type": "factual",
+      "verified": true,
+      "evidence": "'At around 6 miles' matches the assertion spec of 6 miles"
+    },
+    {
+      "claim": "Elevation gain is 1,400 feet",
+      "type": "factual",
+      "verified": true,
+      "evidence": "'1,400 feet of gain' matches the assertion spec of 1400ft"
+    },
+    {
+      "claim": "The route is 'solid blue-rated'",
+      "type": "factual",
+      "verified": false,
+      "evidence": "The description assigns a 'blue-rated' difficulty — this is a specific claim about a trail rating system that cannot be verified from the text alone"
+    },
+    {
+      "claim": "The road climb is roughly two miles",
+      "type": "factual",
+      "verified": false,
+      "evidence": "'climbs steeply on paved Hyde Park Road for roughly two miles' — plausible given the total distance but unverifiable without external trail data"
+    },
+    {
+      "claim": "The return features shaded singletrack with ponderosa pine",
+      "type": "factual",
+      "verified": false,
+      "evidence": "'shaded singletrack winding through gorgeous ponderosa pine forest' — plausible for this region but unverifiable from the text alone"
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "mentions-key-stats",
+        "reason": "The assertion passes here because the numbers are present, but they appear in a stats-summary sentence ('At around 6 miles and 1,400 feet of gain, it's a solid blue-rated workout') that is the opposite of 'naturally in the text.' Consider tightening the assertion to 'stats-integrated: Distance and elevation gain appear embedded in descriptive sentences, not grouped in a standalone summary line.'"
+      },
+      {
+        "reason": "The 'blue-rated' claim in the without_skill output is an invented trail rating that no assertion catches. If route accuracy matters, an assertion on factual fidelity would have flagged this."
+      }
+    ],
+    "overall": "The voice-conversational assertion correctly discriminates between the two outputs — this is the strongest assertion in the set. The mentions-key-stats assertion is too lenient; presence alone should not be enough when the stats are bundled in a data-dump sentence."
+  }
+}

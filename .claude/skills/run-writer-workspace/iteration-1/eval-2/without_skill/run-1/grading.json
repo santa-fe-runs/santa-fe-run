@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "conveys_epic_scale",
+      "passed": true,
+      "evidence": "nearly 5,000 feet, nine miles, quad-burning commitment"
+    },
+    {
+      "text": "mentions_reward_or_beautiful_section",
+      "passed": true,
+      "evidence": "The lower canyon is the payoff; wildflowers in July"
+    },
+    {
+      "text": "no_bullet_points",
+      "passed": true,
+      "evidence": "Plain prose only"
+    },
+    {
+      "text": "no_generic_opener",
+      "passed": true,
+      "evidence": "Starts with 'This epic point-to-point'"
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 4,
+    "failed": 0,
+    "total": 4
+  },
+  "timing": {
+    "duration_ms": 17456,
+    "total_duration_seconds": 17.5
+  },
+  "execution_metrics": {
+    "total_tokens": 9423
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "uses_second_person",
+      "passed": true,
+      "evidence": "Found 'your quads begging'"
+    },
+    {
+      "text": "mentions_physical_sensation",
+      "passed": true,
+      "evidence": "Found: quads begging on the descent"
+    },
+    {
+      "text": "no_generic_opener",
+      "passed": true,
+      "evidence": "Starts with 'Starting from the Hyde Park trailhead'"
+    },
+    {
+      "text": "correct_length",
+      "passed": true,
+      "evidence": "4 sentences"
+    },
+    {
+      "text": "no_bullet_points",
+      "passed": true,
+      "evidence": "Plain prose only"
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 5,
+    "failed": 0,
+    "total": 5
+  },
+  "timing": {
+    "duration_ms": 13390,
+    "total_duration_seconds": 13.4
+  },
+  "execution_metrics": {
+    "total_tokens": 9330
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "skill_name": "run-writer",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Write a description for a new run called Hyde Park Road Loop. Here are my notes:\n- Starts at the Hyde Park trailhead at the bottom of the mountain (lower elevation, accessible earlier in season)\n- Climbs steeply up the paved Hyde Park Road for about 2 miles, then hits the trail near the ski resort\n- Really runnable road section but your quads will be fried on the descent\n- The return is on singletrack through beautiful ponderosa forest, lots of shade\n- Very popular with both hikers and runners on weekends\n- Great option when higher trails are snowed in\n- About 6 miles, 1400ft gain, difficulty: blue",
+      "expected_output": "A 2-4 sentence description in the site voice: conversational, first-person opinion allowed, addresses reader as 'you', mentions body sensations (burning quads), reward after suffering, practical tip about season accessibility. No headers or bullet points.",
+      "assertions": [
+        {
+          "name": "uses_second_person",
+          "description": "Description uses 'you' to address the reader directly at least once"
+        },
+        {
+          "name": "mentions_physical_sensation",
+          "description": "Description includes at least one physical body sensation (burning, gasping, aching, etc.)"
+        },
+        {
+          "name": "no_generic_opener",
+          "description": "Description does not open with a generic phrase like 'This trail offers' or 'Located in' or 'Nestled among'"
+        },
+        {
+          "name": "correct_length",
+          "description": "Description is between 2 and 5 sentences, not a wall of text"
+        },
+        {
+          "name": "no_bullet_points",
+          "description": "Output contains no bullet points, dashes, headers, or markdown formatting"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "I need a description for the Atalaya Mountain run. Key points:\n- Classic Santa Fe hike that most locals have done\n- Steep rocky climb to the top of Atalaya, 9121ft summit\n- Views of the city and the Jemez Mountains to the west\n- About 6 miles out and back, 1900ft gain\n- Trailhead is right in the city, behind St. John's College\n- Can be extremely hot in summer — best in spring and fall\n- Trail can be crowded on weekends especially in good weather\n- Difficulty: black",
+      "expected_output": "A 2-4 sentence description that captures the accessible-but-serious nature of Atalaya, the city views as reward, heat warning, and crowding. Voice should match site: direct, specific, with an insider feel.",
+      "assertions": [
+        {
+          "name": "mentions_views_or_reward",
+          "description": "Description mentions the views or some form of reward/payoff for the climb"
+        },
+        {
+          "name": "includes_practical_warning",
+          "description": "Description includes a practical tip or warning (heat, crowds, season, etc.)"
+        },
+        {
+          "name": "no_generic_opener",
+          "description": "Description does not open with a generic phrase like 'This trail offers' or 'Located in' or 'Nestled among'"
+        },
+        {
+          "name": "no_bullet_points",
+          "description": "Output contains no bullet points, dashes, headers, or markdown formatting"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write a run description for a gnarly one I call the Tesuque Death March. Notes:\n- Epic point-to-point that requires a car shuttle\n- Starts at Aspen Basin (10,300ft), summits Tesuque Peak (12,040ft) via the radio towers\n- Then descends all the way down into Tesuque village (7,200ft)\n- Total descent is 4,800ft over about 9 miles — absolutely destroys your quads\n- The upper section near the radio towers is exposed and technical\n- The lower canyon section through Tesuque Creek is magical, cool shade, wildflowers in July\n- Extremely long season for the lower portion but upper section is snow-covered until June\n- Difficulty: double-black",
+      "expected_output": "2-5 sentences that convey the epic nature of the descent, the contrast between brutal upper section and beautiful lower canyon, the shuttle logistics, the quad destruction, and perhaps the reward of the creek section. Should have humor and personality.",
+      "assertions": [
+        {
+          "name": "conveys_epic_scale",
+          "description": "Description conveys the scale/difficulty of the run, not just 'it's hard' but something specific about what makes it hard"
+        },
+        {
+          "name": "mentions_reward_or_beautiful_section",
+          "description": "Description mentions the beautiful lower section, creek, wildflowers, or some form of payoff"
+        },
+        {
+          "name": "no_bullet_points",
+          "description": "Output contains no bullet points, dashes, headers, or markdown formatting"
+        },
+        {
+          "name": "no_generic_opener",
+          "description": "Description does not open with a generic phrase like 'This trail offers' or 'Located in' or 'Nestled among'"
+        }
+      ]
+    }
+  ]
+}

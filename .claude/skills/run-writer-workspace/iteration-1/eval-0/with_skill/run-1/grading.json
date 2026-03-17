@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "uses_second_person",
+      "passed": true,
+      "evidence": "Found 'your quads', 'don't expect solitude'"
+    },
+    {
+      "text": "mentions_physical_sensation",
+      "passed": true,
+      "evidence": "Found: quads, legs that know they worked"
+    },
+    {
+      "text": "no_generic_opener",
+      "passed": true,
+      "evidence": "Starts with 'A great early-season option'"
+    },
+    {
+      "text": "correct_length",
+      "passed": true,
+      "evidence": "4 sentences"
+    },
+    {
+      "text": "no_bullet_points",
+      "passed": true,
+      "evidence": "Plain prose only"
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 5,
+    "failed": 0,
+    "total": 5
+  },
+  "timing": {
+    "duration_ms": 19805,
+    "total_duration_seconds": 19.8
+  },
+  "execution_metrics": {
+    "total_tokens": 12918
+  }
+}

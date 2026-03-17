@@ -1,0 +1,32 @@
+{
+  "eval_id": 1,
+  "eval_name": "atalaya-mountain",
+  "run_type": "without_skill",
+  "assertions": [
+    {
+      "text": "voice-conversational",
+      "passed": true,
+      "evidence": "'The classic Santa Fe sufferfest' is punchy and direct. The description stays in plain, natural prose throughout with no stiff or promotional language."
+    },
+    {
+      "text": "mentions-key-stats",
+      "passed": true,
+      "evidence": "All three stats are present: '9,121-foot summit' (elevation), 'roughly 1,900 feet' (gain), and 'about 6 miles out and back' (distance)."
+    },
+    {
+      "text": "local-character",
+      "passed": true,
+      "evidence": "'Just about every local has done at least once' captures the iconic, rite-of-passage status of the route."
+    },
+    {
+      "text": "practical-timing-advice",
+      "passed": true,
+      "evidence": "'Summer heat can be brutal on the exposed upper slopes, making spring and fall the far better seasons to tackle this one' is specific and actionable."
+    },
+    {
+      "text": "no-generic-opener",
+      "passed": true,
+      "evidence": "Starts with 'Atalaya Mountain is the classic Santa Fe sufferfest' — specific and characterful, not a generic opener."
+    }
+  ]
+}

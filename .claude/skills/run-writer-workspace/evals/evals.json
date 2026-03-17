@@ -1,0 +1,86 @@
+{
+  "skill_name": "run-writer",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Write a description for the Hyde Park Loop. Key points: starts at lower Hyde Park trailhead, climbs paved Hyde Park Road to the ski resort, returns on singletrack through ponderosa forest, 6 miles, 1400ft gain, popular on weekends, great early-season option since it's lower elevation",
+      "expected_output": "A polished trail run description in the site's voice: conversational, honest about the suffering, practical info woven in naturally, wry humor, direct address to the reader",
+      "assertions": [
+        {
+          "id": "voice-conversational",
+          "description": "Uses conversational, first/second-person voice rather than brochure-style prose"
+        },
+        {
+          "id": "mentions-key-stats",
+          "description": "Mentions distance (6 miles) and elevation gain (1400ft) naturally in the text"
+        },
+        {
+          "id": "honest-about-suffering",
+          "description": "Acknowledges the physical challenge honestly (e.g., quad pain, the climb) rather than just cheerleading"
+        },
+        {
+          "id": "practical-seasonal-tip",
+          "description": "Includes the early-season/low-elevation advantage as useful practical info"
+        },
+        {
+          "id": "no-generic-opener",
+          "description": "Does NOT start with a generic opener like 'Nestled in...' or 'If you're looking for...'"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Write a description for Atalaya Mountain. Key points: classic Santa Fe climb every local has done, trailhead behind St. John's College, steep rocky trail to 9121ft summit, 6 miles out and back, 1900ft gain, views of city and Jemez Mountains, can be brutally hot in summer, crowded on weekends",
+      "expected_output": "A polished trail run description in the site's voice: leads with the iconic local status, captures the suffering and reward, practical timing advice, no fluff",
+      "assertions": [
+        {
+          "id": "voice-conversational",
+          "description": "Uses conversational, direct voice rather than formal/brochure-style prose"
+        },
+        {
+          "id": "mentions-key-stats",
+          "description": "Mentions elevation (9121ft), distance (~6 miles), and gain (~1900ft)"
+        },
+        {
+          "id": "local-character",
+          "description": "Captures the 'every local has done it' iconic status — not just a generic description"
+        },
+        {
+          "id": "practical-timing-advice",
+          "description": "Gives practical advice about when to go (avoid summer heat, spring/fall preferred)"
+        },
+        {
+          "id": "no-generic-opener",
+          "description": "Does NOT start with a generic opener like 'Nestled in...' or 'If you're looking for...'"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write a description for Tesuque Death March. Key points: point-to-point requiring car shuttle, starts at Aspen Basin, climbs to Tesuque Peak via radio towers, 4800ft descent to Tesuque village, 9 miles, upper section exposed and technical, snow until June, lower canyon section through Tesuque Creek is beautiful with wildflowers in July, brutal on quads, name says it all",
+      "expected_output": "A vivid, narrative description that earns the dramatic name, captures the brutality and beauty arc, uses sensory detail and wry humor",
+      "assertions": [
+        {
+          "id": "earns-the-name",
+          "description": "The description earns/justifies the 'Death March' name rather than softening it"
+        },
+        {
+          "id": "suffering-to-reward-arc",
+          "description": "Captures the arc: brutal upper section → beautiful lower canyon payoff"
+        },
+        {
+          "id": "mentions-car-shuttle",
+          "description": "Mentions the car shuttle requirement as a practical necessity"
+        },
+        {
+          "id": "sensory-specifics",
+          "description": "Uses sensory or physical detail (quads, creek, wildflowers, snow, etc.) rather than vague adjectives"
+        },
+        {
+          "id": "no-generic-opener",
+          "description": "Does NOT start with a generic opener like 'Nestled in...' or 'If you're looking for...'"
+        }
+      ]
+    }
+  ]
+}

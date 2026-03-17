@@ -1,0 +1,32 @@
+{
+  "eval_id": 1,
+  "eval_name": "atalaya-mountain",
+  "run_type": "with_skill",
+  "assertions": [
+    {
+      "text": "voice-conversational",
+      "passed": true,
+      "evidence": "Opens with 'This is the classic Santa Fe climb' and uses natural, direct phrasing throughout — 'zero excuses about the drive', 'go early or plan on some company' feel conversational rather than brochure-style."
+    },
+    {
+      "text": "mentions-key-stats",
+      "passed": false,
+      "evidence": "Mentions the 9121ft summit elevation but omits distance (~6 miles) and elevation gain (~1900ft). Two of the three required stats are missing."
+    },
+    {
+      "text": "local-character",
+      "passed": true,
+      "evidence": "'The one basically every local has done at least once and most have done dozens of times' directly captures the iconic, every-local-knows-it character of this route."
+    },
+    {
+      "text": "practical-timing-advice",
+      "passed": true,
+      "evidence": "'Summer heat on this south-facing climb can be brutal — spring and fall are where this route really shines' gives specific, actionable seasonal guidance with a reason (south-facing exposure)."
+    },
+    {
+      "text": "no-generic-opener",
+      "passed": true,
+      "evidence": "Starts with 'This is the classic Santa Fe climb' — specific and direct, not a generic 'Nestled in...' or 'If you're looking for...' opener."
+    }
+  ]
+}

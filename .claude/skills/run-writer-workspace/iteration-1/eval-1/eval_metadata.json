@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "eval_name": "atalaya-mountain",
+  "prompt": "Write a description for Atalaya Mountain. Key points: classic Santa Fe climb every local has done, trailhead behind St. John's College, steep rocky trail to 9121ft summit, 6 miles out and back, 1900ft gain, views of city and Jemez Mountains, can be brutally hot in summer, crowded on weekends",
+  "assertions": [
+    {"id": "voice-conversational", "description": "Uses conversational, direct voice rather than formal/brochure-style prose"},
+    {"id": "mentions-key-stats", "description": "Mentions elevation (9121ft), distance (~6 miles), and gain (~1900ft)"},
+    {"id": "local-character", "description": "Captures the 'every local has done it' iconic status — not just a generic description"},
+    {"id": "practical-timing-advice", "description": "Gives practical advice about when to go (avoid summer heat, spring/fall preferred)"},
+    {"id": "no-generic-opener", "description": "Does NOT start with a generic opener like 'Nestled in...' or 'If you're looking for...'"}
+  ]
+}

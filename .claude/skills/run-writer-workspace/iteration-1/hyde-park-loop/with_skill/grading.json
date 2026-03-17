@@ -1,0 +1,82 @@
+{
+  "eval_id": 0,
+  "eval_name": "hyde-park-loop",
+  "run_type": "with_skill",
+  "assertions": [
+    {
+      "text": "voice-conversational: Uses conversational, direct voice rather than brochure-style prose",
+      "passed": true,
+      "evidence": "The description uses colloquial, direct language throughout: 'great news going out and terrible news for your quads on the way back down,' 'the kind of running that makes you forget how much the descent already took from you,' and 'legs that know they worked.' These read as a runner talking to a runner, not promotional copy."
+    },
+    {
+      "text": "mentions-key-stats: Mentions distance (6 miles) and elevation gain (1400ft) naturally in the text",
+      "passed": true,
+      "evidence": "Distance appears as 'this 6-mile loop' in the opening sentence. Elevation gain appears as '1,400 feet of gain' near the end, embedded in a sentence about what to expect — both woven into the narrative rather than listed as a stat block."
+    },
+    {
+      "text": "honest-about-suffering: Acknowledges the physical challenge honestly (quad pain, the climb) rather than just cheerleading",
+      "passed": true,
+      "evidence": "'terrible news for your quads on the way back down,' 'makes you forget how much the descent already took from you,' and 'legs that know they worked' all frankly name the cost of the effort without softening it with cheerleading phrases."
+    },
+    {
+      "text": "practical-seasonal-tip: Includes the early-season/low-elevation advantage as useful practical info",
+      "passed": true,
+      "evidence": "Opens with 'A great early-season option when higher trails are still buried' — the seasonal tip is foregrounded as the primary reason to choose this route, making it genuinely actionable."
+    },
+    {
+      "text": "no-generic-opener: Does NOT start with a generic opener like 'Nestled in...' or 'If you're looking for...'",
+      "passed": true,
+      "evidence": "Starts with 'A great early-season option when higher trails are still buried' — specific to this route's seasonal utility, not a generic brochure opener."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "claims": [
+    {
+      "claim": "The route is 6 miles",
+      "type": "factual",
+      "verified": true,
+      "evidence": "'this 6-mile loop' matches the assertion spec of 6 miles"
+    },
+    {
+      "claim": "Elevation gain is 1,400 feet",
+      "type": "factual",
+      "verified": true,
+      "evidence": "'1,400 feet of gain' matches the assertion spec of 1400ft"
+    },
+    {
+      "claim": "The road section is paved Hyde Park Road",
+      "type": "factual",
+      "verified": false,
+      "evidence": "The description states 'paved Hyde Park Road' — plausible but cannot be verified from the text alone without external trail data"
+    },
+    {
+      "claim": "The return is on singletrack through ponderosa forest",
+      "type": "factual",
+      "verified": false,
+      "evidence": "The description states 'beautiful singletrack through shaded ponderosa forest' — plausible for this region but unverifiable from the text alone"
+    },
+    {
+      "claim": "Popular with hikers and runners on weekends",
+      "type": "quality",
+      "verified": false,
+      "evidence": "'Popular with hikers and runners alike on weekends, so don't expect solitude' — a reasonable claim for a front-country route but not independently verifiable here"
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "No assertion checks whether the writing is accurate — a fictional description that invented the road climb and ponderosa singletrack would also pass all five. Consider an assertion like 'route-specific-details: Describes the actual character of the route (paved climb, singletrack return) rather than generic trail run language.'"
+      },
+      {
+        "assertion": "voice-conversational",
+        "reason": "This assertion is fairly easy to satisfy with a single colloquial phrase dropped into otherwise brochure prose. A stronger version would require the conversational register to be sustained throughout, not just present somewhere in the text."
+      }
+    ],
+    "overall": "Evals are well-targeted for the style goals. The main gap is that no assertion guards against factual invention — a hallucinated description of a completely different route could pass all five."
+  }
+}
