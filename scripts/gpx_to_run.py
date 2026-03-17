@@ -51,18 +51,26 @@ def parse_gpx(gpx_path: Path) -> dict:
     with gpx_path.open() as f:
         gpx = gpxpy.parse(f)
 
-    if not gpx.tracks:
-        raise ValueError("no tracks found in GPX file")
+    if gpx.tracks:
+        all_points = [
+            pt
+            for track in gpx.tracks
+            for seg in track.segments
+            for pt in seg.points
+        ]
+        distance_m = gpx.length_2d()
+        uphill_m, _ = gpx.get_uphill_downhill()
+    elif gpx.routes:
+        all_points = [pt for route in gpx.routes for pt in route.points]
+        distance_m = sum(route.length_2d() for route in gpx.routes)
+        uphill_m = sum(
+            (route.get_uphill_downhill()[0] or 0) for route in gpx.routes
+        )
+    else:
+        raise ValueError("no tracks or routes found in GPX file")
 
-    # Flatten all trackpoints across tracks and segments
-    all_points = [
-        pt
-        for track in gpx.tracks
-        for seg in track.segments
-        for pt in seg.points
-    ]
     if not all_points:
-        raise ValueError("no trackpoints found in GPX file")
+        raise ValueError("no points found in GPX file")
 
     # Validate elevation data before calculating gain
     elevations = [pt.elevation for pt in all_points if pt.elevation is not None]
@@ -70,10 +78,9 @@ def parse_gpx(gpx_path: Path) -> dict:
         raise ValueError("no elevation data found in GPX file")
 
     # 2D distance in miles
-    distance_mi = round(gpx.length_2d() / M_PER_MILE, 1)
+    distance_mi = round(distance_m / M_PER_MILE, 1)
 
     # Cumulative elevation gain (uphill only), rounded to nearest 10 ft
-    uphill_m, _ = gpx.get_uphill_downhill()
     if uphill_m is None:
         raise ValueError("could not calculate elevation gain")
     elevation_gain_ft = int(round(uphill_m * M_TO_FT / 10) * 10)
