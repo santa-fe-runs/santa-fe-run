@@ -408,16 +408,25 @@ h2.climate-section-title + .climate-outlook-header {
 
   function initOutlookSelect() {
     const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const currentMonth = new Date().getMonth(); // 0-indexed
+    const now = new Date();
+    const currentMonth = now.getMonth(); // 0-indexed
+    const currentYear  = now.getFullYear();
     const sel = document.getElementById('outlook-select');
 
     for (let lead = 1; lead <= 13; lead++) {
-      const m0 = (currentMonth + lead - 1) % 12;
-      const m2 = (currentMonth + lead + 1) % 12;
+      const startOffset = currentMonth + lead - 1;
+      const endOffset   = currentMonth + lead + 1;
+      const m0 = startOffset % 12;
+      const m2 = endOffset % 12;
+      const y0 = currentYear + Math.floor(startOffset / 12);
+      const y2 = currentYear + Math.floor(endOffset / 12);
+      const label = y0 === y2
+        ? `${MONTHS[m0]} – ${MONTHS[m2]} ${y0}`
+        : `${MONTHS[m0]} ${y0} – ${MONTHS[m2]} ${y2}`;
       const n  = String(lead).padStart(2, '0');
       const opt = document.createElement('option');
       opt.value = n;
-      opt.textContent = `${MONTHS[m0]} – ${MONTHS[m2]}`;
+      opt.textContent = label;
       sel.appendChild(opt);
     }
 
