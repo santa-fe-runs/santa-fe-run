@@ -64,13 +64,13 @@ noindex: true
   const DATA_URL = 'https://nwcc-apps.sc.egov.usda.gov/awdb/site-plots/POR/PREC/NM/Santa%20Fe.json';
 
   const COLORS = {
-    band10_90: 'rgba(78, 138, 52, 0.12)',
-    band30_70: 'rgba(78, 138, 52, 0.22)',
-    historical: 'rgba(158, 132, 104, 0.18)',
-    medianPor:  '#2D5A20',
-    median9120: '#B99050',
-    current:    '#4E8A34',
-    minmax:     'rgba(158, 132, 104, 0.45)',
+    band10_90:  'rgba(100, 180, 255, 0.18)',   // light blue wash
+    band30_70:  'rgba(60,  140, 230, 0.30)',   // stronger blue fill
+    historical: 'rgba(158, 132, 104, 0.25)',   // muted tan lines
+    medianPor:  '#1B3A14',                     // deep forest green, solid
+    median9120: '#C07A00',                     // amber/gold, solid
+    current:    '#D93025',                     // bold red — pops over everything
+    minmax:     'rgba(90, 70, 40, 0.50)',      // dark brown dashes
   };
 
   async function buildChart() {
@@ -196,8 +196,8 @@ noindex: true
       label: 'Median (POR)',
       data: series('Median (POR)'),
       borderColor: COLORS.medianPor,
-      borderWidth: 2,
-      borderDash: [6, 4],
+      borderWidth: 2.5,
+      borderDash: [8, 5],
       pointRadius: 0,
       fill: false,
       tension: 0.2,
@@ -209,8 +209,8 @@ noindex: true
       label: "Median ('91–'20)",
       data: series("Median ('91-'20)"),
       borderColor: COLORS.median9120,
-      borderWidth: 2,
-      borderDash: [4, 4],
+      borderWidth: 2.5,
+      borderDash: [5, 5],
       pointRadius: 0,
       fill: false,
       tension: 0.2,
@@ -222,7 +222,7 @@ noindex: true
       label: `${currentYear} (current)`,
       data: series(currentYear, true),
       borderColor: COLORS.current,
-      borderWidth: 2.5,
+      borderWidth: 3,
       pointRadius: 0,
       fill: false,
       tension: 0.2,
