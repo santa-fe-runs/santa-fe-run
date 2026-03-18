@@ -28,18 +28,18 @@ noindex: true
         Data: <a href="https://www.nrcs.usda.gov/wps/portal/wcc/home/" target="_blank" rel="noopener">NRCS AWDB</a> &mdash; Santa Fe SNOTEL station &mdash; fetched live on page load.
       </p>
 
+      <div class="climate-outlook-header">
+        <label class="climate-outlook-label" for="outlook-select">3-Month Outlook</label>
+        <select id="outlook-select" class="climate-outlook-select"></select>
+      </div>
       <div class="climate-outlooks">
         <figure class="climate-outlook-item">
-          <figcaption class="climate-outlook-title">3-Month Temperature Outlook</figcaption>
-          <img src="https://www.cpc.ncep.noaa.gov/products/predictions/long_range/lead01/off01_temp.gif"
-               alt="NOAA CPC 3-month temperature outlook map"
-               class="climate-outlook-img">
+          <figcaption class="climate-outlook-title">Temperature</figcaption>
+          <img id="outlook-temp" alt="NOAA CPC 3-month temperature outlook map" class="climate-outlook-img">
         </figure>
         <figure class="climate-outlook-item">
-          <figcaption class="climate-outlook-title">3-Month Precipitation Outlook</figcaption>
-          <img src="https://www.cpc.ncep.noaa.gov/products/predictions/long_range/lead01/off01_prcp.gif"
-               alt="NOAA CPC 3-month precipitation outlook map"
-               class="climate-outlook-img">
+          <figcaption class="climate-outlook-title">Precipitation</figcaption>
+          <img id="outlook-prcp" alt="NOAA CPC 3-month precipitation outlook map" class="climate-outlook-img">
         </figure>
       </div>
       <p class="climate-source">
@@ -104,11 +104,48 @@ noindex: true
   border-color: var(--forest);
   color: #fff;
 }
+.climate-outlook-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-top: var(--sp-10);
+  margin-bottom: var(--sp-4);
+}
+.climate-outlook-label {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--earth-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.climate-outlook-select {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--earth);
+  background: var(--sand-light);
+  border: 1.5px solid var(--tan-light);
+  border-radius: var(--radius-full);
+  padding: var(--sp-2) var(--sp-5);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C4B2E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--sp-4) center;
+  padding-right: var(--sp-10);
+  transition: border-color var(--transition-fast);
+}
+.climate-outlook-select:hover,
+.climate-outlook-select:focus {
+  border-color: var(--forest-mid);
+  outline: none;
+}
 .climate-outlooks {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--sp-6);
-  margin-top: var(--sp-10);
 }
 @media (max-width: 600px) {
   .climate-outlooks {
@@ -318,6 +355,31 @@ noindex: true
     }
   }
 
+  function initOutlookSelect() {
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const currentMonth = new Date().getMonth(); // 0-indexed
+    const sel = document.getElementById('outlook-select');
+
+    for (let lead = 1; lead <= 13; lead++) {
+      const m0 = (currentMonth + lead - 1) % 12;
+      const m2 = (currentMonth + lead + 1) % 12;
+      const n  = String(lead).padStart(2, '0');
+      const opt = document.createElement('option');
+      opt.value = n;
+      opt.textContent = `${MONTHS[m0]} – ${MONTHS[m2]}`;
+      sel.appendChild(opt);
+    }
+
+    function updateOutlookImages(n) {
+      const base = `https://www.cpc.ncep.noaa.gov/products/predictions/long_range/lead${n}`;
+      document.getElementById('outlook-temp').src = `${base}/off${n}_temp.gif`;
+      document.getElementById('outlook-prcp').src = `${base}/off${n}_prcp.gif`;
+    }
+
+    updateOutlookImages('01');
+    sel.addEventListener('change', () => updateOutlookImages(sel.value));
+  }
+
   function init() {
     document.querySelectorAll('.climate-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -329,6 +391,7 @@ noindex: true
       });
     });
     loadAndRender('prec');
+    initOutlookSelect();
   }
 
   if (document.readyState === 'loading') {
