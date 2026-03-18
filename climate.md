@@ -9,13 +9,14 @@ noindex: true
 <div class="guide-page">
   <div class="guide-hero">
     <div class="container">
-      <h1 class="guide-title">Santa Fe Precipitation</h1>
-      <p class="guide-subtitle">Cumulative water-year precipitation &mdash; period of record</p>
+      <h1 class="guide-title">Climate</h1>
+      <p class="guide-subtitle">How Snowy? How Wet? How Hot?</p>
     </div>
   </div>
 
   <div class="guide-body">
     <div class="container">
+      <h2 class="climate-section-title">Period of Record</h2>
       <div class="climate-toggle" role="group" aria-label="Select dataset">
         <button class="climate-btn active" data-key="prec">Total Precipitation</button>
         <button class="climate-btn" data-key="wteq">Snow Water Equivalent</button>
@@ -28,8 +29,9 @@ noindex: true
         Data: <a href="https://www.nrcs.usda.gov/wps/portal/wcc/home/" target="_blank" rel="noopener">NRCS AWDB</a> &mdash; Santa Fe SNOTEL station &mdash; fetched live on page load.
       </p>
 
+      <h2 class="climate-section-title">Seasonal Outlook</h2>
       <div class="climate-outlook-header">
-        <label class="climate-outlook-label" for="outlook-select">3-Month Outlook</label>
+        <label class="climate-outlook-label" for="outlook-select">Period</label>
         <select id="outlook-select" class="climate-outlook-select"></select>
       </div>
       <div class="climate-outlooks">
@@ -50,6 +52,18 @@ noindex: true
 </div>
 
 <style>
+.climate-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 500;
+  color: var(--earth);
+  margin-bottom: var(--sp-4);
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--tan-light);
+}
+.climate-section-title + * {
+  margin-top: 0;
+}
 .climate-chart-wrap {
   position: relative;
   background: var(--sand-light);
@@ -108,8 +122,13 @@ noindex: true
   display: flex;
   align-items: center;
   gap: var(--sp-4);
-  margin-top: var(--sp-10);
   margin-bottom: var(--sp-4);
+}
+h2.climate-section-title + .climate-outlook-header {
+  margin-top: 0;
+}
+.climate-section-title:not(:first-child) {
+  margin-top: var(--sp-12);
 }
 .climate-outlook-label {
   font-family: var(--font-body);
