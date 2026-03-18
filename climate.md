@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Climate"
-description: "Santa Fe cumulative precipitation by water year, from the NRCS Snow Survey."
+description: "How snowy? How wet?"
 permalink: /climate/
 noindex: true
 ---
@@ -26,6 +26,24 @@ noindex: true
       </div>
       <p class="climate-source">
         Data: <a href="https://www.nrcs.usda.gov/wps/portal/wcc/home/" target="_blank" rel="noopener">NRCS AWDB</a> &mdash; Santa Fe SNOTEL station &mdash; fetched live on page load.
+      </p>
+
+      <div class="climate-outlooks">
+        <figure class="climate-outlook-item">
+          <figcaption class="climate-outlook-title">3-Month Temperature Outlook</figcaption>
+          <img src="https://www.cpc.ncep.noaa.gov/products/predictions/long_range/lead01/off01_temp.gif"
+               alt="NOAA CPC 3-month temperature outlook map"
+               class="climate-outlook-img">
+        </figure>
+        <figure class="climate-outlook-item">
+          <figcaption class="climate-outlook-title">3-Month Precipitation Outlook</figcaption>
+          <img src="https://www.cpc.ncep.noaa.gov/products/predictions/long_range/lead01/off01_prcp.gif"
+               alt="NOAA CPC 3-month precipitation outlook map"
+               class="climate-outlook-img">
+        </figure>
+      </div>
+      <p class="climate-source">
+        Outlooks: <a href="https://www.cpc.ncep.noaa.gov/" target="_blank" rel="noopener">NOAA Climate Prediction Center</a>
       </p>
     </div>
   </div>
@@ -85,6 +103,36 @@ noindex: true
   background: var(--forest);
   border-color: var(--forest);
   color: #fff;
+}
+.climate-outlooks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-6);
+  margin-top: var(--sp-10);
+}
+@media (max-width: 600px) {
+  .climate-outlooks {
+    grid-template-columns: 1fr;
+  }
+}
+.climate-outlook-item {
+  margin: 0;
+}
+.climate-outlook-title {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--earth-mid);
+  margin-bottom: var(--sp-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.climate-outlook-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--tan-light);
 }
 </style>
 
