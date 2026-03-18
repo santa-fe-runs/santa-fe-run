@@ -16,7 +16,7 @@ noindex: true
 
   <div class="guide-body">
     <div class="container">
-      <h2 class="climate-section-title">Period of Record</h2>
+      <h2 class="climate-section-title">Current Water Year Precipitation</h2>
       <div class="climate-toggle" role="group" aria-label="Select dataset">
         <button class="climate-btn active" data-key="prec">Total Precipitation</button>
         <button class="climate-btn" data-key="wteq">Snow Water Equivalent</button>
@@ -319,6 +319,16 @@ h2.climate-section-title + .climate-outlook-header {
             },
             tooltip: {
               filter: item => item.dataset.label !== '10th percentile' && item.dataset.label !== '30th percentile',
+              itemSort: (a, b) => {
+                const rank = lbl => {
+                  if (lbl.includes('current')) return 0;
+                  if (lbl.includes('Median'))  return 1;
+                  if (lbl.includes('band'))    return 2;
+                  if (lbl === 'Max' || lbl === 'Min') return 3;
+                  return 4; // historical years
+                };
+                return rank(a.dataset.label) - rank(b.dataset.label);
+              },
               callbacks: {
                 title: ctx => {
                   const [mm, dd] = ctx[0].label.split('-');
