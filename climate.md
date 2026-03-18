@@ -16,17 +16,22 @@ noindex: true
 
   <div class="guide-body">
     <div class="container">
-      <h2 class="climate-section-title">Current Water Year Precipitation</h2>
-      <div class="climate-toggle" role="group" aria-label="Select dataset">
-        <button class="climate-btn active" data-key="prec">Total Precipitation</button>
-        <button class="climate-btn" data-key="wteq">Snow Water Equivalent</button>
+      <h2 class="climate-section-title">Current Water Year Statistics</h2>
+      <div class="climate-toggle">
+        <label class="climate-outlook-label" for="dataset-select">Dataset</label>
+        <select id="dataset-select" class="climate-outlook-select">
+          <option value="prec">Total Precipitation</option>
+          <option value="wteq">Snow Water Equivalent</option>
+          <option value="snwd">Snow Depth</option>
+          <option value="tavg">Avg Temperature</option>
+        </select>
       </div>
       <div class="climate-chart-wrap">
         <canvas id="prec-chart" aria-label="Santa Fe climate chart" role="img"></canvas>
         <p class="climate-loading" id="prec-status">Loading&hellip;</p>
       </div>
-      <p class="climate-source">
-        Data: <a href="https://www.nrcs.usda.gov/wps/portal/wcc/home/" target="_blank" rel="noopener">NRCS AWDB</a> &mdash; Santa Fe SNOTEL station &mdash; fetched live on page load.
+      <p class="climate-note">
+        Data from the <a href="https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=922" target="_blank" rel="noopener">Santa Fe SNOTEL station</a> at 11,500&nbsp;ft &mdash; fetched live on page load.
       </p>
 
       <h2 class="climate-section-title">Seasonal Outlook</h2>
@@ -92,31 +97,20 @@ noindex: true
 .climate-source a {
   color: var(--earth-mid);
 }
+.climate-note {
+  font-size: 0.8rem;
+  color: var(--earth-light);
+  margin-top: var(--sp-2);
+  margin-bottom: 0;
+}
+.climate-note a {
+  color: var(--earth-mid);
+}
 .climate-toggle {
   display: flex;
-  gap: var(--sp-2);
+  align-items: center;
+  gap: var(--sp-4);
   margin-bottom: var(--sp-4);
-}
-.climate-btn {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding: var(--sp-2) var(--sp-5);
-  border-radius: var(--radius-full);
-  border: 1.5px solid var(--tan-light);
-  background: transparent;
-  color: var(--earth-mid);
-  cursor: pointer;
-  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
-}
-.climate-btn:hover {
-  border-color: var(--forest-mid);
-  color: var(--forest-mid);
-}
-.climate-btn.active {
-  background: var(--forest);
-  border-color: var(--forest);
-  color: #fff;
 }
 .climate-outlook-header {
   display: flex;
@@ -197,12 +191,28 @@ h2.climate-section-title + .climate-outlook-header {
 (function () {
   const DATASETS = {
     prec: {
-      url:    'https://nwcc-apps.sc.egov.usda.gov/awdb/site-plots/POR/PREC/NM/Santa%20Fe.json',
-      yLabel: 'Cumulative precipitation (inches)',
+      url:      'https://nwcc-apps.sc.egov.usda.gov/awdb/site-plots/POR/PREC/NM/Santa%20Fe.json',
+      yLabel:   'Cumulative precipitation (inches)',
+      unit:     '"',
+      trimMode: 'positive',  // trim trailing zeros (cumulative series)
     },
     wteq: {
-      url:    'https://nwcc-apps.sc.egov.usda.gov/awdb/site-plots/POR/WTEQ/NM/Santa%20Fe.json',
-      yLabel: 'Snow water equivalent (inches)',
+      url:      'https://nwcc-apps.sc.egov.usda.gov/awdb/site-plots/POR/WTEQ/NM/Santa%20Fe.json',
+      yLabel:   'Snow water equivalent (inches)',
+      unit:     '"',
+      trimMode: 'positive',
+    },
+    snwd: {
+      url:      'https://nwcc-apps.sc.egov.usda.gov/awdb/site-plots/POR/SNWD/NM/Santa%20Fe.json',
+      yLabel:   'Snow depth (inches)',
+      unit:     '"',
+      trimMode: 'nonnull',
+    },
+    tavg: {
+      url:      'https://nwcc-apps.sc.egov.usda.gov/awdb/site-plots/POR/TAVG/NM/Santa%20Fe.json',
+      yLabel:   'Daily average temperature (°F)',
+      unit:     '°F',
+      trimMode: 'nonnull',
     },
   };
 
@@ -223,18 +233,22 @@ h2.climate-section-title + .climate-outlook-header {
   let chart = null;
   let activeKey = 'prec';
 
-  function series(data, key, trimTrailing) {
+  function series(data, key, trimMode) {
     const vals = data.map(r => r[key] ?? null);
-    if (!trimTrailing) return vals;
+    if (!trimMode) return vals;
     let last = -1;
     for (let i = 0; i < vals.length; i++) {
-      if (vals[i] !== null && vals[i] > 0) last = i;
-      if (vals[i] === 0 && i < 10) last = i;
+      if (trimMode === 'positive') {
+        if (vals[i] !== null && vals[i] > 0) last = i;
+        if (vals[i] === 0 && i < 10) last = i;  // keep leading zeros
+      } else {
+        if (vals[i] !== null) last = i;
+      }
     }
     return vals.map((v, i) => (i <= last ? v : null));
   }
 
-  function buildDatasets(data, currentYear, historicalYears) {
+  function buildDatasets(data, currentYear, historicalYears, trimMode) {
     const ds = [];
 
     // 10–90% band (filled between two anchor lines)
@@ -255,11 +269,13 @@ h2.climate-section-title + .climate-outlook-header {
     ds.push({ label: 'Min', data: series(data, 'Min'), borderColor: COLORS.minmax, borderWidth: 1, borderDash: [3, 4], pointRadius: 0, fill: false, order: 7 });
 
     // Medians
-    ds.push({ label: 'Median (POR)',     data: series(data, 'Median (POR)'),      borderColor: COLORS.medianPor,  borderWidth: 2.5, borderDash: [8, 5], pointRadius: 0, fill: false, tension: 0.2, order: 6 });
-    ds.push({ label: "Median ('91–'20)", data: series(data, "Median ('91-'20)"),  borderColor: COLORS.median9120, borderWidth: 2.5, borderDash: [5, 5], pointRadius: 0, fill: false, tension: 0.2, order: 5 });
+    ds.push({ label: 'Median (POR)', data: series(data, 'Median (POR)'), borderColor: COLORS.medianPor, borderWidth: 2.5, borderDash: [8, 5], pointRadius: 0, fill: false, tension: 0.2, order: 6 });
+    if (data[0]["Median ('91-'20)"] !== undefined) {
+      ds.push({ label: "Median ('91–'20)", data: series(data, "Median ('91-'20)"), borderColor: COLORS.median9120, borderWidth: 2.5, borderDash: [5, 5], pointRadius: 0, fill: false, tension: 0.2, order: 5 });
+    }
 
     // Current year
-    ds.push({ label: `${currentYear} (current)`, data: series(data, currentYear, true), borderColor: COLORS.current, borderWidth: 3, pointRadius: 0, fill: false, tension: 0.2, order: 1 });
+    ds.push({ label: `${currentYear} (current)`, data: series(data, currentYear, trimMode), borderColor: COLORS.current, borderWidth: 3, pointRadius: 0, fill: false, tension: 0.2, order: 1 });
 
     return ds;
   }
@@ -290,13 +306,19 @@ h2.climate-section-title + .climate-outlook-header {
     const historicalYears = yearKeys.slice(0, -1);
     const legendItems = ['10%–90% band', '30%–70% band', 'Median (POR)', "Median ('91–'20)", `${currentYear} (current)`, 'Max', 'Min'];
 
-    const datasets = buildDatasets(data, currentYear, historicalYears);
+    const datasets = buildDatasets(data, currentYear, historicalYears, cfg.trimMode);
 
     if (chart) {
       chart.data.labels   = labels;
       chart.data.datasets = datasets;
       chart.options.plugins.legend.labels.filter = item => legendItems.includes(item.text);
       chart.options.scales.y.title.text = cfg.yLabel;
+      chart.options.scales.y.ticks.callback = v => `${v}${cfg.unit}`;
+      chart.options.plugins.tooltip.callbacks.label = ctx => {
+        const v = ctx.parsed.y;
+        if (v === null || v === undefined) return null;
+        return `${ctx.dataset.label}: ${v.toFixed(1)}${cfg.unit}`;
+      };
       chart.update('none');
     } else {
       chart = new Chart(canvas, {
@@ -338,7 +360,7 @@ h2.climate-section-title + .climate-outlook-header {
                 label: ctx => {
                   const v = ctx.parsed.y;
                   if (v === null || v === undefined) return null;
-                  return `${ctx.dataset.label}: ${v.toFixed(1)}"`;
+                  return `${ctx.dataset.label}: ${v.toFixed(1)}${cfg.unit}`;
                 },
               },
               bodyFont:  { family: "'DM Sans', system-ui, sans-serif", size: 12 },
@@ -374,7 +396,7 @@ h2.climate-section-title + .climate-outlook-header {
               ticks: {
                 font: { family: "'DM Sans', system-ui, sans-serif", size: 11 },
                 color: '#7A6347',
-                callback: v => `${v}"`,
+                callback: v => `${v}${cfg.unit}`,
               },
               grid: { color: 'rgba(217, 192, 143, 0.25)' },
             },
@@ -410,15 +432,8 @@ h2.climate-section-title + .climate-outlook-header {
   }
 
   function init() {
-    document.querySelectorAll('.climate-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const key = btn.dataset.key;
-        if (key === activeKey) return;
-        activeKey = key;
-        document.querySelectorAll('.climate-btn').forEach(b => b.classList.toggle('active', b.dataset.key === key));
-        loadAndRender(key);
-      });
-    });
+    const sel = document.getElementById('dataset-select');
+    sel.addEventListener('change', () => loadAndRender(sel.value));
     loadAndRender('prec');
     initOutlookSelect();
   }
