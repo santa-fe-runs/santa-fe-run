@@ -14,7 +14,7 @@ best_dates:
 trailhead:
   lat: 35.7956
   lng: -105.8047
-  address: "Ski Road, New Mexico"
+  address: "Winsor Trailhead"
 parking: 2
 gpx: "/assets/gpx/3_Peaks_Loop.gpx"
 caltopo_url: ""

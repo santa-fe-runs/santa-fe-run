@@ -14,7 +14,7 @@ best_dates:
 trailhead:
   lat: 35.7772
   lng: -105.8105
-  address: "NM 475, New Mexico"
+  address: "Aspen Vista Picnic Area"
 parking: 4
 gpx: "/assets/gpx/Aspen_Vista.gpx"
 caltopo_url: ""

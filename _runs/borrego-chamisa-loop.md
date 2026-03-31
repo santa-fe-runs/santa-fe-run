@@ -14,7 +14,7 @@ best_dates:
 trailhead:
   lat: 35.7462
   lng: -105.8346
-  address: "Borrego Connector, New Mexico"
+  address: "Borrego Trailhead"
 parking: 2
 gpx: "/assets/gpx/Borrego_Chamisa_Loop.gpx"
 caltopo_url: ""

@@ -6,7 +6,7 @@ altitude_range:
   min: 7230
   max: 7850
 area: winsor-corridor
-difficulty: blue
+difficulty: green
 popularity: 2
 best_dates:
   - start: "04-01"
@@ -14,7 +14,7 @@ best_dates:
 trailhead:
   lat: 35.726
   lng: -105.8868
-  address: "Hyde Park Road, Santa Fe, New Mexico"
+  address: "Little Tesuque Trailhead"
 parking: 5
 gpx: "/assets/gpx/Little_Tesuque_Loop.gpx"
 caltopo_url: ""

@@ -14,7 +14,7 @@ best_dates:
 trailhead:
   lat: 35.789
   lng: -105.8086
-  address: "Winsor Trail (254), New Mexico"
+  address: "Norski Trailhead"
 parking: 3
 gpx: "/assets/gpx/Rio_en_Medio_Loop.gpx"
 caltopo_url: ""

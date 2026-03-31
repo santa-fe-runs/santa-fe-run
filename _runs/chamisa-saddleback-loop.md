@@ -14,7 +14,7 @@ best_dates:
 trailhead:
   lat: 35.7288
   lng: -105.866
-  address: "Chamisa Trail Alt Route, New Mexico"
+  address: "Chamisa Trailhead"
 parking: 3
 gpx: "/assets/gpx/Chamisa_Saddleback_Loop.gpx"
 caltopo_url: ""

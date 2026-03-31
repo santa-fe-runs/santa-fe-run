@@ -14,7 +14,7 @@ best_dates:
 trailhead:
   lat: 35.7956
   lng: -105.8048
-  address: "Winsor Trail (Trail 254), New Mexico"
+  address: "Winsor Trailhead"
 parking: 2
 gpx: "/assets/gpx/Rio_Nambe_Loop.gpx"
 caltopo_url: ""

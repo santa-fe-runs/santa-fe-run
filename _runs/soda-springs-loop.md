@@ -5,7 +5,7 @@ elevation_gain: 1310
 altitude_range:
   min: 5470
   max: 6290
-difficulty: blue
+difficulty: black
 best_dates:
   - start: "10-01"
     end: "05-01"

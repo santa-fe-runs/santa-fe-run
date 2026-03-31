@@ -14,7 +14,7 @@ best_dates:
 trailhead:
   lat: 35.7464
   lng: -105.8345
-  address: "Borrego Trail (150), New Mexico"
+  address: "Borrego Trailhead"
 parking: 4
 gpx: "/assets/gpx/Borrego_-_Bear_Wallow.gpx"
 caltopo_url: ""
