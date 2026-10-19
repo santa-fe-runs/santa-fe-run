@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-18T22:45:29-06:00",
+ "fetched_at": "2026-10-18T22:52:27-06:00",
  "races": [
   {
    "id": "rs-185603",
@@ -1057,12 +1057,12 @@
    "registration_open": true
   },
   {
-   "id": "rs-168739",
+   "id": "rs-168739-20261219",
    "source": "RunSignup",
    "name": "GBP Winter Trail Series",
    "url": "https://runsignup.com/Race/NM/Lamy/GBPWinterTrailSeries",
    "date": "2026-12-19",
-   "end_date": "2027-02-20",
+   "end_date": null,
    "city": "Lamy",
    "lat": 35.4807,
    "lng": -105.8802,
@@ -1071,16 +1071,6 @@
     {
      "label": "3.5 Miles",
      "miles": 3.5,
-     "timed": false
-    },
-    {
-     "label": "4.25 Miles",
-     "miles": 4.25,
-     "timed": false
-    },
-    {
-     "label": "6.6 Miles",
-     "miles": 6.6,
      "timed": false
     }
    ],
@@ -1216,6 +1206,26 @@
     {
      "label": "13.1K",
      "miles": 8.14,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-168739-20270116",
+   "source": "RunSignup",
+   "name": "GBP Winter Trail Series",
+   "url": "https://runsignup.com/Race/NM/Lamy/GBPWinterTrailSeries",
+   "date": "2027-01-16",
+   "end_date": null,
+   "city": "Lamy",
+   "lat": 35.4807,
+   "lng": -105.8802,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "4.25 Miles",
+     "miles": 4.25,
      "timed": false
     }
    ],
@@ -1410,6 +1420,26 @@
     }
    ],
    "registration_open": false
+  },
+  {
+   "id": "rs-168739-20270220",
+   "source": "RunSignup",
+   "name": "GBP Winter Trail Series",
+   "url": "https://runsignup.com/Race/NM/Lamy/GBPWinterTrailSeries",
+   "date": "2027-02-20",
+   "end_date": null,
+   "city": "Lamy",
+   "lat": 35.4807,
+   "lng": -105.8802,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "6.6 Miles",
+     "miles": 6.6,
+     "timed": false
+    }
+   ],
+   "registration_open": true
   },
   {
    "id": "us-68205",
@@ -1717,7 +1747,7 @@
    "name": "Capitan Mountain 34 Hour",
    "url": "https://ultrasignup.com/register.aspx?eid=16491",
    "date": "2027-04-17",
-   "end_date": "2027-04-17",
+   "end_date": null,
    "city": "Capitan",
    "lat": 33.5454,
    "lng": -105.572,

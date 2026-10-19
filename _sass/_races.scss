@@ -88,6 +88,99 @@
 
 .races-view[hidden] { display: none; }
 
+// Subscribe menu
+.results-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.subscribe-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 7px var(--sp-4);
+  border: 1.5px solid $tan-300;
+  border-radius: var(--radius-full);
+  background: $color-white;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--earth-mid);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+
+  &::-webkit-details-marker { display: none; }
+  &:hover { background: $tan-100; color: var(--earth); }
+  &:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+
+  .subscribe[open] & { background: $tan-100; color: var(--earth); }
+}
+
+.subscribe-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 50;
+  width: min(340px, calc(100vw - 2 * var(--container-pad)));
+  padding: var(--sp-4);
+  background: $sand-50;
+  border: 1.5px solid $tan-300;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.subscribe-intro {
+  font-size: 0.8125rem;
+  color: var(--earth-mid);
+  margin-bottom: var(--sp-3);
+}
+
+.subscribe-row {
+  padding: var(--sp-3) 0;
+  border-top: 1px solid $tan-200;
+}
+
+.subscribe-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--earth);
+  margin-bottom: var(--sp-2);
+}
+
+.subscribe-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  a, button {
+    padding: 3px var(--sp-3);
+    border: 1px solid $tan-300;
+    border-radius: var(--radius-full);
+    background: $color-white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--forest-mid);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+
+    &:hover { background: $tan-100; border-color: $tan-500; }
+  }
+}
+
+.subscribe-note {
+  padding-top: var(--sp-3);
+  border-top: 1px solid $tan-200;
+  font-size: 0.75rem;
+  color: var(--earth-light);
+}
+
 // Shared bits
 .race-type {
   flex-shrink: 0;

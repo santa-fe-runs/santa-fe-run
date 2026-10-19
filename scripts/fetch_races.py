@@ -140,6 +140,16 @@ def parse_rs_datetime(s: str):
     return dt.datetime.strptime(s, "%m/%d/%Y %H:%M")
 
 
+def cluster_dates(dated, max_gap_days: int = 2):
+    """Group sorted (date, x) pairs into runs where consecutive dates are <= max_gap_days apart."""
+    groups = [[dated[0]]]
+    for item in dated[1:]:
+        if (item[0] - groups[-1][-1][0]).days > max_gap_days:
+            groups.append([])
+        groups[-1].append(item)
+    return groups
+
+
 def fetch_runsignup(today: dt.date, end: dt.date, geocache: dict):
     races = []
     page = 1
@@ -177,41 +187,51 @@ def fetch_runsignup(today: dt.date, end: dt.date, geocache: dict):
             if not events:
                 continue
 
-            distances, seen = [], set()
-            for _, ev in sorted(events, key=lambda e: e[0]):
+            # (date, distance) for every event with a usable distance
+            dated = []
+            for start, ev in sorted(events, key=lambda e: e[0]):
                 label = ev.get("distance") or ev.get("name") or ""
                 d = make_distance(label)
                 if d["miles"] is None and not d["timed"] and ev.get("name"):
                     d = make_distance(ev["name"]) | {"label": label or ev["name"]}
                 if d["miles"] is None and not d["timed"]:
                     continue
-                k = (d["miles"], d["timed"])
-                if k not in seen:
-                    seen.add(k)
-                    distances.append(d)
-            if not distances:
+                dated.append((start.date(), d))
+            if not dated:
                 continue
 
-            start_date = min(e[0] for e in events).date()
-            end_date = max(e[0] for e in events).date()
             is_trail = any(ev.get("event_type") == "trail_race" for _, ev in events)
             addr = race.get("address") or {}
             coords = geocode(geocache, addr.get("city", ""), addr.get("state", "NM"), addr.get("zipcode", ""))
 
-            races.append({
-                "id": f"rs-{race['race_id']}",
-                "source": "RunSignup",
-                "name": html.unescape(race["name"]).strip(),
-                "url": race.get("url"),
-                "date": start_date.isoformat(),
-                "end_date": end_date.isoformat() if end_date != start_date else None,
-                "city": addr.get("city", ""),
-                "lat": coords[0] if coords else None,
-                "lng": coords[1] if coords else None,
-                "type": "trail" if is_trail else classify_type(race["name"], "road"),
-                "distances": distances,
-                "registration_open": race.get("is_registration_open") == "T",
-            })
+            # Series (e.g. one race a month) become one entry per race day/weekend
+            clusters = cluster_dates(dated)
+            for group in clusters:
+                distances, seen = [], set()
+                for _, d in group:
+                    k = (d["miles"], d["timed"])
+                    if k not in seen:
+                        seen.add(k)
+                        distances.append(d)
+                start_date, end_date = group[0][0], group[-1][0]
+                race_id = f"rs-{race['race_id']}"
+                if len(clusters) > 1:
+                    race_id += f"-{start_date.strftime('%Y%m%d')}"
+
+                races.append({
+                    "id": race_id,
+                    "source": "RunSignup",
+                    "name": html.unescape(race["name"]).strip(),
+                    "url": race.get("url"),
+                    "date": start_date.isoformat(),
+                    "end_date": end_date.isoformat() if end_date != start_date else None,
+                    "city": addr.get("city", ""),
+                    "lat": coords[0] if coords else None,
+                    "lng": coords[1] if coords else None,
+                    "type": "trail" if is_trail else classify_type(race["name"], "road"),
+                    "distances": distances,
+                    "registration_open": race.get("is_registration_open") == "T",
+                })
         page += 1
         if len(batch) < 100:
             break
@@ -245,7 +265,8 @@ def fetch_ultrasignup(today: dt.date, end: dt.date):
         end_date = None
         if ev.get("EventDateEnd"):
             try:
-                end_date = dt.datetime.strptime(ev["EventDateEnd"], "%m/%d/%Y").date().isoformat()
+                parsed_end = dt.datetime.strptime(ev["EventDateEnd"], "%m/%d/%Y").date()
+                end_date = parsed_end.isoformat() if parsed_end > date else None
             except ValueError:
                 pass
         labels = [x.strip() for x in (ev.get("Distances") or "").split(",") if x.strip()]

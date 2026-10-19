@@ -643,6 +643,34 @@
     btn.addEventListener("click", () => setView(btn.dataset.view));
   });
 
+  // ─── Subscribe menu ────────────────────────────────────────────────────────
+
+  const subscribe = $("subscribe");
+  if (subscribe) {
+    document.addEventListener("click", (e) => {
+      if (subscribe.open && !subscribe.contains(e.target)) subscribe.open = false;
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && subscribe.open) {
+        subscribe.open = false;
+        subscribe.querySelector("summary").focus();
+      }
+    });
+    subscribe.querySelectorAll(".subscribe-copy").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const done = (msg) => {
+          btn.textContent = msg;
+          setTimeout(() => { btn.textContent = "Copy link"; }, 1600);
+        };
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(btn.dataset.copy).then(() => done("Copied!"), () => window.prompt("Calendar URL:", btn.dataset.copy));
+        } else {
+          window.prompt("Calendar URL:", btn.dataset.copy);
+        }
+      });
+    });
+  }
+
   // ─── Init ──────────────────────────────────────────────────────────────────
 
   readURL();

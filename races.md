@@ -83,10 +83,41 @@ uses_map: true
         <p class="results-count" aria-live="polite">
           Showing <strong id="results-count">0</strong> <span id="results-noun">races</span>
         </p>
-        <div class="view-toggle" role="tablist" aria-label="Display">
-          <button class="view-btn active" type="button" role="tab" data-view="list" aria-selected="true">List</button>
-          <button class="view-btn" type="button" role="tab" data-view="calendar" aria-selected="false">Calendar</button>
-          <button class="view-btn" type="button" role="tab" data-view="map" aria-selected="false">Map</button>
+        <div class="results-actions">
+          <details class="subscribe" id="subscribe">
+            <summary class="subscribe-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Subscribe
+            </summary>
+            <div class="subscribe-menu">
+              <p class="subscribe-intro">Add races to your calendar. New races show up automatically.</p>
+              {% assign feed_base = site.url | append: site.baseurl | append: "/races/" %}
+              {% assign feeds = "all:All races,trail:Trail races,road:Road races" | split: "," %}
+              {% for f in feeds %}
+                {% assign parts = f | split: ":" %}
+                {% assign https_url = feed_base | append: parts[0] | append: ".ics" %}
+                {% assign webcal_url = https_url | replace: "https://", "webcal://" | replace: "http://", "webcal://" %}
+              <div class="subscribe-row">
+                <span class="subscribe-name">{{ parts[1] }}</span>
+                <div class="subscribe-links">
+                  <a href="https://calendar.google.com/calendar/render?cid={{ webcal_url | url_encode }}" target="_blank" rel="noopener">Google</a>
+                  <a href="{{ webcal_url }}">Apple / Outlook</a>
+                  <button type="button" class="subscribe-copy" data-copy="{{ https_url }}">Copy link</button>
+                </div>
+              </div>
+              {% endfor %}
+              <p class="subscribe-note">Google re-checks subscribed calendars on its own schedule, usually within a day.</p>
+            </div>
+          </details>
+
+          <div class="view-toggle" role="tablist" aria-label="Display">
+            <button class="view-btn active" type="button" role="tab" data-view="list" aria-selected="true">List</button>
+            <button class="view-btn" type="button" role="tab" data-view="calendar" aria-selected="false">Calendar</button>
+            <button class="view-btn" type="button" role="tab" data-view="map" aria-selected="false">Map</button>
+          </div>
         </div>
       </div>
 
