@@ -285,7 +285,13 @@
   els.calendar.addEventListener("click", (e) => {
     const raceBtn = e.target.closest("[data-race]");
     if (raceBtn) {
-      openRacePopup(raceById[raceBtn.dataset.race], raceBtn);
+      // A click on a hover preview pins it open
+      if (racePopHover && racePopTrigger === raceBtn && !racePop.hidden) {
+        racePopHover = false;
+        racePop.querySelector(".race-pop-close").focus();
+      } else {
+        openRacePopup(raceById[raceBtn.dataset.race], raceBtn);
+      }
       return;
     }
     const nav = e.target.closest("[data-cal]");
@@ -360,22 +366,64 @@
     racePop.style.top = top + window.scrollY + "px";
   }
 
-  function openRacePopup(r, anchor) {
+  // Hover previews only on devices with a real pointer (touch would fire them on tap)
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const HOVER_OPEN_MS = 150;
+  const HOVER_CLOSE_MS = 250;
+  let racePopHover = false; // opened by hover (closes on leave) vs. click (stays until dismissed)
+  let racePopOpenTimer = null;
+  let racePopCloseTimer = null;
+
+  function openRacePopup(r, anchor, fromHover = false) {
     if (!r) return;
+    clearTimeout(racePopOpenTimer);
+    clearTimeout(racePopCloseTimer);
     racePop.innerHTML = racePopHTML(r);
     racePop.setAttribute("aria-labelledby", "race-pop-title");
     racePop.hidden = false;
     racePopTrigger = anchor;
+    racePopHover = fromHover;
     positionRacePop(anchor);
-    racePop.querySelector(".race-pop-close").focus();
+    if (!fromHover) racePop.querySelector(".race-pop-close").focus();
   }
 
   function closeRacePopup(restoreFocus = true) {
+    clearTimeout(racePopOpenTimer);
+    clearTimeout(racePopCloseTimer);
     if (racePop.hidden) return;
     racePop.hidden = true;
     if (restoreFocus && racePopTrigger && document.body.contains(racePopTrigger)) racePopTrigger.focus();
     racePopTrigger = null;
+    racePopHover = false;
   }
+
+  function scheduleHoverClose() {
+    clearTimeout(racePopOpenTimer);
+    clearTimeout(racePopCloseTimer);
+    if (racePopHover) racePopCloseTimer = setTimeout(() => closeRacePopup(false), HOVER_CLOSE_MS);
+  }
+
+  els.calendar.addEventListener("mouseover", (e) => {
+    if (!canHover.matches) return;
+    const raceBtn = e.target.closest("[data-race]");
+    if (!raceBtn || raceBtn.contains(e.relatedTarget)) return;
+    if (!racePop.hidden && !racePopHover) return; // don't replace a clicked-open popup
+    clearTimeout(racePopCloseTimer);
+    if (racePopTrigger === raceBtn) return;
+    clearTimeout(racePopOpenTimer);
+    racePopOpenTimer = setTimeout(() => openRacePopup(raceById[raceBtn.dataset.race], raceBtn, true), HOVER_OPEN_MS);
+  });
+  els.calendar.addEventListener("mouseout", (e) => {
+    const raceBtn = e.target.closest("[data-race]");
+    if (!raceBtn || raceBtn.contains(e.relatedTarget)) return;
+    if (racePop.contains(e.relatedTarget)) return;
+    scheduleHoverClose();
+  });
+  racePop.addEventListener("mouseenter", () => clearTimeout(racePopCloseTimer));
+  racePop.addEventListener("mouseleave", (e) => {
+    if (racePopTrigger && racePopTrigger.contains(e.relatedTarget)) return;
+    scheduleHoverClose();
+  });
 
   racePop.addEventListener("click", (e) => {
     if (e.target.closest(".race-pop-close")) closeRacePopup();
@@ -418,12 +466,43 @@
     ).join("") + "</div>";
   }
 
-  function showPopup(lngLat, ids) {
+  let popupHover = false; // opened by hover (closes on leave) vs. click (stays until dismissed)
+  let popupCloseTimer = null;
+
+  function showPopup(lngLat, ids, fromHover = false) {
+    clearTimeout(popupCloseTimer);
     if (popup) popup.remove();
+    popupHover = fromHover;
     popup = new maplibregl.Popup({ maxWidth: "300px", offset: 12 })
       .setLngLat(lngLat)
       .setHTML(popupHTML(ids))
       .addTo(map);
+    // Keep a hover popup open while the pointer is over it, so its links stay clickable
+    const el = popup.getElement();
+    el.addEventListener("mouseenter", () => clearTimeout(popupCloseTimer));
+    el.addEventListener("mouseleave", scheduleMapHoverClose);
+  }
+
+  function scheduleMapHoverClose() {
+    clearTimeout(popupCloseTimer);
+    if (!popupHover) return;
+    popupCloseTimer = setTimeout(() => {
+      if (popup && popupHover) popup.remove();
+    }, HOVER_CLOSE_MS);
+  }
+
+  // Calls back with the cluster's race ids when it can't be split by zooming (same-city races)
+  function clusterLeaves(f, cb, onZoom) {
+    const src = map.getSource("races");
+    const clusterId = f.properties.cluster_id;
+    src.getClusterExpansionZoom(clusterId).then((zoom) => {
+      if (zoom > 11 || map.getZoom() >= 10) {
+        return src.getClusterLeaves(clusterId, Infinity, 0).then((leaves) => {
+          cb(leaves.map((l) => l.properties.id));
+        });
+      }
+      if (onZoom) onZoom(zoom);
+    });
   }
 
   function initMap() {
@@ -491,23 +570,41 @@
 
       map.on("click", "race-clusters", (e) => {
         const f = e.features[0];
-        const src = map.getSource("races");
-        const clusterId = f.properties.cluster_id;
-        src.getClusterExpansionZoom(clusterId).then((zoom) => {
-          // Races in the same city share coordinates and never split — list them instead
-          if (zoom > 11 || map.getZoom() >= 10) {
-            return src.getClusterLeaves(clusterId, Infinity, 0).then((leaves) => {
-              showPopup(f.geometry.coordinates, leaves.map((l) => l.properties.id));
-            });
-          }
-          map.easeTo({ center: f.geometry.coordinates, zoom: zoom });
-        });
+        // Races in the same city share coordinates and never split — list them instead
+        clusterLeaves(f, (ids) => showPopup(f.geometry.coordinates, ids),
+          (zoom) => map.easeTo({ center: f.geometry.coordinates, zoom: zoom }));
       });
 
       map.on("click", "race-points", (e) => {
         // Unclustered points can still overlap exactly (same city geocode)
         const ids = e.features.map((f) => f.properties.id);
         showPopup(e.features[0].geometry.coordinates, ids);
+      });
+
+      // Hover previews: points, plus clusters that would list their races on click
+      let hovered = null;
+      map.on("mousemove", (e) => {
+        if (!canHover.matches) return;
+        // Pointer is over the popup itself (it sits inside the map container)
+        if (popup && popup.getElement().contains(e.originalEvent.target)) return;
+        const f = map.queryRenderedFeatures(e.point, { layers: ["race-points", "race-clusters"] });
+        const key = f.length ? f.map((x) => "cluster_id" in x.properties ? "c" + x.properties.cluster_id : x.properties.id).join(",") : null;
+        if (key === hovered) return;
+        hovered = key;
+        if (!key) { scheduleMapHoverClose(); return; }
+        if (popup && popup.isOpen() && !popupHover) return; // don't replace a clicked-open popup
+        if (f[0].layer.id === "race-points") {
+          showPopup(f[0].geometry.coordinates, f.filter((x) => x.layer.id === "race-points").map((x) => x.properties.id), true);
+        } else {
+          clusterLeaves(f[0], (ids) => {
+            if (hovered === key) showPopup(f[0].geometry.coordinates, ids, true);
+          });
+        }
+      });
+      map.getCanvas().addEventListener("mouseleave", (e) => {
+        hovered = null;
+        if (popup && popup.getElement().contains(e.relatedTarget)) return;
+        scheduleMapHoverClose();
       });
 
       ["race-clusters", "race-points"].forEach((layer) => {
