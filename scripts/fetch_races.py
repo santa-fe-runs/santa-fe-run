@@ -264,7 +264,7 @@ def fetch_ultrasignup(today: dt.date, end: dt.date):
             "id": f"us-{ev['EventDateId']}",
             "source": "UltraSignup",
             "name": name,
-            "url": f"https://ultrasignup.com/register.aspx?did={ev['EventDateId']}",
+            "url": f"https://ultrasignup.com/register.aspx?eid={ev['EventId']}",
             "date": date.isoformat(),
             "end_date": end_date,
             "city": ev.get("City", ""),
