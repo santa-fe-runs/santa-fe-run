@@ -428,6 +428,15 @@
   &:hover  { filter: brightness(0.94); }
 }
 
+button.cal-race {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  &:focus-visible { outline: 2px solid var(--tan); outline-offset: 1px; }
+}
+
 .cal-more {
   font-size: 0.6875rem;
   color: var(--earth-light);
@@ -455,12 +464,127 @@
 
 .cal-detail-row {
   display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+
+  .race-name-row, .race-meta, .race-dists { display: flex; }
+  .race-meta { display: block; }
   padding: var(--sp-4) var(--sp-5);
   color: inherit;
   text-decoration: none;
 
   & + & { border-top: 1px solid $tan-200; }
   &:hover { background: $tan-100; }
+}
+
+// ── Race details popup (calendar) ──
+.race-pop {
+  position: absolute;
+  z-index: 300;
+  width: 320px;
+  padding: var(--sp-5);
+  background: $sand-50;
+  border: 1.5px solid $tan-300;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+
+  &[hidden] { display: none; }
+}
+
+.race-pop-close {
+  position: absolute;
+  top: var(--sp-2);
+  right: var(--sp-2);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.375rem;
+  line-height: 1;
+  color: var(--earth-light);
+  transition: background var(--transition-fast), color var(--transition-fast);
+
+  &:hover { background: $tan-100; color: var(--earth); }
+  &:focus-visible { outline: 2px solid var(--tan); outline-offset: 1px; }
+}
+
+.race-pop-tags {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.race-pop-source {
+  font-size: 0.75rem;
+  color: var(--earth-light);
+}
+
+.race-pop-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--forest);
+  padding-right: var(--sp-6);
+}
+
+.race-pop-facts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin: var(--sp-4) 0;
+
+  dt {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--earth-light);
+    margin-bottom: 2px;
+  }
+
+  dd {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--earth);
+  }
+
+  .race-dists { margin-top: 4px; }
+}
+
+.race-pop-cta {
+  display: block;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-md);
+  background: $forest-800;
+  color: $tan-100;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background var(--transition-fast);
+
+  &:hover { background: $forest-700; }
+  &:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+}
+
+@media (max-width: #{$bp-md - 1px}) {
+  .race-pop {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    border-bottom: 0;
+    padding-bottom: calc(var(--sp-6) + env(safe-area-inset-bottom));
+  }
 }
 
 // ── Map ──

@@ -258,7 +258,7 @@
       if (dayRaces.length) {
         html += '<span class="cal-dot-count" aria-hidden="true">' + dayRaces.length + "</span>";
         html += '<ul class="cal-races">' + dayRaces.slice(0, 3).map((r) =>
-          '<li><a class="cal-race cal-race--' + r.type + '" href="' + esc(r.url) + '" target="_blank" rel="noopener" title="' + esc(r.name) + '">' + esc(r.name) + "</a></li>"
+          '<li><button type="button" class="cal-race cal-race--' + r.type + '" data-race="' + esc(r.id) + '" title="' + esc(r.name) + '">' + esc(r.name) + "</button></li>"
         ).join("") + (dayRaces.length > 3 ? '<li class="cal-more">+' + (dayRaces.length - 3) + " more</li>" : "") + "</ul>";
       }
       html += "</div>";
@@ -271,11 +271,11 @@
       html += '<div class="cal-detail"><h3 class="cal-detail-title">' +
         d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }) + "</h3>" +
         byDay[state.calDay].map((r) =>
-          '<a class="cal-detail-row" href="' + esc(r.url) + '" target="_blank" rel="noopener">' +
-            '<div class="race-name-row"><span class="race-name">' + esc(r.name) + "</span>" + typeBadge(r) + "</div>" +
-            '<p class="race-meta">' + esc(r.city) + ", NM · " + esc(r.source) + "</p>" +
-            '<div class="race-dists">' + distanceChips(r) + "</div>" +
-          "</a>"
+          '<button type="button" class="cal-detail-row" data-race="' + esc(r.id) + '">' +
+            '<span class="race-name-row"><span class="race-name">' + esc(r.name) + "</span>" + typeBadge(r) + "</span>" +
+            '<span class="race-meta">' + esc(r.city) + ", NM · " + esc(r.source) + "</span>" +
+            '<span class="race-dists">' + distanceChips(r) + "</span>" +
+          "</button>"
         ).join("") + "</div>";
     }
 
@@ -283,6 +283,11 @@
   }
 
   els.calendar.addEventListener("click", (e) => {
+    const raceBtn = e.target.closest("[data-race]");
+    if (raceBtn) {
+      openRacePopup(raceById[raceBtn.dataset.race], raceBtn);
+      return;
+    }
     const nav = e.target.closest("[data-cal]");
     if (nav) {
       const step = Number(nav.dataset.cal);
@@ -306,6 +311,82 @@
       e.target.click();
     }
   });
+
+  // ─── Race details popup (calendar) ─────────────────────────────────────────
+
+  const raceById = {};
+  races.forEach((r) => { raceById[r.id] = r; });
+
+  const racePop = document.createElement("div");
+  racePop.className = "race-pop";
+  racePop.setAttribute("role", "dialog");
+  racePop.hidden = true;
+  document.body.appendChild(racePop);
+  let racePopTrigger = null;
+
+  function racePopHTML(r) {
+    const start = parseDate(r.date);
+    let when = start.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+    if (r.end_date) {
+      when = formatRange(r) + ", " + start.getFullYear();
+    }
+    return (
+      '<button type="button" class="race-pop-close" aria-label="Close">×</button>' +
+      '<div class="race-pop-tags">' + typeBadge(r) + '<span class="race-pop-source">' + esc(r.source) + "</span></div>" +
+      '<h3 class="race-pop-name" id="race-pop-title">' + esc(r.name) + "</h3>" +
+      '<dl class="race-pop-facts">' +
+        "<div><dt>When</dt><dd>" + esc(when) + "</dd></div>" +
+        "<div><dt>Where</dt><dd>" + esc(r.city) + ", NM</dd></div>" +
+        "<div><dt>Distances</dt><dd class=\"race-dists\">" + distanceChips(r) + "</dd></div>" +
+      "</dl>" +
+      '<a class="race-pop-cta" href="' + esc(r.url) + '" target="_blank" rel="noopener">Register on ' + esc(r.source) + " ↗</a>"
+    );
+  }
+
+  function positionRacePop(anchor) {
+    // Phones get a bottom sheet (CSS); otherwise anchor below (or above) the clicked race
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      racePop.style.top = racePop.style.left = "";
+      return;
+    }
+    const a = anchor.getBoundingClientRect();
+    const w = racePop.offsetWidth;
+    const h = racePop.offsetHeight;
+    const gap = 8;
+    let left = Math.min(Math.max(a.left, 12), window.innerWidth - w - 12);
+    let top = a.bottom + gap;
+    if (top + h > window.innerHeight - 12 && a.top - gap - h > 12) top = a.top - gap - h;
+    racePop.style.left = left + window.scrollX + "px";
+    racePop.style.top = top + window.scrollY + "px";
+  }
+
+  function openRacePopup(r, anchor) {
+    if (!r) return;
+    racePop.innerHTML = racePopHTML(r);
+    racePop.setAttribute("aria-labelledby", "race-pop-title");
+    racePop.hidden = false;
+    racePopTrigger = anchor;
+    positionRacePop(anchor);
+    racePop.querySelector(".race-pop-close").focus();
+  }
+
+  function closeRacePopup(restoreFocus = true) {
+    if (racePop.hidden) return;
+    racePop.hidden = true;
+    if (restoreFocus && racePopTrigger && document.body.contains(racePopTrigger)) racePopTrigger.focus();
+    racePopTrigger = null;
+  }
+
+  racePop.addEventListener("click", (e) => {
+    if (e.target.closest(".race-pop-close")) closeRacePopup();
+  });
+  document.addEventListener("click", (e) => {
+    if (!racePop.hidden && !racePop.contains(e.target) && !e.target.closest("[data-race]")) closeRacePopup(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeRacePopup();
+  });
+  window.addEventListener("resize", () => closeRacePopup(false));
 
   // ─── Map view ──────────────────────────────────────────────────────────────
 
@@ -452,6 +533,7 @@
 
   function render() {
     const list = filtered();
+    closeRacePopup(false);
 
     els.count.textContent = list.length;
     els.noun.textContent = list.length === 1 ? "race" : "races";
