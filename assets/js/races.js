@@ -478,6 +478,81 @@
       if (map) map.resize();
       updateMap(list);
     }
+
+    // Debounced: Safari throttles replaceState (slider drags fire many inputs)
+    clearTimeout(urlTimer);
+    urlTimer = setTimeout(writeURL, 200);
+  }
+
+  let urlTimer = null;
+
+  // ─── URL state ─────────────────────────────────────────────────────────────
+  // ?view=calendar&type=trail&min=13.1&max=31.1&from=2026-11-01&to=2027-03-31&month=2026-12
+  // Defaults are omitted so the bare /races/ URL means "everything upcoming".
+
+  const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+  function nearestStop(mi) {
+    let best = 0;
+    DISTANCE_STOPS.forEach((s, i) => {
+      if (Math.abs(s.mi - mi) < Math.abs(DISTANCE_STOPS[best].mi - mi)) best = i;
+    });
+    return best;
+  }
+
+  function writeURL() {
+    const p = new URLSearchParams();
+    if (state.view !== "list") p.set("view", state.view);
+    if (state.types.size === 1) p.set("type", [...state.types][0]);
+    if (state.types.size === 0) p.set("type", "none");
+    if (state.distMin !== 0) p.set("min", DISTANCE_STOPS[state.distMin].mi);
+    if (state.distMax !== LAST_STOP) p.set("max", DISTANCE_STOPS[state.distMax].mi);
+    if (state.from && state.from !== todayStr) p.set("from", state.from);
+    if (state.to) p.set("to", state.to);
+    if (state.view === "calendar" && state.calMonth) {
+      p.set("month", state.calMonth.y + "-" + String(state.calMonth.m + 1).padStart(2, "0"));
+    }
+    const qs = p.toString().replace(/%2C/g, ",");
+    const url = location.pathname + (qs ? "?" + qs : "");
+    if (url !== location.pathname + location.search || location.hash) {
+      history.replaceState(null, "", url);
+    }
+  }
+
+  function readURL() {
+    const p = new URLSearchParams(location.search);
+
+    // Legacy #map / #calendar links
+    state.view = p.get("view") || location.hash.slice(1) || "list";
+
+    const type = p.get("type");
+    if (type === "trail" || type === "road") state.types = new Set([type]);
+    else if (type === "none") state.types = new Set();
+
+    const min = parseFloat(p.get("min"));
+    const max = parseFloat(p.get("max"));
+    if (!isNaN(min)) els.distMin.value = nearestStop(min);
+    if (!isNaN(max)) els.distMax.value = nearestStop(max);
+    if (Number(els.distMin.value) > Number(els.distMax.value)) {
+      [els.distMin.value, els.distMax.value] = [els.distMax.value, els.distMin.value];
+    }
+
+    const from = p.get("from");
+    const to = p.get("to");
+    // Shared links can go stale — never show races before today
+    if (from && DATE_RE.test(from)) state.from = from < todayStr ? todayStr : from;
+    if (to && DATE_RE.test(to)) state.to = to < state.from ? "" : to;
+
+    const month = /^(\d{4})-(\d{2})$/.exec(p.get("month") || "");
+    if (month) state.calMonth = { y: Number(month[1]), m: Number(month[2]) - 1 };
+  }
+
+  function syncTypeChips() {
+    els.typeChips.forEach((c) => {
+      const on = state.types.has(c.dataset.type);
+      c.classList.toggle("active", on);
+      c.setAttribute("aria-pressed", on ? "true" : "false");
+    });
   }
 
   // ─── Controls ──────────────────────────────────────────────────────────────
@@ -505,8 +580,7 @@
     chip.addEventListener("click", () => {
       const t = chip.dataset.type;
       if (state.types.has(t)) state.types.delete(t); else state.types.add(t);
-      chip.classList.toggle("active", state.types.has(t));
-      chip.setAttribute("aria-pressed", state.types.has(t) ? "true" : "false");
+      syncTypeChips();
       render();
     });
   });
@@ -535,7 +609,7 @@
 
   els.clear.addEventListener("click", () => {
     state.types = new Set(["trail", "road"]);
-    els.typeChips.forEach((c) => { c.classList.add("active"); c.setAttribute("aria-pressed", "true"); });
+    syncTypeChips();
     els.distMin.value = 0;
     els.distMax.value = LAST_STOP;
     updateSlider();
@@ -566,21 +640,20 @@
   }
 
   els.viewBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      history.replaceState(null, "", "#" + btn.dataset.view);
-      setView(btn.dataset.view);
-    });
+    btn.addEventListener("click", () => setView(btn.dataset.view));
   });
 
   // ─── Init ──────────────────────────────────────────────────────────────────
 
+  readURL();
+  syncTypeChips();
   updateSlider();
   syncDateInputs();
 
-  function start() { setView(location.hash.slice(1)); }
+  function start() { setView(state.view); }
 
-  // maplibre loads with `defer` before this script, but guard for slow loads on #map
-  if (location.hash === "#map" && typeof maplibregl === "undefined") {
+  // maplibre loads with `defer` before this script, but guard for slow loads on the map view
+  if (state.view === "map" && typeof maplibregl === "undefined") {
     window.addEventListener("load", start);
   } else {
     start();
