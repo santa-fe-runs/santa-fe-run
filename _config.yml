@@ -47,3 +47,4 @@ exclude:
   - "*.gemspec"
   - node_modules/
   - README.md
+  - race_directors.csv
