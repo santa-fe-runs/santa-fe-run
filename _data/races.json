@@ -1,0 +1,2145 @@
+{
+ "fetched_at": "2026-10-18T22:27:31-06:00",
+ "races": [
+  {
+   "id": "rs-185603",
+   "source": "RunSignup",
+   "name": "2nd Annual Nun Run",
+   "url": "https://runsignup.com/Race/NM/ChurchRock/lspnunrun",
+   "date": "2026-10-24",
+   "end_date": null,
+   "city": "Church Rock",
+   "lat": 35.5369,
+   "lng": -108.6323,
+   "type": "road",
+   "distances": [
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "us-67899",
+   "source": "UltraSignup",
+   "name": "6th Annual SVH 5K Fun Run",
+   "url": "https://ultrasignup.com/register.aspx?did=67899",
+   "date": "2026-10-24",
+   "end_date": null,
+   "city": "Elephant Butte",
+   "lat": 33.1691,
+   "lng": -107.203,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K Fun Run",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-211727",
+   "source": "RunSignup",
+   "name": "Bales Brews and Brats 5k",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/BalesBrewsAndBrats5k",
+   "date": "2026-10-24",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-151924",
+   "source": "RunSignup",
+   "name": "Nightmare in Artesia 5k",
+   "url": "https://runsignup.com/Race/NM/Artesia/NightmareinArtesia5k",
+   "date": "2026-10-24",
+   "end_date": null,
+   "city": "Artesia",
+   "lat": 32.8423,
+   "lng": -104.4033,
+   "type": "road",
+   "distances": [
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    },
+    {
+     "label": "3 Miles",
+     "miles": 3.0,
+     "timed": false
+    },
+    {
+     "label": "5k 17 and Under",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-215641",
+   "source": "RunSignup",
+   "name": "Trick or Trot 5K",
+   "url": "https://runsignup.com/Race/NM/Cloudcroft/TrickOrTrotCloudcroft",
+   "date": "2026-10-24",
+   "end_date": null,
+   "city": "Cloudcroft",
+   "lat": 32.9577,
+   "lng": -105.7427,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "us-68028",
+   "source": "UltraSignup",
+   "name": "Twilight 10 Trail Run",
+   "url": "https://ultrasignup.com/register.aspx?did=68028",
+   "date": "2026-10-24",
+   "end_date": null,
+   "city": "Tijeras",
+   "lat": 34.9983,
+   "lng": -106.322,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "10 Miler",
+     "miles": 10.0,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-150778",
+   "source": "RunSignup",
+   "name": "Sugar Skull Fun Run",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/SugarSkullFunRun",
+   "date": "2026-10-25",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-188163",
+   "source": "RunSignup",
+   "name": "Creepy Crawl 1k Beer Run",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/CreepyCrawl1kBeerRun",
+   "date": "2026-10-29",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "1K",
+     "miles": 0.62,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-116978",
+   "source": "RunSignup",
+   "name": "NM GREAT PUMPKIN CHASE 10K, 5K, 1-MILE WALK, KIDS K and INFLATABLE COSTUME MAD DASH",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/GREATPUMPKINCHASE",
+   "date": "2026-10-31",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "6.21 Miles",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "3.12 Miles",
+     "miles": 3.12,
+     "timed": false
+    },
+    {
+     "label": "1K",
+     "miles": 0.62,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-171926",
+   "source": "RunSignup",
+   "name": "ROAR RUN 3!",
+   "url": "https://runsignup.com/Race/NM/LasCruces/RoarRun2",
+   "date": "2026-10-31",
+   "end_date": null,
+   "city": "Las Cruces",
+   "lat": 32.314,
+   "lng": -106.7798,
+   "type": "road",
+   "distances": [
+    {
+     "label": "6.2 Miles",
+     "miles": 6.2,
+     "timed": false
+    },
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-181236",
+   "source": "RunSignup",
+   "name": "ALBUQUERQUE RUNNING FIESTA",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/AlbuquerqueRunningFiesta",
+   "date": "2026-11-01",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "26.2 Miles",
+     "miles": 26.2,
+     "timed": false
+    },
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "0.5 Miles",
+     "miles": 0.5,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "us-66229",
+   "source": "UltraSignup",
+   "name": "Deadman Peaks Trail Run",
+   "url": "https://ultrasignup.com/register.aspx?did=66229",
+   "date": "2026-11-07",
+   "end_date": null,
+   "city": "Cuba",
+   "lat": 35.9729,
+   "lng": -107.007,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "Backbone 100",
+     "miles": 100.0,
+     "timed": false
+    },
+    {
+     "label": "53 Miler",
+     "miles": 53.0,
+     "timed": false
+    },
+    {
+     "label": "55K",
+     "miles": 34.18,
+     "timed": false
+    },
+    {
+     "label": "30K",
+     "miles": 18.64,
+     "timed": false
+    },
+    {
+     "label": "8 Miler",
+     "miles": 8.0,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-129302",
+   "source": "RunSignup",
+   "name": "NM ENCHANTMENT RUN: 15K, 10K AND 5K",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/NMENCHANTMENT15K",
+   "date": "2026-11-07",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "15K",
+     "miles": 9.32,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-199793",
+   "source": "RunSignup",
+   "name": "Ocotillo Trail Endurance Challenge",
+   "url": "https://runsignup.com/Race/NM/Carlsbad/OTEC2026",
+   "date": "2026-11-07",
+   "end_date": null,
+   "city": "Carlsbad",
+   "lat": 32.4257,
+   "lng": -104.2376,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "2 Miles",
+     "miles": 2.0,
+     "timed": false
+    },
+    {
+     "label": "10 Miles",
+     "miles": 10.0,
+     "timed": false
+    },
+    {
+     "label": "20 Miles",
+     "miles": 20.0,
+     "timed": false
+    },
+    {
+     "label": "15 Miles",
+     "miles": 15.0,
+     "timed": false
+    },
+    {
+     "label": "30 Miles",
+     "miles": 30.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "us-66888",
+   "source": "UltraSignup",
+   "name": "ABQ Foothills 10 Mile Run and 5K Run Hike",
+   "url": "https://ultrasignup.com/register.aspx?did=66888",
+   "date": "2026-11-08",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.1592,
+   "lng": -106.497,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "10 Miler",
+     "miles": 10.0,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-167621",
+   "source": "RunSignup",
+   "name": "3rd Annual Dash for Diabetes Awareness 5 K & 1Mile Fun Run",
+   "url": "https://runsignup.com/Race/NM/LasCruces/DiabetesAwareness5KRunWalk",
+   "date": "2026-11-14",
+   "end_date": null,
+   "city": "Las Cruces",
+   "lat": 32.314,
+   "lng": -106.7798,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-127318",
+   "source": "RunSignup",
+   "name": "Flying Horse Half Marathon, 10K & 5K",
+   "url": "https://runsignup.com/Race/NM/SunlandPark/FlyingHorseRace",
+   "date": "2026-11-14",
+   "end_date": null,
+   "city": "Sunland Park",
+   "lat": 31.7965,
+   "lng": -106.58,
+   "type": "road",
+   "distances": [
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    },
+    {
+     "label": "6.2 Miles",
+     "miles": 6.2,
+     "timed": false
+    },
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-215782",
+   "source": "RunSignup",
+   "name": "Imago Dei Academy Defender Dash",
+   "url": "https://runsignup.com/Race/NM/Alamogordo/ImagoDeiAcademyDefenderDash",
+   "date": "2026-11-14",
+   "end_date": null,
+   "city": "Alamogordo",
+   "lat": 32.8999,
+   "lng": -105.9602,
+   "type": "road",
+   "distances": [
+    {
+     "label": "6.3 Miles",
+     "miles": 6.3,
+     "timed": false
+    },
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "us-67529",
+   "source": "UltraSignup",
+   "name": "Truth or Consequences Desert Ultra",
+   "url": "https://ultrasignup.com/register.aspx?did=67529",
+   "date": "2026-11-14",
+   "end_date": null,
+   "city": "Truth or Consequences",
+   "lat": 33.1228,
+   "lng": -107.255,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "50K",
+     "miles": 31.07,
+     "timed": false
+    },
+    {
+     "label": "Half Marathon",
+     "miles": 13.1,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-116662",
+   "source": "RunSignup",
+   "name": "DUKE OF DOUGH \"DONUT\" RUN 10K, 5K AND KIDS K",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/DUKEOFDOUGHDONUTRUN",
+   "date": "2026-11-15",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "1K",
+     "miles": 0.62,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-215207",
+   "source": "RunSignup",
+   "name": "Run 4 Wishes 5k",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/RunWishes5k",
+   "date": "2026-11-15",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "us-68293",
+   "source": "UltraSignup",
+   "name": "Tortugas Mountain 24 Hour Challenge",
+   "url": "https://ultrasignup.com/register.aspx?did=68293",
+   "date": "2026-11-20",
+   "end_date": null,
+   "city": "Las Cruces",
+   "lat": 32.2963,
+   "lng": -106.692,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "24hrs",
+     "miles": null,
+     "timed": true
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-54093",
+   "source": "RunSignup",
+   "name": "Farmington 5K Turkey Trot & 2-mile Gobble Wobble",
+   "url": "https://runsignup.com/Race/NM/Farmington/FarmingtonTurkeyTrot",
+   "date": "2026-11-21",
+   "end_date": null,
+   "city": "Farmington",
+   "lat": 36.7291,
+   "lng": -108.2054,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "2 Miles",
+     "miles": 2.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-216007",
+   "source": "RunSignup",
+   "name": "Girls on the Run Rio Grande 5K Celebration",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/GirlsOnTheRunRioGrande5KCelebration",
+   "date": "2026-11-21",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-79992",
+   "source": "RunSignup",
+   "name": "Lady of the Mountain Run",
+   "url": "https://runsignup.com/Race/NM/Alamogordo/LadyoftheMountainRun",
+   "date": "2026-11-21",
+   "end_date": null,
+   "city": "Alamogordo",
+   "lat": 32.8999,
+   "lng": -105.9602,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    },
+    {
+     "label": "6.2 Miles",
+     "miles": 6.2,
+     "timed": false
+    },
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-102188",
+   "source": "RunSignup",
+   "name": "Albuquerque Turkey Trot",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/AlbuquerqueTurkeyTrot",
+   "date": "2026-11-26",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "50 Yards",
+     "miles": 0.028,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    },
+    {
+     "label": "10k Run",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-154362",
+   "source": "RunSignup",
+   "name": "Atalaya Elementary 2026 Turkey Trot",
+   "url": "https://runsignup.com/Race/NM/SantaFe/AtalayaElementaryTurkeyTrot",
+   "date": "2026-11-26",
+   "end_date": null,
+   "city": "Santa Fe",
+   "lat": 35.6876,
+   "lng": -105.9385,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-116325",
+   "source": "RunSignup",
+   "name": "NM HOBBLER GOBBLER THANKSGIVING DAY RUN: 10K, 5K, 2-MILE WALK and KIDS K",
+   "url": "https://runsignup.com/Race/NM/RioRancho/NMHOBBLERGOBBLERTHANKSGIVINGDAYRUN",
+   "date": "2026-11-26",
+   "end_date": null,
+   "city": "Rio Rancho",
+   "lat": 35.3108,
+   "lng": -106.6847,
+   "type": "road",
+   "distances": [
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-117564",
+   "source": "RunSignup",
+   "name": "SSR 5k- Fall Series #3 \"Turkey Trot\"",
+   "url": "https://runsignup.com/Race/NM/Socorro/SSR5k2021FallSeries3",
+   "date": "2026-11-26",
+   "end_date": null,
+   "city": "Socorro",
+   "lat": 34.0573,
+   "lng": -106.8931,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-194376",
+   "source": "RunSignup",
+   "name": "TURKEY TREK ALBUQUERQUE",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/TURKEYTREKALBUQUERQUE",
+   "date": "2026-11-26",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "Kids 1K \"12 years under\"",
+     "miles": 0.62,
+     "timed": false
+    },
+    {
+     "label": "5K TURKEY TREK ALBUQUERQUE",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-66183",
+   "source": "RunSignup",
+   "name": "The Official Las Cruces Thanksgiving Day Turkey Trot",
+   "url": "https://runsignup.com/Race/NM/LasCruces/OfficialLasCrucesThanksgivingDayTurkeyTrot",
+   "date": "2026-11-26",
+   "end_date": null,
+   "city": "Las Cruces",
+   "lat": 32.314,
+   "lng": -106.7798,
+   "type": "road",
+   "distances": [
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "us-66268",
+   "source": "UltraSignup",
+   "name": "Bosque Bigfoot Trail Runs",
+   "url": "https://ultrasignup.com/register.aspx?did=66268",
+   "date": "2026-11-28",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.1231,
+   "lng": -106.676,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "50k",
+     "miles": 31.07,
+     "timed": false
+    },
+    {
+     "label": "25K",
+     "miles": 15.53,
+     "timed": false
+    },
+    {
+     "label": "8 Miler",
+     "miles": 8.0,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-117074",
+   "source": "RunSignup",
+   "name": "KRINGLE JINGLE RUN: 10K, 5K AND KIDS K",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/KRINGLEJINGLERUN10K5KANDKIDSK",
+   "date": "2026-12-05",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "6.21 Miles",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "3.12 Miles",
+     "miles": 3.12,
+     "timed": false
+    },
+    {
+     "label": "1K",
+     "miles": 0.62,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-173335",
+   "source": "RunSignup",
+   "name": "Reinbeer Run",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/ReinbeerRun",
+   "date": "2026-12-05",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "3.88 Miles",
+     "miles": 3.88,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "us-67480",
+   "source": "UltraSignup",
+   "name": "Blue Canyon Trail Run",
+   "url": "https://ultrasignup.com/register.aspx?did=67480",
+   "date": "2026-12-12",
+   "end_date": null,
+   "city": "Socorro",
+   "lat": 34.0316,
+   "lng": -106.914,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "18 miler",
+     "miles": 18.0,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-217033",
+   "source": "RunSignup",
+   "name": "Holiday Hustle 5k",
+   "url": "https://runsignup.com/Race/NM/SantaFe/HolidayHustleRace5k",
+   "date": "2026-12-12",
+   "end_date": null,
+   "city": "Santa Fe",
+   "lat": 35.6876,
+   "lng": -105.9385,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-120550",
+   "source": "RunSignup",
+   "name": "NM FAROLITO 5K",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/NMFAROLITO5K",
+   "date": "2026-12-12",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "1K",
+     "miles": 0.62,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-208238",
+   "source": "RunSignup",
+   "name": "Run Against Traffick 5K",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/NMDCRunAgainstTraffick5k",
+   "date": "2026-12-13",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-190429",
+   "source": "RunSignup",
+   "name": "2nd Annual Souper Dash 5k and 1 Mile Fun Run",
+   "url": "https://runsignup.com/Race/NM/LasCruces/SOUPERDASHK",
+   "date": "2026-12-19",
+   "end_date": null,
+   "city": "Las Cruces",
+   "lat": 32.314,
+   "lng": -106.7798,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-213415",
+   "source": "RunSignup",
+   "name": "Festivus for the Rest of Us 5K Run/Walk & Kids Festivus Dash",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/Festivus5KRunWalk",
+   "date": "2026-12-19",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-168739",
+   "source": "RunSignup",
+   "name": "GBP Winter Trail Series",
+   "url": "https://runsignup.com/Race/NM/Lamy/GBPWinterTrailSeries",
+   "date": "2026-12-19",
+   "end_date": "2027-02-20",
+   "city": "Lamy",
+   "lat": 35.4807,
+   "lng": -105.8802,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "3.5 Miles",
+     "miles": 3.5,
+     "timed": false
+    },
+    {
+     "label": "4.25 Miles",
+     "miles": 4.25,
+     "timed": false
+    },
+    {
+     "label": "6.6 Miles",
+     "miles": 6.6,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-173710",
+   "source": "RunSignup",
+   "name": "New Year's Prediction 5k and 1 mile Run/Walk",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/NewYearsPredictionRunWalk",
+   "date": "2027-01-01",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "New Year's Prediction 1 mile Run/Walk",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-216211",
+   "source": "RunSignup",
+   "name": "RESOLUTON RUN",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/RESOLUTONRUN",
+   "date": "2027-01-01",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "Kids 1K \"12 years under\"",
+     "miles": 0.62,
+     "timed": false
+    },
+    {
+     "label": "5K Run / Fitness Walk",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-211331",
+   "source": "RunSignup",
+   "name": "Cavern City Showdown",
+   "url": "https://runsignup.com/Race/NM/Carlsbad/CavernCityShowdown1",
+   "date": "2027-01-02",
+   "end_date": null,
+   "city": "Carlsbad",
+   "lat": 32.4257,
+   "lng": -104.2376,
+   "type": "road",
+   "distances": [
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-140087",
+   "source": "RunSignup",
+   "name": "Chilly Willy 5K/10K/Half Marathon - Albuquerque",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/ChillyWilly5K10KHalfMarathonAlbuquerque",
+   "date": "2027-01-09",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    },
+    {
+     "label": "13.1K",
+     "miles": 8.14,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-173746",
+   "source": "RunSignup",
+   "name": "Chilly Willy 5K/10K/Half Marathon - Las Cruces",
+   "url": "https://runsignup.com/Race/NM/LasCruces/ChillyWillyKKHalfMarathonLasCruces",
+   "date": "2027-01-10",
+   "end_date": null,
+   "city": "Las Cruces",
+   "lat": 32.314,
+   "lng": -106.7798,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    },
+    {
+     "label": "13.1K",
+     "miles": 8.14,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-215122",
+   "source": "RunSignup",
+   "name": "War Eagles Air Museum Runway 5K and 1 Mile Walk and Airplane Pull",
+   "url": "https://runsignup.com/Race/NM/SantaTeresa/WarEaglesAirMuseumRunway5KAnd1MileWalkAndAirplanePull",
+   "date": "2027-01-30",
+   "end_date": null,
+   "city": "Santa Teresa",
+   "lat": 31.87,
+   "lng": -106.6866,
+   "type": "road",
+   "distances": [
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    },
+    {
+     "label": "20 Yards",
+     "miles": 0.011,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-161960",
+   "source": "RunSignup",
+   "name": "Heart of the Desert Wine Run 5k",
+   "url": "https://runsignup.com/Race/NM/Alamogordo/HeartoftheDesertWineRun5k",
+   "date": "2027-02-06",
+   "end_date": null,
+   "city": "Alamogordo",
+   "lat": 32.8999,
+   "lng": -105.9602,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-103637",
+   "source": "RunSignup",
+   "name": "Santa Fe Snowshoe Classic",
+   "url": "https://runsignup.com/Race/NM/SantaFe/SantaFeSnowshoeClassic",
+   "date": "2027-02-06",
+   "end_date": null,
+   "city": "Santa Fe",
+   "lat": 35.6876,
+   "lng": -105.9385,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-196038",
+   "source": "RunSignup",
+   "name": "Sombra Antigua Wine Run 5k",
+   "url": "https://runsignup.com/Race/NM/Anthony/SombraAntiguaWineRun5k",
+   "date": "2027-02-07",
+   "end_date": null,
+   "city": "Anthony",
+   "lat": 32.0059,
+   "lng": -106.5969,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-84435",
+   "source": "RunSignup",
+   "name": "44th Annual Mt. Taylor Winter Quadrathlon",
+   "url": "https://runsignup.com/Race/NM/Grants/MtTaylorWinterQuadrathlon",
+   "date": "2027-02-13",
+   "end_date": null,
+   "city": "Grants",
+   "lat": 35.1541,
+   "lng": -107.8591,
+   "type": "road",
+   "distances": [
+    {
+     "label": "44 Miles",
+     "miles": 44.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-149506",
+   "source": "RunSignup",
+   "name": "Cupid's Chase 5K Albuquerque",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/CupidsChase5KAlbuquerque",
+   "date": "2027-02-13",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-149508",
+   "source": "RunSignup",
+   "name": "Cupid's Chase 5K Las Cruces",
+   "url": "https://runsignup.com/Race/NM/LasCruces/CupidsChase5KLasCruces",
+   "date": "2027-02-13",
+   "end_date": null,
+   "city": "Las Cruces",
+   "lat": 32.314,
+   "lng": -106.7798,
+   "type": "road",
+   "distances": [
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-149562",
+   "source": "RunSignup",
+   "name": "Cupid's Chase 5K Santa Fe",
+   "url": "https://runsignup.com/Race/NM/SantaFe/CupidsChase5KSantaFe",
+   "date": "2027-02-13",
+   "end_date": null,
+   "city": "Santa Fe",
+   "lat": 35.6876,
+   "lng": -105.9385,
+   "type": "road",
+   "distances": [
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "us-67481",
+   "source": "UltraSignup",
+   "name": "La Jornada de las Quebradas",
+   "url": "https://ultrasignup.com/register.aspx?did=67481",
+   "date": "2027-02-13",
+   "end_date": null,
+   "city": "Socorro",
+   "lat": 34.1087,
+   "lng": -106.828,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "53K",
+     "miles": 32.93,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "us-68205",
+   "source": "UltraSignup",
+   "name": "Turquoise Trail Ultra",
+   "url": "https://ultrasignup.com/register.aspx?did=68205",
+   "date": "2027-02-20",
+   "end_date": null,
+   "city": "Cedar Crest",
+   "lat": 35.1293,
+   "lng": -106.366,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "52K",
+     "miles": 32.31,
+     "timed": false
+    },
+    {
+     "label": "26K",
+     "miles": 16.16,
+     "timed": false
+    },
+    {
+     "label": "13K",
+     "miles": 8.08,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-158693",
+   "source": "RunSignup",
+   "name": "Lucky 5K/10K/Half Marathon - Las Cruces",
+   "url": "https://runsignup.com/Race/NM/LasCruces/Lucky5K10KHalfMarathonLasCruses",
+   "date": "2027-02-27",
+   "end_date": null,
+   "city": "Las Cruces",
+   "lat": 32.314,
+   "lng": -106.7798,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-129116",
+   "source": "RunSignup",
+   "name": "Doggie Dash & Dawdle 2027",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/Dawdle",
+   "date": "2027-02-28",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-158545",
+   "source": "RunSignup",
+   "name": "Lucky 5K/10K/Half Marathon - Albuquerque",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/Lucky5K10KHalfMarathonAlbuquerque",
+   "date": "2027-02-28",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-84374",
+   "source": "RunSignup",
+   "name": "2027 Corrida de Los Locos",
+   "url": "https://runsignup.com/Race/NM/SantaFe/35thAnnualCorridadelosLocos2020",
+   "date": "2027-03-06",
+   "end_date": null,
+   "city": "Santa Fe",
+   "lat": 35.6876,
+   "lng": -105.9385,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5 Miles",
+     "miles": 5.0,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-199343",
+   "source": "RunSignup",
+   "name": "ENMU - Roswell Spring Blast 5K, 10K, & Half Marathon",
+   "url": "https://runsignup.com/Race/NM/Roswell/ENMURoswellSpringBlast5K10KandHalfMarathon",
+   "date": "2027-03-06",
+   "end_date": null,
+   "city": "Roswell",
+   "lat": 33.3943,
+   "lng": -104.523,
+   "type": "road",
+   "distances": [
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    },
+    {
+     "label": "6.21 Miles",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "3.11 Miles",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-214608",
+   "source": "RunSignup",
+   "name": "Amigos de Cerrillos Hills State Park Trail Race",
+   "url": "https://runsignup.com/Race/NM/LosCerillos/AmigosDeCerrillosHillsStateParkTrailRace",
+   "date": "2027-03-13",
+   "end_date": null,
+   "city": "Los Cerillos",
+   "lat": 35.4282,
+   "lng": -106.1328,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "3 Miles",
+     "miles": 3.0,
+     "timed": false
+    },
+    {
+     "label": "5 Miles",
+     "miles": 5.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "us-68294",
+   "source": "UltraSignup",
+   "name": "Gomez Grind",
+   "url": "https://ultrasignup.com/register.aspx?did=68294",
+   "date": "2027-03-13",
+   "end_date": null,
+   "city": "Silver City",
+   "lat": 32.8486,
+   "lng": -108.276,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "Gomez Grind 12 hr",
+     "miles": null,
+     "timed": true
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-140981",
+   "source": "RunSignup",
+   "name": "Run with Joy Half Marathon/10k/5k and 1 Miler",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/CanteenRunForJoy",
+   "date": "2027-03-20",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-116854",
+   "source": "RunSignup",
+   "name": "ALBUQUERQUE MARATHON + HALF MARATHON, 10K, 5K AND KIDS K",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/ALBUQUERQUEHALFMARATHON",
+   "date": "2027-04-03",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "26.2 Miles",
+     "miles": 26.2,
+     "timed": false
+    },
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    },
+    {
+     "label": "6.21 Miles",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "3.12 Miles",
+     "miles": 3.12,
+     "timed": false
+    },
+    {
+     "label": "1K",
+     "miles": 0.62,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-216392",
+   "source": "RunSignup",
+   "name": "Runland Kids Race- Albuquerque",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/RunlandKidsRaceAlbuquerque",
+   "date": "2027-04-11",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "1000m",
+     "miles": 0.62,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "us-67447",
+   "source": "UltraSignup",
+   "name": "Capitan Mountain 34 Hour",
+   "url": "https://ultrasignup.com/register.aspx?did=67447",
+   "date": "2027-04-17",
+   "end_date": "2027-04-17",
+   "city": "Capitan",
+   "lat": 33.5454,
+   "lng": -105.572,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "RABBIT 6HOUR",
+     "miles": null,
+     "timed": true
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-197986",
+   "source": "RunSignup",
+   "name": "Desert View Elementary Dash for Autism",
+   "url": "https://runsignup.com/Race/NM/SunlandPark/DesertViewElementaryDashForAutism",
+   "date": "2027-04-17",
+   "end_date": null,
+   "city": "Sunland Park",
+   "lat": 31.7965,
+   "lng": -106.58,
+   "type": "road",
+   "distances": [
+    {
+     "label": "3.1 Miles",
+     "miles": 3.1,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-176925",
+   "source": "RunSignup",
+   "name": "Sandia Resort & Casino 2027 Run to Break the Silence",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/RunToBreakTheSilence",
+   "date": "2027-04-18",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "1K Kids Run",
+     "miles": 0.62,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-187989",
+   "source": "RunSignup",
+   "name": "Run Through The Decades 6K/7K/8K/Half - Albuquerque",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/RunThroughTheDecades6K7K8KHalfAlbuquerque",
+   "date": "2027-04-25",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "6K",
+     "miles": 3.73,
+     "timed": false
+    },
+    {
+     "label": "7K",
+     "miles": 4.35,
+     "timed": false
+    },
+    {
+     "label": "8K",
+     "miles": 4.97,
+     "timed": false
+    },
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-82605",
+   "source": "RunSignup",
+   "name": "Shiprock Marathon",
+   "url": "https://runsignup.com/Race/NM/Shiprock/ShiprockMarathon",
+   "date": "2027-04-30",
+   "end_date": "2027-05-01",
+   "city": "Shiprock",
+   "lat": 36.7859,
+   "lng": -108.6845,
+   "type": "road",
+   "distances": [
+    {
+     "label": "Marathon Relay",
+     "miles": 26.2,
+     "timed": false
+    },
+    {
+     "label": "30 Miles",
+     "miles": 30.0,
+     "timed": false
+    },
+    {
+     "label": "17 Miles",
+     "miles": 17.0,
+     "timed": false
+    },
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    },
+    {
+     "label": "2 Miles",
+     "miles": 2.0,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "26.22 Miles",
+     "miles": 26.22,
+     "timed": false
+    },
+    {
+     "label": "13.11 Miles",
+     "miles": 13.11,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-165408",
+   "source": "RunSignup",
+   "name": "Glorieta Twelve Hour Endurance Race",
+   "url": "https://runsignup.com/Race/NM/Glorieta/TwelveHourEnduranceRun",
+   "date": "2027-05-01",
+   "end_date": null,
+   "city": "Glorieta",
+   "lat": 35.583,
+   "lng": -105.77,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "12 hour RUN",
+     "miles": null,
+     "timed": true
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-140944",
+   "source": "RunSignup",
+   "name": "Vermejo Charcoal Burner",
+   "url": "https://runsignup.com/Race/NM/Raton/VermejoCharcoalBurner",
+   "date": "2027-05-15",
+   "end_date": null,
+   "city": "Raton",
+   "lat": 36.8979,
+   "lng": -104.4355,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-185120",
+   "source": "RunSignup",
+   "name": "WisePies Pizza Run - Annual 1 Mile, 5K, and 10K Challenge",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/wisepiesrun",
+   "date": "2027-05-16",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "1 Miles",
+     "miles": 1.0,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-176540",
+   "source": "RunSignup",
+   "name": "Hood Mesa Trail Run",
+   "url": "https://runsignup.com/Race/NM/Farmington/HoodMesaTrailRun",
+   "date": "2027-06-05",
+   "end_date": null,
+   "city": "Farmington",
+   "lat": 36.7291,
+   "lng": -108.2054,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "15 Miles",
+     "miles": 15.0,
+     "timed": false
+    },
+    {
+     "label": "9 Miles",
+     "miles": 9.0,
+     "timed": false
+    },
+    {
+     "label": "5 Miles",
+     "miles": 5.0,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-167973",
+   "source": "RunSignup",
+   "name": "Taos Ski Valley Up & Over Trail Run Weekend",
+   "url": "https://runsignup.com/Race/NM/TaosSkiValley/TaosSkiValleyUpOverTrailRunWeekend",
+   "date": "2027-07-31",
+   "end_date": "2027-08-01",
+   "city": "Taos Ski Valley",
+   "lat": 36.596,
+   "lng": -105.4545,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "11K",
+     "miles": 6.84,
+     "timed": false
+    },
+    {
+     "label": "1K",
+     "miles": 0.62,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-115520",
+   "source": "RunSignup",
+   "name": "1K & 3K BLAST",
+   "url": "https://runsignup.com/Race/NM/Roswell/2KBLAST",
+   "date": "2027-08-14",
+   "end_date": null,
+   "city": "Roswell",
+   "lat": 33.3943,
+   "lng": -104.523,
+   "type": "trail",
+   "distances": [
+    {
+     "label": "1000m",
+     "miles": 0.62,
+     "timed": false
+    },
+    {
+     "label": "3000m",
+     "miles": 1.86,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-83604",
+   "source": "RunSignup",
+   "name": "Capitol Ford Santa Fe International Half Marathon",
+   "url": "https://runsignup.com/Race/NM/SantaFe/SantaFeInternationalHalfMarathon",
+   "date": "2027-09-18",
+   "end_date": "2027-09-19",
+   "city": "Santa Fe",
+   "lat": 35.6876,
+   "lng": -105.9385,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "21.1K",
+     "miles": 13.11,
+     "timed": false
+    },
+    {
+     "label": "4.4 Miles",
+     "miles": 4.4,
+     "timed": false
+    }
+   ],
+   "registration_open": true
+  },
+  {
+   "id": "rs-186557",
+   "source": "RunSignup",
+   "name": "Walk for Billy",
+   "url": "https://runsignup.com/Race/NM/Farmington/WalkForBilly",
+   "date": "2027-09-18",
+   "end_date": null,
+   "city": "Farmington",
+   "lat": 36.7291,
+   "lng": -108.2054,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-204926",
+   "source": "RunSignup",
+   "name": "Corrales Ditch Run",
+   "url": "https://runsignup.com/Race/NM/Corrales/CorralesDitchRun",
+   "date": "2027-09-19",
+   "end_date": null,
+   "city": "Corrales",
+   "lat": 35.2382,
+   "lng": -106.607,
+   "type": "road",
+   "distances": [
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "1K",
+     "miles": 0.62,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  },
+  {
+   "id": "rs-210818",
+   "source": "RunSignup",
+   "name": "Talk Pirate to Me 5K/10K/Half - Albuquerque",
+   "url": "https://runsignup.com/Race/NM/Albuquerque/TalkPirateToMe5K10KHalfAlbuquerque",
+   "date": "2027-09-19",
+   "end_date": null,
+   "city": "Albuquerque",
+   "lat": 35.0841,
+   "lng": -106.651,
+   "type": "road",
+   "distances": [
+    {
+     "label": "5K",
+     "miles": 3.11,
+     "timed": false
+    },
+    {
+     "label": "10K",
+     "miles": 6.21,
+     "timed": false
+    },
+    {
+     "label": "13.1 Miles",
+     "miles": 13.1,
+     "timed": false
+    }
+   ],
+   "registration_open": false
+  }
+ ]
+}

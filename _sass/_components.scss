@@ -46,6 +46,27 @@
   display: flex;
   align-items: center;
   gap: var(--sp-6);
+
+  @media (max-width: #{$bp-md - 1px}) {
+    --nav-gap: var(--sp-2);
+    gap: var(--nav-gap);
+    min-width: 0;
+    margin-left: var(--sp-2);
+    overflow-x: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+
+    .nav-link {
+      font-size: 0.6875rem;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .nav-link + .nav-link::before { left: calc(-1 * var(--nav-gap) / 2); }
+  }
+}
+
+@media (max-width: #{$bp-sm - 1px}) {
+  .site-brand .brand-name { display: none; }
 }
 
 .nav-link {

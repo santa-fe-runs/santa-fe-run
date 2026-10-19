@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
+  schedule:
+    # Daily rebuild to refresh /races (06:00 Mountain)
+    - cron: "0 12 * * *"
   workflow_dispatch:
 
 permissions:
@@ -30,6 +33,11 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
+
+      - name: Fetch upcoming races
+        # On failure the committed _data/races.json snapshot is used
+        continue-on-error: true
+        run: python3 scripts/fetch_races.py
 
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
